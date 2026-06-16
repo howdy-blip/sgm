@@ -382,18 +382,29 @@
       border: 1px solid var(--border2);
       overflow: hidden;
       flex-shrink: 0;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
     }
 
-    .comp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+    /* img loads on top of initials; removed by onerror if it fails */
+    .comp-logo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 5px;
+      background: var(--card2);
+    }
 
     .logo-initials {
       font-weight: 800;
       font-size: 15px;
       color: var(--accent);
       letter-spacing: -0.5px;
+      position: relative; /* stays below img */
     }
 
     .card-title-group { flex: 1; min-width: 0; }
@@ -740,6 +751,7 @@
       border: 1px solid var(--border2);
       overflow: hidden;
       flex-shrink: 0;
+      position: relative;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -748,7 +760,15 @@
       color: var(--accent);
     }
 
-    .aff-logo img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
+    .aff-logo img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 3px;
+      background: var(--card);
+    }
 
     .aff-info { flex: 1; min-width: 0; }
     .aff-info h4 { font-size: 13px; font-weight: 700; color: var(--text); }
@@ -1162,10 +1182,8 @@ function buildCard(comp) {
   head.className = 'card-head';
   head.innerHTML = `
     <div class="comp-logo" id="logo-${comp.id}">
-      ${comp.logo
-        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}"
-              onerror="this.parentNode.innerHTML='<span class=logo-initials>${initials}</span>'" />`
-        : `<span class="logo-initials">${initials}</span>`}
+      <span class="logo-initials">${initials}</span>
+      ${comp.logo ? `<img src="${esc(comp.logo)}" alt="" onerror="this.remove()" />` : ''}
     </div>
     <div class="card-title-group">
       <h3>${esc(comp.name)}</h3>
@@ -1366,10 +1384,8 @@ function buildAffCard(comp) {
 
   card.innerHTML = `
     <div class="aff-logo" id="aff-logo-${comp.id}">
-      ${comp.logo
-        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}"
-              onerror="this.parentNode.innerHTML='${initials}'" />`
-        : initials}
+      <span>${initials}</span>
+      ${comp.logo ? `<img src="${esc(comp.logo)}" alt="" onerror="this.remove()" />` : ''}
     </div>
     <div class="aff-info">
       <h4>${esc(comp.name)}</h4>
@@ -1518,9 +1534,8 @@ function removeEvent(compId, evId) {
 function refreshLogo(id, url, initials) {
   const el = document.getElementById(`logo-${id}`);
   if (!el) return;
-  el.innerHTML = url
-    ? `<img src="${esc(url)}" alt="" onerror="this.parentNode.innerHTML='<span class=logo-initials>${initials}</span>'" />`
-    : `<span class="logo-initials">${initials}</span>`;
+  el.innerHTML = `<span class="logo-initials">${initials}</span>` +
+    (url ? `<img src="${esc(url)}" alt="" onerror="this.remove()" />` : '');
 }
 
 // ─── EDIT MODE ─────────────────────────────────
