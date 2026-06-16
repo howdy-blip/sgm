@@ -11,74 +11,20 @@
       "shortName": "JCL",
       "website": "https://juniorchampionsleague.com.au/",
       "logo": "https://logo.clearbit.com/juniorchampionsleague.com.au",
-      "status": "live",
-      "dates": "Currently Live",
-      "location": "Melbourne, VIC",
       "instagram": "https://www.instagram.com/juniorchampionsleague/",
       "facebook": "https://www.facebook.com/juniorchampionsleague/",
       "description": "Elite junior football competition for academy-level players across Victoria.",
       "affiliated": false,
-      "sortDate": "2026-06-01"
-    },
-    {
-      "id": "jal",
-      "name": "Junior Academy League",
-      "shortName": "JAL",
-      "website": "https://junioracademyleague.com.au/",
-      "logo": "https://logo.clearbit.com/junioracademyleague.com.au",
-      "status": "upcoming",
-      "dates": "Cup: June – July 2026",
-      "location": "Veneto Club, Bulleen VIC",
-      "instagram": "https://www.instagram.com/junioracademyleague/",
-      "facebook": "https://www.facebook.com/junioracademyleague/",
-      "description": "High-level competition for junior academies featuring post-season and pre-season tournaments.",
-      "affiliated": false,
-      "sortDate": "2026-06-01"
-    },
-    {
-      "id": "ysc",
-      "name": "Youth Super Cup",
-      "shortName": "YSC",
-      "website": "https://youthsupercup.com.au/",
-      "logo": "https://logo.clearbit.com/youthsupercup.com.au",
-      "status": "upcoming",
-      "dates": "Pre-Season: Feb 28 – Mar 22 2026",
-      "location": "Victoria",
-      "instagram": "https://www.instagram.com/youthsupercup/",
-      "facebook": "https://www.facebook.com/youthsupercup/",
-      "description": "Victoria's premier youth football super cup — post-season and pre-season formats.",
-      "affiliated": false,
-      "sortDate": "2026-02-28"
-    },
-    {
-      "id": "futsal-melb",
-      "name": "Futsal Melbourne",
-      "shortName": "FM",
-      "website": "https://www.futsal.melbourne/",
-      "logo": "https://logo.clearbit.com/futsal.melbourne",
-      "status": "upcoming",
-      "dates": "Term 1: Jan 30 2026",
-      "location": "Melbourne, VIC",
-      "instagram": "https://www.instagram.com/futsalmelbourne/",
-      "facebook": "https://www.facebook.com/futsalmelbourne/",
-      "description": "Melbourne's leading futsal league returning each term with registrations open.",
-      "affiliated": false,
-      "sortDate": "2026-01-30"
-    },
-    {
-      "id": "ayc",
-      "name": "Adelaide Youth Cup",
-      "shortName": "AYC",
-      "website": "https://adelaideyouthcup.com.au/",
-      "logo": "https://logo.clearbit.com/adelaideyouthcup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Adelaide, SA",
-      "instagram": "https://www.instagram.com/adelaideyouthcup/",
-      "facebook": "https://www.facebook.com/adelaideyouthcup/",
-      "description": "Youth cup competition based in Adelaide, South Australia.",
-      "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "jcl-2026",
+          "name": "JCL 2026 Season",
+          "status": "live",
+          "dates": "Currently Live",
+          "location": "Melbourne, VIC",
+          "sortDate": "2026-06-16"
+        }
+      ]
     },
     {
       "id": "wafc",
@@ -86,29 +32,78 @@
       "shortName": "WAFC",
       "website": "https://wafutsalcup.cupmanager.net/",
       "logo": "https://logo.clearbit.com/wafutsalcup.cupmanager.net",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Western Australia",
       "instagram": "https://www.instagram.com/wafutsalcup/",
       "facebook": "https://www.facebook.com/wafutsalcup/",
       "description": "Western Australia's premier futsal cup competition.",
       "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "wafc-2026",
+          "name": "WA Futsal Cup 2026",
+          "status": "upcoming",
+          "dates": "15–18 July 2026",
+          "location": "Cumbre Sports Facility, Port Kennedy WA",
+          "sortDate": "2026-07-15"
+        }
+      ]
     },
     {
-      "id": "cambridge",
-      "name": "Cambridge Cup",
-      "shortName": "CC",
-      "website": "http://cambridgecup.nz/",
-      "logo": "https://logo.clearbit.com/cambridgecup.nz",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Cambridge, New Zealand",
-      "instagram": "https://www.instagram.com/cambridgecupnz/",
-      "facebook": "https://www.facebook.com/cambridgecupnz/",
-      "description": "New Zealand's Cambridge Cup youth football tournament.",
+      "id": "futsal-melb",
+      "name": "Futsal Melbourne",
+      "shortName": "FM",
+      "website": "https://www.futsal.melbourne/",
+      "logo": "https://logo.clearbit.com/futsal.melbourne",
+      "instagram": "https://www.instagram.com/futsalmelbourne/",
+      "facebook": "https://www.facebook.com/futsalmelbourne/",
+      "description": "Melbourne's leading futsal league running across school terms and seasonal series.",
       "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "fm-winter-2026",
+          "name": "Winter Series 2026",
+          "status": "upcoming",
+          "dates": "~21 July 2026",
+          "location": "Melbourne, VIC",
+          "sortDate": "2026-07-21"
+        },
+        {
+          "id": "fm-spring-2026",
+          "name": "Spring Series 2026",
+          "status": "upcoming",
+          "dates": "TBC",
+          "location": "Melbourne, VIC",
+          "sortDate": "2026-10-01"
+        }
+      ]
+    },
+    {
+      "id": "jal",
+      "name": "Junior Academy League",
+      "shortName": "JAL",
+      "website": "https://junioracademyleague.com.au/",
+      "logo": "https://logo.clearbit.com/junioracademyleague.com.au",
+      "instagram": "https://www.instagram.com/junioracademyleague/",
+      "facebook": "https://www.facebook.com/junioracademyleague/",
+      "description": "High-level competition for junior academies featuring cup and league formats throughout the year.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "jal-cup-2026",
+          "name": "JAL Cup 2026",
+          "status": "upcoming",
+          "dates": "July 2026",
+          "location": "Veneto Club, Bulleen VIC",
+          "sortDate": "2026-07-01"
+        },
+        {
+          "id": "jal-season-2026",
+          "name": "JAL Season 2026",
+          "status": "upcoming",
+          "dates": "TBC",
+          "location": "Veneto Club, Bulleen VIC",
+          "sortDate": "2026-11-01"
+        }
+      ]
     },
     {
       "id": "auckland",
@@ -116,44 +111,20 @@
       "shortName": "ACC",
       "website": "http://aucklandchampionscup.nz/",
       "logo": "https://logo.clearbit.com/aucklandchampionscup.nz",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Auckland, New Zealand",
       "instagram": "https://www.instagram.com/aucklandchampionscup/",
       "facebook": "https://www.facebook.com/aucklandchampionscup/",
       "description": "Auckland's premier champions cup for youth football clubs.",
       "affiliated": false,
-      "sortDate": "2026-12-31"
-    },
-    {
-      "id": "actyc",
-      "name": "ACT Youth Cup",
-      "shortName": "ACTYC",
-      "website": "https://actyouthcup.cupmanager.net/",
-      "logo": "https://logo.clearbit.com/actyouthcup.cupmanager.net",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Canberra, ACT",
-      "instagram": "https://www.instagram.com/actyouthcup/",
-      "facebook": "https://www.facebook.com/actyouthcup/",
-      "description": "ACT Youth Cup for junior football players in the Canberra region.",
-      "affiliated": false,
-      "sortDate": "2026-12-31"
-    },
-    {
-      "id": "vicfc",
-      "name": "Vic Futsal Cup",
-      "shortName": "VFC",
-      "website": "https://www.vicfutsalcup.com.au/",
-      "logo": "https://logo.clearbit.com/vicfutsalcup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Victoria",
-      "instagram": "https://www.instagram.com/vicfutsalcup/",
-      "facebook": "https://www.facebook.com/vicfutsalcup/",
-      "description": "Victoria's futsal cup competition for clubs across the state.",
-      "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "acc-2026",
+          "name": "Auckland Champions Cup 2026",
+          "status": "upcoming",
+          "dates": "Fri 25 – Sun 27 Sept 2026",
+          "location": "Stanmore Bay Park, Auckland NZ",
+          "sortDate": "2026-09-25"
+        }
+      ]
     },
     {
       "id": "schoolcups",
@@ -161,14 +132,133 @@
       "shortName": "SC",
       "website": "https://schoolcups.cupmanager.net/",
       "logo": "https://logo.clearbit.com/schoolcups.cupmanager.net",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Various",
       "instagram": "https://www.instagram.com/schoolcups/",
       "facebook": "https://www.facebook.com/schoolcups/",
       "description": "School-based cup competitions managed through CupManager.",
       "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "sc-2026",
+          "name": "School Cups 2026",
+          "status": "upcoming",
+          "dates": "Tue 6 – Wed 7 Oct 2026",
+          "location": "TBC",
+          "sortDate": "2026-10-06"
+        }
+      ]
+    },
+    {
+      "id": "actyc",
+      "name": "ACT Youth Cup",
+      "shortName": "ACTYC",
+      "website": "https://actyouthcup.cupmanager.net/",
+      "logo": "https://logo.clearbit.com/actyouthcup.cupmanager.net",
+      "instagram": "https://www.instagram.com/actyouthcup/",
+      "facebook": "https://www.facebook.com/actyouthcup/",
+      "description": "ACT Youth Cup for junior football players in the Canberra region.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "actyc-2026",
+          "name": "ACT Youth Cup 2026",
+          "status": "upcoming",
+          "dates": "Fri 9 – Sun 11 Oct 2026",
+          "location": "Southwell Park, Canberra ACT",
+          "sortDate": "2026-10-09"
+        }
+      ]
+    },
+    {
+      "id": "cambridge",
+      "name": "Cambridge Cup",
+      "shortName": "CC",
+      "website": "http://cambridgecup.nz/",
+      "logo": "https://logo.clearbit.com/cambridgecup.nz",
+      "instagram": "https://www.instagram.com/cambridgecupnz/",
+      "facebook": "https://www.facebook.com/cambridgecupnz/",
+      "description": "New Zealand's Cambridge Cup youth football tournament.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "cc-2026",
+          "name": "Cambridge Cup 2026",
+          "status": "upcoming",
+          "dates": "Sat 24 – Mon 26 Oct 2026",
+          "location": "John Kerkhof Park, Cambridge NZ",
+          "sortDate": "2026-10-24"
+        }
+      ]
+    },
+    {
+      "id": "ysc",
+      "name": "Youth Super Cup",
+      "shortName": "YSC",
+      "website": "https://youthsupercup.com.au/",
+      "logo": "https://logo.clearbit.com/youthsupercup.com.au",
+      "instagram": "https://www.instagram.com/youthsupercup/",
+      "facebook": "https://www.facebook.com/youthsupercup/",
+      "description": "Victoria's premier youth football super cup running post-season and pre-season formats.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "ysc-post-2026",
+          "name": "Post-Season 2026",
+          "status": "upcoming",
+          "dates": "November 2026",
+          "location": "Victoria",
+          "sortDate": "2026-11-01"
+        },
+        {
+          "id": "ysc-pre-2027",
+          "name": "Pre-Season 2027",
+          "status": "upcoming",
+          "dates": "Feb – Mar 2027",
+          "location": "Victoria",
+          "sortDate": "2027-02-28"
+        }
+      ]
+    },
+    {
+      "id": "ayc",
+      "name": "Adelaide Youth Cup",
+      "shortName": "AYC",
+      "website": "https://adelaideyouthcup.com.au/",
+      "logo": "https://logo.clearbit.com/adelaideyouthcup.com.au",
+      "instagram": "https://www.instagram.com/adelaideyouthcup/",
+      "facebook": "https://www.facebook.com/adelaideyouthcup/",
+      "description": "Youth cup competition based in Adelaide, South Australia.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "ayc-2026",
+          "name": "Adelaide Youth Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Adelaide, SA",
+          "sortDate": "2026-12-31"
+        }
+      ]
+    },
+    {
+      "id": "vicfc",
+      "name": "Vic Futsal Cup",
+      "shortName": "VFC",
+      "website": "https://www.vicfutsalcup.com.au/",
+      "logo": "https://logo.clearbit.com/vicfutsalcup.com.au",
+      "instagram": "https://www.instagram.com/vicfutsalcup/",
+      "facebook": "https://www.facebook.com/vicfutsalcup/",
+      "description": "Victoria's futsal cup competition for clubs across the state.",
+      "affiliated": false,
+      "events": [
+        {
+          "id": "vicfc-2026",
+          "name": "Vic Futsal Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Victoria",
+          "sortDate": "2026-12-31"
+        }
+      ]
     },
     {
       "id": "centralcoast",
@@ -176,14 +266,20 @@
       "shortName": "CCC",
       "website": "https://centralcoastcup.com.au/",
       "logo": "https://logo.clearbit.com/centralcoastcup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Central Coast, NSW",
       "instagram": "https://www.instagram.com/centralcoastcup/",
       "facebook": "https://www.facebook.com/centralcoastcup/",
       "description": "Cup competition on the Central Coast of New South Wales.",
       "affiliated": false,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "ccc-2026",
+          "name": "Central Coast Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Central Coast, NSW",
+          "sortDate": "2026-12-31"
+        }
+      ]
     },
     {
       "id": "chelsea",
@@ -191,14 +287,20 @@
       "shortName": "ChelseaC",
       "website": "https://chelseacup.com.au/",
       "logo": "https://logo.clearbit.com/chelseacup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Victoria",
       "instagram": "https://www.instagram.com/chelseacup/",
       "facebook": "https://www.facebook.com/chelseacup/",
       "description": "Affiliated cup competition based in Chelsea, Victoria.",
       "affiliated": true,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "chelsea-2026",
+          "name": "Chelsea Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Chelsea, VIC",
+          "sortDate": "2026-12-31"
+        }
+      ]
     },
     {
       "id": "shepparton",
@@ -206,14 +308,20 @@
       "shortName": "ShepC",
       "website": "https://www.sheppartoncup.com/",
       "logo": "https://logo.clearbit.com/sheppartoncup.com",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Shepparton, VIC",
       "instagram": "https://www.instagram.com/sheppartoncup/",
       "facebook": "https://www.facebook.com/sheppartoncup/",
       "description": "Affiliated youth football cup in Shepparton, regional Victoria.",
       "affiliated": true,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "shep-2026",
+          "name": "Shepparton Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Shepparton, VIC",
+          "sortDate": "2026-12-31"
+        }
+      ]
     },
     {
       "id": "dandy",
@@ -221,14 +329,20 @@
       "shortName": "DC",
       "website": "https://www.dandycup.com.au/",
       "logo": "https://logo.clearbit.com/dandycup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Dandenong, VIC",
       "instagram": "https://www.instagram.com/dandycup/",
       "facebook": "https://www.facebook.com/dandycup/",
       "description": "Affiliated cup competition in the Dandenong region.",
       "affiliated": true,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "dandy-2026",
+          "name": "Dandy Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Dandenong, VIC",
+          "sortDate": "2026-12-31"
+        }
+      ]
     },
     {
       "id": "maccas",
@@ -236,14 +350,20 @@
       "shortName": "MCC",
       "website": "https://maccascitycup.com.au/",
       "logo": "https://logo.clearbit.com/maccascitycup.com.au",
-      "status": "upcoming",
-      "dates": "TBC — check website",
-      "location": "Melbourne, VIC",
       "instagram": "https://www.instagram.com/maccascitycup/",
       "facebook": "https://www.facebook.com/maccascitycup/",
-      "description": "Affiliated city cup competition sponsored by McDonald's.",
+      "description": "Affiliated city cup competition.",
       "affiliated": true,
-      "sortDate": "2026-12-31"
+      "events": [
+        {
+          "id": "maccas-2026",
+          "name": "Maccas City Cup 2026",
+          "status": "upcoming",
+          "dates": "TBC — check website",
+          "location": "Melbourne, VIC",
+          "sortDate": "2026-12-31"
+        }
+      ]
     }
   ]
 }

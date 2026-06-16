@@ -9,25 +9,25 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     :root {
-      --bg:       #070710;
-      --bg2:      #0e0e1c;
-      --card:     #13132a;
-      --card2:    #1a1a36;
-      --border:   rgba(255,255,255,0.07);
-      --border2:  rgba(255,255,255,0.14);
-      --accent:   #f97316;
-      --accent2:  #fb923c;
-      --live:     #ef4444;
-      --live-bg:  rgba(239,68,68,0.12);
-      --upcoming: #3b82f6;
-      --up-bg:    rgba(59,130,246,0.12);
-      --past:     #6b7280;
-      --past-bg:  rgba(107,114,128,0.1);
-      --text:     #f1f5f9;
-      --muted:    #94a3b8;
-      --dim:      #475569;
-      --radius:   14px;
-      --radius-sm:8px;
+      --bg:         #070710;
+      --bg2:        #0e0e1c;
+      --card:       #13132a;
+      --card2:      #1a1a36;
+      --border:     rgba(255,255,255,0.07);
+      --border2:    rgba(255,255,255,0.14);
+      --accent:     #f97316;
+      --accent2:    #fb923c;
+      --live:       #ef4444;
+      --live-bg:    rgba(239,68,68,0.12);
+      --market:     #f59e0b;
+      --market-bg:  rgba(245,158,11,0.12);
+      --upcoming:   #3b82f6;
+      --up-bg:      rgba(59,130,246,0.10);
+      --text:       #f1f5f9;
+      --muted:      #94a3b8;
+      --dim:        #475569;
+      --radius:     14px;
+      --radius-sm:  8px;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,14 +45,14 @@
       position: sticky;
       top: 0;
       z-index: 100;
-      background: rgba(7,7,16,0.85);
+      background: rgba(7,7,16,0.88);
       backdrop-filter: blur(20px);
       border-bottom: 1px solid var(--border);
       padding: 0 24px;
     }
 
     .header-inner {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       height: 68px;
       display: flex;
@@ -77,38 +77,16 @@
       align-items: center;
       justify-content: center;
       font-weight: 900;
-      font-size: 16px;
+      font-size: 15px;
       color: #fff;
       flex-shrink: 0;
       letter-spacing: -0.5px;
     }
 
-    .logo-text {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
+    .logo-text strong { font-size: 16px; font-weight: 800; color: var(--text); }
+    .logo-text span   { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 2px; display: block; }
 
-    .logo-text strong {
-      font-size: 16px;
-      font-weight: 800;
-      color: var(--text);
-      letter-spacing: -0.3px;
-    }
-
-    .logo-text span {
-      font-size: 11px;
-      color: var(--muted);
-      font-weight: 500;
-      margin-top: 2px;
-      letter-spacing: 0.3px;
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-    }
+    .header-actions { display: flex; align-items: center; gap: 10px; }
 
     .btn {
       display: inline-flex;
@@ -126,34 +104,13 @@
       white-space: nowrap;
     }
 
-    .btn-ghost {
-      background: transparent;
-      color: var(--muted);
-      border: 1px solid var(--border2);
-    }
-
+    .btn-ghost   { background: transparent; color: var(--muted); border: 1px solid var(--border2); }
     .btn-ghost:hover { background: var(--card); color: var(--text); }
-
-    .btn-accent {
-      background: var(--accent);
-      color: #fff;
-    }
-
+    .btn-accent  { background: var(--accent); color: #fff; }
     .btn-accent:hover { background: var(--accent2); transform: translateY(-1px); }
-
-    .btn-save {
-      background: #22c55e;
-      color: #fff;
-    }
-
+    .btn-save    { background: #22c55e; color: #fff; }
     .btn-save:hover { background: #16a34a; }
-
-    .btn-danger {
-      background: transparent;
-      color: var(--live);
-      border: 1px solid rgba(239,68,68,0.3);
-    }
-
+    .btn-danger  { background: transparent; color: var(--live); border: 1px solid rgba(239,68,68,0.3); }
     .btn-danger:hover { background: var(--live-bg); }
 
     .edit-badge {
@@ -178,23 +135,20 @@
       animation: pulse 1.5s infinite;
     }
 
-    @keyframes pulse {
-      0%, 100% { opacity: 1; }
-      50% { opacity: 0.3; }
-    }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.3; } }
 
     body.edit-mode .edit-badge { display: flex; }
-    body.edit-mode #btn-edit { display: none; }
+    body.edit-mode #btn-edit   { display: none; }
 
     /* ── HERO ── */
     .hero {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 56px 24px 32px;
+      padding: 52px 24px 28px;
     }
 
     .hero h1 {
-      font-size: clamp(28px, 5vw, 48px);
+      font-size: clamp(26px, 5vw, 44px);
       font-weight: 900;
       letter-spacing: -1.5px;
       line-height: 1.05;
@@ -212,24 +166,14 @@
       background-clip: text;
     }
 
-    .hero-sub {
-      margin-top: 10px;
-      font-size: 15px;
-      color: var(--muted);
-      font-weight: 400;
-    }
+    .hero-sub   { margin-top: 8px; font-size: 14px; color: var(--muted); }
+    .last-updated { margin-top: 4px; font-size: 11px; color: var(--dim); }
 
-    .last-updated {
-      margin-top: 6px;
-      font-size: 12px;
-      color: var(--dim);
-    }
-
-    /* ── FILTERS / TABS ── */
+    /* ── FILTERS ── */
     .filters {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 0 24px 28px;
+      padding: 0 24px 24px;
       display: flex;
       align-items: center;
       gap: 8px;
@@ -249,42 +193,61 @@
       transition: all 0.15s;
     }
 
-    .filter-btn.active, .filter-btn:hover {
-      background: var(--card2);
-      color: var(--text);
-      border-color: var(--border2);
+    .filter-btn:hover { background: var(--card2); color: var(--text); }
+    .filter-btn.active { border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,0.08); }
+    .filter-btn[data-filter="live"].active   { border-color: var(--live); color: var(--live); background: var(--live-bg); }
+    .filter-btn[data-filter="in-market"].active { border-color: var(--market); color: var(--market); background: var(--market-bg); }
+    .filter-btn[data-filter="upcoming"].active  { border-color: var(--upcoming); color: var(--upcoming); background: var(--up-bg); }
+
+    /* ── LEGEND ── */
+    .legend {
+      max-width: 1300px;
+      margin: 0 auto;
+      padding: 0 24px 20px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
-    .filter-btn.active { border-color: var(--accent); color: var(--accent); }
+    .legend-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--dim);
+    }
 
-    /* ── SECTION LABELS ── */
+    .legend-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+    }
+
+    /* ── SECTION LABEL ── */
     .section-label {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
-      padding: 0 24px 16px;
+      padding: 0 24px 14px;
       display: flex;
       align-items: center;
       gap: 12px;
     }
 
     .section-label h2 {
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 700;
       letter-spacing: 1.5px;
       text-transform: uppercase;
       color: var(--dim);
+      white-space: nowrap;
     }
 
-    .section-label::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: var(--border);
-    }
+    .section-label::after { content: ''; flex: 1; height: 1px; background: var(--border); }
 
     /* ── GRID ── */
     .grid {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 24px;
       display: grid;
@@ -301,7 +264,7 @@
       padding: 20px;
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 0;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       position: relative;
       overflow: hidden;
@@ -311,7 +274,7 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 60%);
+      background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, transparent 55%);
       pointer-events: none;
     }
 
@@ -321,38 +284,36 @@
       box-shadow: 0 20px 60px rgba(0,0,0,0.4);
     }
 
-    .card.live {
-      border-color: rgba(239,68,68,0.3);
-    }
-
-    .card.live::after {
+    /* top accent line by status */
+    .card[data-status="live"]::after,
+    .card[data-status="in-market"]::after,
+    .card[data-status="upcoming"]::after {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
+      top: 0; left: 0; right: 0;
       height: 2px;
-      background: linear-gradient(90deg, var(--live), #f97316);
     }
 
-    .card.past {
-      opacity: 0.55;
-    }
+    .card[data-status="live"]::after      { background: linear-gradient(90deg, var(--live), #f97316); }
+    .card[data-status="in-market"]::after { background: linear-gradient(90deg, var(--market), #f97316); }
+    .card[data-status="upcoming"]::after  { background: linear-gradient(90deg, var(--upcoming), #7c3aed); }
 
-    body.edit-mode .card {
-      border-color: rgba(249,115,22,0.2);
-    }
+    .card[data-status="live"]      { border-color: rgba(239,68,68,0.25); }
+    .card[data-status="in-market"] { border-color: rgba(245,158,11,0.22); }
 
-    /* ── CARD HEADER ── */
+    body.edit-mode .card { border-color: rgba(249,115,22,0.22); }
+
+    /* ── CARD HEAD ── */
     .card-head {
       display: flex;
       align-items: flex-start;
       gap: 14px;
+      margin-bottom: 14px;
     }
 
     .comp-logo {
-      width: 56px;
-      height: 56px;
+      width: 54px;
+      height: 54px;
       border-radius: 10px;
       background: var(--card2);
       border: 1px solid var(--border2);
@@ -361,37 +322,21 @@
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    .comp-logo img { width: 100%; height: 100%; object-fit: contain; padding: 5px; }
+
+    .logo-initials {
       font-weight: 800;
-      font-size: 18px;
+      font-size: 15px;
       color: var(--accent);
-      position: relative;
+      letter-spacing: -0.5px;
     }
 
-    .comp-logo img {
-      width: 100%;
-      height: 100%;
-      object-fit: contain;
-      padding: 4px;
-    }
-
-    .logo-fallback {
-      display: none;
-      width: 100%;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-      font-weight: 800;
-      font-size: 18px;
-      color: var(--accent);
-    }
-
-    .card-title-group {
-      flex: 1;
-      min-width: 0;
-    }
+    .card-title-group { flex: 1; min-width: 0; }
 
     .card-title-group h3 {
-      font-size: 17px;
+      font-size: 16px;
       font-weight: 800;
       color: var(--text);
       line-height: 1.2;
@@ -402,11 +347,12 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 3px 9px;
+      padding: 3px 8px;
       border-radius: 20px;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
-      letter-spacing: 0.3px;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
       margin-top: 5px;
     }
 
@@ -425,51 +371,106 @@
       animation: pulse 1.2s infinite;
     }
 
+    .status-badge.in-market {
+      background: var(--market-bg);
+      color: var(--market);
+      border: 1px solid rgba(245,158,11,0.25);
+    }
+
     .status-badge.upcoming {
       background: var(--up-bg);
       color: var(--upcoming);
-      border: 1px solid rgba(59,130,246,0.25);
+      border: 1px solid rgba(59,130,246,0.2);
     }
 
-    .status-badge.past {
-      background: var(--past-bg);
-      color: var(--past);
-      border: 1px solid rgba(107,114,128,0.2);
-    }
-
-    /* ── CARD INFO ── */
-    .card-info {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-    }
-
-    .info-row {
-      display: flex;
-      align-items: flex-start;
-      gap: 8px;
-      font-size: 13px;
-    }
-
-    .info-icon {
-      width: 16px;
-      flex-shrink: 0;
-      margin-top: 1px;
-      color: var(--dim);
-    }
-
-    .info-label {
-      color: var(--muted);
-      flex: 1;
-    }
-
+    /* ── DESC ── */
     .card-desc {
-      font-size: 13px;
+      font-size: 12px;
       color: var(--muted);
       line-height: 1.55;
+      margin-bottom: 14px;
     }
 
-    /* ── CARD FOOTER ── */
+    /* ── EVENTS LIST ── */
+    .events-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1px;
+      margin-bottom: 14px;
+    }
+
+    .event-row {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 10px;
+      align-items: start;
+      padding: 10px 12px;
+      border-radius: var(--radius-sm);
+      background: rgba(255,255,255,0.03);
+      border: 1px solid transparent;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    .event-row:hover { background: rgba(255,255,255,0.05); border-color: var(--border); }
+
+    .event-row.is-live      { background: rgba(239,68,68,0.06); border-color: rgba(239,68,68,0.15); }
+    .event-row.is-in-market { background: rgba(245,158,11,0.05); border-color: rgba(245,158,11,0.12); }
+
+    .event-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+
+    .event-dot.live      { background: var(--live); box-shadow: 0 0 6px var(--live); animation: pulse 1.2s infinite; }
+    .event-dot.in-market { background: var(--market); }
+    .event-dot.upcoming  { background: var(--dim); }
+
+    .event-info { min-width: 0; }
+
+    .event-name {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.2;
+      margin-bottom: 3px;
+    }
+
+    .event-meta {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .event-date, .event-loc {
+      font-size: 11px;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      line-height: 1.3;
+    }
+
+    .event-date svg, .event-loc svg { flex-shrink: 0; color: var(--dim); }
+
+    .market-tag {
+      display: inline-block;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      color: var(--market);
+      background: var(--market-bg);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: 4px;
+      padding: 1px 5px;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    /* ── CARD FOOT ── */
     .card-foot {
       display: flex;
       align-items: center;
@@ -483,7 +484,7 @@
       display: inline-flex;
       align-items: center;
       gap: 5px;
-      padding: 6px 12px;
+      padding: 6px 11px;
       border-radius: var(--radius-sm);
       font-size: 12px;
       font-weight: 600;
@@ -494,16 +495,9 @@
       transition: all 0.15s;
     }
 
-    .social-btn:hover {
-      background: var(--card2);
-      color: var(--text);
-    }
-
-    .social-btn svg { flex-shrink: 0; }
-
+    .social-btn:hover { background: var(--card2); color: var(--text); }
     .social-btn.insta:hover { border-color: #e1306c; color: #e1306c; }
-    .social-btn.fb:hover { border-color: #1877f2; color: #1877f2; }
-    .social-btn.web:hover { border-color: var(--accent); color: var(--accent); }
+    .social-btn.fb:hover    { border-color: #1877f2; color: #1877f2; }
 
     .visit-btn {
       margin-left: auto;
@@ -521,73 +515,136 @@
       transition: all 0.15s;
     }
 
-    .visit-btn:hover {
-      background: rgba(249,115,22,0.2);
-      border-color: var(--accent);
-    }
+    .visit-btn:hover { background: rgba(249,115,22,0.2); border-color: var(--accent); }
 
-    /* ── EDIT CONTROLS ── */
-    .edit-controls {
+    /* ── EDIT CONTROLS (per card) ── */
+    .edit-controls-panel {
       display: none;
-      gap: 6px;
-      margin-top: 4px;
+      flex-direction: column;
+      gap: 8px;
+      margin-top: 12px;
+      padding: 14px;
+      background: rgba(249,115,22,0.04);
+      border: 1px dashed rgba(249,115,22,0.25);
+      border-radius: var(--radius-sm);
     }
 
-    body.edit-mode .edit-controls { display: flex; }
+    body.edit-mode .edit-controls-panel { display: flex; }
+
+    .edit-section-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 2px;
+    }
+
+    .edit-row-group {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .edit-row-group label {
+      font-size: 10px;
+      font-weight: 600;
+      color: var(--dim);
+      letter-spacing: 0.3px;
+    }
 
     .edit-field {
       background: rgba(0,0,0,0.3);
-      border: 1px dashed rgba(249,115,22,0.4);
+      border: 1px solid var(--border2);
       border-radius: 4px;
       color: var(--text);
       font-family: inherit;
-      font-size: 13px;
-      padding: 4px 8px;
+      font-size: 12px;
+      padding: 5px 8px;
       width: 100%;
       outline: none;
       transition: border-color 0.15s;
     }
 
-    .edit-field:focus {
-      border-color: var(--accent);
-      background: rgba(249,115,22,0.05);
-    }
+    .edit-field:focus { border-color: var(--accent); }
 
     .edit-select {
       background: var(--card2);
-      border: 1px dashed rgba(249,115,22,0.4);
+      border: 1px solid var(--border2);
       border-radius: 4px;
       color: var(--text);
       font-family: inherit;
       font-size: 12px;
-      padding: 4px 8px;
+      padding: 5px 8px;
       outline: none;
       cursor: pointer;
+      width: 100%;
     }
 
     .edit-select:focus { border-color: var(--accent); }
 
-    .edit-row {
+    .edit-event-block {
+      background: rgba(0,0,0,0.2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-sm);
+      padding: 10px;
       display: flex;
       flex-direction: column;
-      gap: 3px;
-      font-size: 11px;
+      gap: 6px;
+      position: relative;
+    }
+
+    .edit-event-block .remove-event {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: transparent;
+      border: none;
       color: var(--dim);
-      font-weight: 500;
-    }
-
-    body.edit-mode .info-label[data-field] {
-      cursor: text;
-    }
-
-    body.edit-mode .info-label[data-field]:hover {
-      background: rgba(249,115,22,0.06);
+      cursor: pointer;
+      font-size: 14px;
+      line-height: 1;
+      padding: 2px 4px;
       border-radius: 4px;
+      transition: all 0.15s;
     }
 
-    /* ── AFFILIATED SECTION ── */
+    .edit-event-block .remove-event:hover { color: var(--live); background: var(--live-bg); }
+
+    .btn-add-event {
+      background: transparent;
+      border: 1px dashed rgba(249,115,22,0.3);
+      border-radius: var(--radius-sm);
+      color: var(--accent);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 6px 12px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.15s;
+    }
+
+    .btn-add-event:hover { background: rgba(249,115,22,0.06); border-color: var(--accent); }
+
+    .btn-remove-comp {
+      background: transparent;
+      border: 1px solid rgba(239,68,68,0.25);
+      border-radius: var(--radius-sm);
+      color: var(--live);
+      font-size: 11px;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 5px 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+    }
+
+    .btn-remove-comp:hover { background: var(--live-bg); }
+
+    /* ── AFFILIATED ── */
     .affiliated-section {
-      max-width: 1280px;
+      max-width: 1300px;
       margin: 0 auto;
       padding: 0 24px 64px;
     }
@@ -602,22 +659,19 @@
       background: var(--bg2);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 16px 18px;
+      padding: 16px;
       display: flex;
-      align-items: center;
-      gap: 14px;
+      align-items: flex-start;
+      gap: 12px;
       transition: all 0.15s;
-      text-decoration: none;
+      cursor: pointer;
     }
 
-    .aff-card:hover {
-      border-color: var(--border2);
-      background: var(--card);
-    }
+    .aff-card:hover { border-color: var(--border2); background: var(--card); }
 
     .aff-logo {
-      width: 42px;
-      height: 42px;
+      width: 40px;
+      height: 40px;
       border-radius: 8px;
       background: var(--card);
       border: 1px solid var(--border2);
@@ -626,7 +680,7 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 14px;
+      font-size: 13px;
       font-weight: 800;
       color: var(--accent);
     }
@@ -634,40 +688,17 @@
     .aff-logo img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
 
     .aff-info { flex: 1; min-width: 0; }
-    .aff-info h4 { font-size: 14px; font-weight: 700; color: var(--text); }
-    .aff-info p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .aff-info h4 { font-size: 13px; font-weight: 700; color: var(--text); }
+    .aff-info p  { font-size: 11px; color: var(--muted); margin-top: 2px; line-height: 1.4; }
 
-    .aff-social {
-      display: flex;
-      gap: 6px;
-      margin-top: 6px;
-    }
+    .aff-social { display: flex; gap: 8px; margin-top: 6px; }
 
-    .aff-social a {
-      color: var(--dim);
-      text-decoration: none;
-      transition: color 0.15s;
-    }
-
+    .aff-social a { color: var(--dim); text-decoration: none; transition: color 0.15s; }
     .aff-social a:hover { color: var(--text); }
 
-    .aff-arrow {
-      color: var(--dim);
-      flex-shrink: 0;
-    }
-
     /* ── FOOTER ── */
-    footer {
-      border-top: 1px solid var(--border);
-      padding: 24px;
-      text-align: center;
-    }
-
-    footer p {
-      font-size: 12px;
-      color: var(--dim);
-    }
-
+    footer { border-top: 1px solid var(--border); padding: 24px; text-align: center; }
+    footer p { font-size: 12px; color: var(--dim); }
     footer a { color: var(--muted); text-decoration: none; }
     footer a:hover { color: var(--text); }
 
@@ -695,45 +726,22 @@
       max-width: 480px;
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
     }
 
-    .modal h2 {
-      font-size: 20px;
-      font-weight: 800;
-      letter-spacing: -0.4px;
-    }
+    .modal h2 { font-size: 18px; font-weight: 800; letter-spacing: -0.3px; }
+    .modal p  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    .modal p a { color: var(--accent); text-decoration: none; }
 
-    .modal p {
-      font-size: 13px;
-      color: var(--muted);
-      line-height: 1.6;
-    }
-
-    .modal p a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 6px;
-    }
-
-    .form-group label {
-      font-size: 12px;
-      font-weight: 600;
-      color: var(--muted);
-      letter-spacing: 0.3px;
-    }
+    .form-group { display: flex; flex-direction: column; gap: 6px; }
+    .form-group label { font-size: 11px; font-weight: 600; color: var(--muted); letter-spacing: 0.3px; }
 
     .form-group input {
       background: var(--bg2);
       border: 1px solid var(--border2);
       border-radius: var(--radius-sm);
       color: var(--text);
-      font-family: 'Inter', monospace;
+      font-family: monospace;
       font-size: 13px;
       padding: 10px 14px;
       outline: none;
@@ -744,11 +752,7 @@
     .form-group input:focus { border-color: var(--accent); }
     .form-group input::placeholder { color: var(--dim); }
 
-    .modal-actions {
-      display: flex;
-      gap: 10px;
-      justify-content: flex-end;
-    }
+    .modal-actions { display: flex; gap: 10px; justify-content: flex-end; }
 
     .modal-error {
       display: none;
@@ -765,7 +769,7 @@
       position: fixed;
       bottom: 24px;
       right: 24px;
-      padding: 12px 20px;
+      padding: 12px 18px;
       border-radius: var(--radius-sm);
       font-size: 13px;
       font-weight: 600;
@@ -774,19 +778,16 @@
       transform: translateY(80px);
       opacity: 0;
       transition: all 0.3s ease;
-      max-width: 320px;
+      max-width: 340px;
+      pointer-events: none;
     }
 
-    .toast.show {
-      transform: translateY(0);
-      opacity: 1;
-    }
-
+    .toast.show { transform: translateY(0); opacity: 1; }
     .toast.success { background: #22c55e; }
     .toast.error   { background: var(--live); }
     .toast.info    { background: var(--upcoming); }
 
-    /* ── SAVING OVERLAY ── */
+    /* ── SAVING ── */
     .saving-overlay {
       display: none;
       position: fixed;
@@ -797,7 +798,6 @@
       justify-content: center;
       flex-direction: column;
       gap: 16px;
-      color: var(--text);
       font-size: 14px;
       font-weight: 600;
     }
@@ -815,81 +815,39 @@
 
     @keyframes spin { to { transform: rotate(360deg); } }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 600px) {
-      .grid { grid-template-columns: 1fr; }
-      .affiliated-grid { grid-template-columns: 1fr; }
-      .header-inner { gap: 8px; }
-      .logo-text span { display: none; }
-    }
-
-    /* ── EMPTY STATE ── */
-    .empty-state {
-      grid-column: 1 / -1;
-      text-align: center;
-      padding: 48px 24px;
-      color: var(--dim);
-      font-size: 14px;
-    }
-
-    /* ── ADD CARD BUTTON (edit mode) ── */
+    /* ── ADD BUTTONS (edit mode) ── */
     .add-card {
       display: none;
       background: transparent;
-      border: 2px dashed rgba(249,115,22,0.3);
+      border: 2px dashed rgba(249,115,22,0.25);
       border-radius: var(--radius);
       padding: 20px;
       align-items: center;
       justify-content: center;
-      gap: 10px;
-      font-size: 14px;
+      gap: 8px;
+      font-size: 13px;
       font-weight: 600;
-      color: var(--accent);
+      color: rgba(249,115,22,0.6);
       cursor: pointer;
       transition: all 0.15s;
       font-family: inherit;
-      opacity: 0.7;
     }
 
-    .add-card:hover { opacity: 1; border-color: var(--accent); background: rgba(249,115,22,0.04); }
+    .add-card:hover { opacity: 1; border-color: var(--accent); color: var(--accent); background: rgba(249,115,22,0.04); }
     body.edit-mode .add-card { display: flex; }
 
-    /* ── DRAG HANDLE (edit mode) ── */
-    .drag-handle {
-      display: none;
-      position: absolute;
-      top: 8px;
-      right: 8px;
-      padding: 4px;
-      color: var(--dim);
-      cursor: grab;
-      opacity: 0;
-      transition: opacity 0.15s;
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      .grid { grid-template-columns: 1fr; }
+      .affiliated-grid { grid-template-columns: 1fr; }
     }
 
-    body.edit-mode .drag-handle { display: flex; }
-    body.edit-mode .card:hover .drag-handle { opacity: 1; }
-
-    /* ── HIGHLIGHT EDIT FIELDS ── */
-    body.edit-mode .card-title-group h3,
-    body.edit-mode .info-label[data-field] {
-      position: relative;
-    }
-
-    .edit-hint {
-      display: none;
-      font-size: 10px;
-      color: var(--accent);
-      opacity: 0.7;
-      margin-top: 2px;
-    }
-
-    body.edit-mode .edit-hint { display: block; }
+    .hidden { display: none !important; }
   </style>
 </head>
 <body>
 
-<!-- ── HEADER ── -->
+<!-- HEADER -->
 <header>
   <div class="header-inner">
     <a class="logo-mark" href="#">
@@ -902,7 +860,7 @@
     <div class="header-actions">
       <span class="edit-badge">Edit Mode</span>
       <button class="btn btn-save" id="btn-save" style="display:none" onclick="saveChanges()">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
         Save Changes
       </button>
       <button class="btn btn-danger" id="btn-discard" style="display:none" onclick="discardChanges()">Discard</button>
@@ -914,51 +872,50 @@
   </div>
 </header>
 
-<!-- ── HERO ── -->
+<!-- HERO -->
 <section class="hero">
   <h1>Your <em>Competition</em><br/>Command Centre</h1>
-  <p class="hero-sub">All SGM competitions, tournaments &amp; affiliated events in one place.</p>
+  <p class="hero-sub">All SGM competitions, tournaments &amp; affiliated events — sorted by what's on now.</p>
   <p class="last-updated" id="last-updated">Loading...</p>
 </section>
 
-<!-- ── FILTERS ── -->
+<!-- FILTERS -->
 <div class="filters">
-  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
-  <button class="filter-btn" onclick="filterCards('live', this)">🔴 Live Now</button>
-  <button class="filter-btn" onclick="filterCards('upcoming', this)">Upcoming</button>
-  <button class="filter-btn" onclick="filterCards('past', this)">Past</button>
+  <button class="filter-btn active" data-filter="all"       onclick="setFilter('all',this)">All</button>
+  <button class="filter-btn"        data-filter="live"      onclick="setFilter('live',this)">● Live Now</button>
+  <button class="filter-btn"        data-filter="in-market" onclick="setFilter('in-market',this)">◆ In Market</button>
+  <button class="filter-btn"        data-filter="upcoming"  onclick="setFilter('upcoming',this)">Upcoming</button>
 </div>
 
-<!-- ── MAIN COMPETITIONS ── -->
-<div class="section-label">
-  <h2>Competitions &amp; Tournaments</h2>
-</div>
-<div class="grid" id="main-grid">
-  <div class="empty-state">Loading competitions...</div>
+<!-- LEGEND -->
+<div class="legend">
+  <div class="legend-item"><div class="legend-dot" style="background:var(--live);"></div> Live Now — happening today</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--market);"></div> In Market — within 12-week promo window</div>
+  <div class="legend-item"><div class="legend-dot" style="background:var(--dim);"></div> Upcoming — marketing not yet started</div>
 </div>
 
-<!-- ── AFFILIATED COMPETITIONS ── -->
-<div class="section-label" id="aff-label">
-  <h2>Affiliated Competitions</h2>
-</div>
+<!-- MAIN COMPETITIONS -->
+<div class="section-label"><h2>Competitions &amp; Tournaments</h2></div>
+<div class="grid" id="main-grid"><div style="color:var(--dim);padding:24px;grid-column:1/-1;text-align:center;font-size:13px;">Loading...</div></div>
+
+<!-- AFFILIATED -->
+<div class="section-label" id="aff-label"><h2>Affiliated Competitions</h2></div>
 <div class="affiliated-section">
-  <div class="affiliated-grid" id="aff-grid">
-    <div class="empty-state">Loading...</div>
-  </div>
+  <div class="affiliated-grid" id="aff-grid"></div>
 </div>
 
-<!-- ── FOOTER ── -->
+<!-- FOOTER -->
 <footer>
-  <p>SGM Hub &mdash; Sports Group Melbourne &mdash; Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
+  <p>SGM Hub — Sports Group Melbourne — Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
 </footer>
 
-<!-- ── EDIT MODAL ── -->
+<!-- EDIT MODAL -->
 <div class="modal-overlay" id="edit-modal">
   <div class="modal">
     <h2>🔐 Enter Admin Token</h2>
     <p>
-      Enter your GitHub Personal Access Token to unlock editing.
-      The token needs <strong>Contents: Read &amp; Write</strong> permission for this repo.<br/>
+      Enter your GitHub Personal Access Token to unlock editing. The token needs
+      <strong>Contents: Read &amp; Write</strong> permission for this repo.<br/>
       <a href="https://github.com/settings/tokens/new?scopes=repo&description=SGM+Hub+Edit" target="_blank">Create a token →</a>
     </p>
     <div class="form-group">
@@ -973,35 +930,70 @@
   </div>
 </div>
 
-<!-- ── TOAST ── -->
+<!-- TOAST -->
 <div class="toast" id="toast"></div>
 
-<!-- ── SAVING OVERLAY ── -->
+<!-- SAVING OVERLAY -->
 <div class="saving-overlay" id="saving-overlay">
   <div class="spinner"></div>
   <span>Saving to GitHub...</span>
 </div>
 
 <script>
-// ─────────────────────────────────────────────
-// CONFIG
-// ─────────────────────────────────────────────
-const REPO   = 'howdy-blip/sgm';
-const BRANCH = 'main';
+// ─── CONFIG ───────────────────────────────────
+const REPO      = 'howdy-blip/sgm';
+const BRANCH    = 'main';
 const DATA_FILE = 'data.json';
-const RAW_URL = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${DATA_FILE}`;
-const API_URL = `https://api.github.com/repos/${REPO}/contents/${DATA_FILE}`;
+const API_URL   = `https://api.github.com/repos/${REPO}/contents/${DATA_FILE}`;
 
-let appData = null;
-let githubToken = null;
+const MARKET_WEEKS = 12;
+const MARKET_MS    = MARKET_WEEKS * 7 * 24 * 60 * 60 * 1000;
+
+let appData        = null;
+let githubToken    = null;
 let currentFileSha = null;
+let activeFilter   = 'all';
 
-// ─────────────────────────────────────────────
-// INIT
-// ─────────────────────────────────────────────
+// ─── STATUS ENGINE ─────────────────────────────
+function today() {
+  const d = new Date();
+  d.setHours(0,0,0,0);
+  return d;
+}
+
+function computeEventStatus(event) {
+  if (event.status === 'live') return 'live';
+  const d = new Date(event.sortDate);
+  const t = today();
+  if (d < t) return 'past';
+  if ((d - t) <= MARKET_MS) return 'in-market';
+  return 'upcoming';
+}
+
+function computeCardStatus(comp) {
+  const events = comp.events || [];
+  const statuses = events.map(computeEventStatus);
+  if (statuses.includes('live'))      return 'live';
+  if (statuses.includes('in-market')) return 'in-market';
+  if (statuses.includes('upcoming'))  return 'upcoming';
+  return 'past';
+}
+
+function getCardSortKey(comp) {
+  const events = (comp.events || [])
+    .filter(e => computeEventStatus(e) !== 'past')
+    .sort((a, b) => new Date(a.sortDate) - new Date(b.sortDate));
+
+  if (events.length === 0) return '9999-12-31';
+
+  const s = computeEventStatus(events[0]);
+  if (s === 'live') return '0000-00-00';
+  return events[0].sortDate;
+}
+
+// ─── INIT ──────────────────────────────────────
 async function init() {
   try {
-    // Try fetching from GitHub API first (gets SHA too)
     const res = await fetch(API_URL + `?ref=${BRANCH}`, {
       headers: { Accept: 'application/vnd.github.v3+json' }
     });
@@ -1010,281 +1002,430 @@ async function init() {
       currentFileSha = json.sha;
       appData = JSON.parse(atob(json.content.replace(/\n/g, '')));
     } else {
-      // Fallback: raw URL (no SHA)
-      const raw = await fetch(RAW_URL + '?t=' + Date.now());
+      const raw = await fetch(
+        `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${DATA_FILE}?t=${Date.now()}`
+      );
       appData = await raw.json();
     }
-    render();
-  } catch (e) {
-    // Final fallback: try same-origin data.json
+  } catch {
     try {
-      const raw = await fetch('./data.json?t=' + Date.now());
+      const raw = await fetch(`./data.json?t=${Date.now()}`);
       appData = await raw.json();
-      render();
-    } catch (e2) {
+    } catch {
       document.getElementById('main-grid').innerHTML =
-        '<div class="empty-state">⚠️ Could not load data. Please check your connection.</div>';
+        '<div style="color:var(--live);padding:24px;grid-column:1/-1;text-align:center;">⚠️ Could not load data.</div>';
+      return;
     }
   }
+  render();
 }
 
-// ─────────────────────────────────────────────
-// RENDER
-// ─────────────────────────────────────────────
+// ─── RENDER ────────────────────────────────────
 function render() {
   if (!appData) return;
 
-  // Last updated
   document.getElementById('last-updated').textContent =
-    `Last updated: ${appData.meta?.lastUpdated || 'unknown'}`;
+    `Last updated: ${appData.meta?.lastUpdated || '—'}`;
 
-  const comps = sortCompetitions(appData.competitions || []);
-  const main = comps.filter(c => !c.affiliated);
-  const affiliated = comps.filter(c => c.affiliated);
+  const all = (appData.competitions || []);
+  const main = sortComps(all.filter(c => !c.affiliated));
+  const aff  = sortComps(all.filter(c => c.affiliated));
 
   // Main grid
-  const mainGrid = document.getElementById('main-grid');
-  mainGrid.innerHTML = '';
-  if (main.length === 0) {
-    mainGrid.innerHTML = '<div class="empty-state">No competitions found.</div>';
-  } else {
-    main.forEach(c => mainGrid.appendChild(buildCard(c)));
-  }
-  // Add card button
+  const mg = document.getElementById('main-grid');
+  mg.innerHTML = '';
+  main.forEach(c => mg.appendChild(buildCard(c)));
   const addBtn = document.createElement('button');
   addBtn.className = 'add-card';
-  addBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Competition`;
-  addBtn.onclick = () => addCompetition(false);
-  mainGrid.appendChild(addBtn);
+  addBtn.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Competition`;
+  addBtn.onclick = () => addComp(false);
+  mg.appendChild(addBtn);
 
   // Affiliated grid
-  const affGrid = document.getElementById('aff-grid');
-  affGrid.innerHTML = '';
-  if (affiliated.length === 0) {
-    affGrid.innerHTML = '<div class="empty-state">No affiliated competitions.</div>';
-  } else {
-    affiliated.forEach(c => affGrid.appendChild(buildAffCard(c)));
-  }
-  const addAffBtn = document.createElement('button');
-  addAffBtn.className = 'add-card';
-  addAffBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Affiliated`;
-  addAffBtn.onclick = () => addCompetition(true);
-  affGrid.appendChild(addAffBtn);
+  const ag = document.getElementById('aff-grid');
+  ag.innerHTML = '';
+  aff.forEach(c => ag.appendChild(buildAffCard(c)));
+  const addAff = document.createElement('button');
+  addAff.className = 'add-card';
+  addAff.innerHTML = `<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Affiliated`;
+  addAff.onclick = () => addComp(true);
+  ag.appendChild(addAff);
+
+  applyFilter(activeFilter);
 }
 
-function sortCompetitions(comps) {
-  const order = { live: 0, upcoming: 1, past: 2 };
+function sortComps(comps) {
+  const priority = { live: 0, 'in-market': 1, upcoming: 2, past: 3 };
   return [...comps].sort((a, b) => {
-    const so = (order[a.status] ?? 1) - (order[b.status] ?? 1);
-    if (so !== 0) return so;
-    // Sort upcoming by date
-    if (a.status === 'upcoming' && b.status === 'upcoming') {
-      const da = new Date(a.sortDate || '2099-01-01');
-      const db = new Date(b.sortDate || '2099-01-01');
-      return da - db;
-    }
-    return 0;
+    const sa = computeCardStatus(a), sb = computeCardStatus(b);
+    const pd = (priority[sa] ?? 2) - (priority[sb] ?? 2);
+    if (pd !== 0) return pd;
+    return getCardSortKey(a).localeCompare(getCardSortKey(b));
   });
 }
 
-// ─────────────────────────────────────────────
-// BUILD CARD
-// ─────────────────────────────────────────────
+// ─── BUILD MAIN CARD ───────────────────────────
 function buildCard(comp) {
+  const status   = computeCardStatus(comp);
+  const initials = (comp.shortName || comp.name || '?').slice(0, 4).toUpperCase();
+
   const card = document.createElement('div');
-  card.className = `card ${comp.status || 'upcoming'}`;
-  card.dataset.id = comp.id;
-  card.dataset.status = comp.status || 'upcoming';
+  card.className = 'card';
+  card.dataset.id     = comp.id;
+  card.dataset.status = status;
 
-  const logoUrl = comp.logo || '';
-  const initials = (comp.shortName || comp.name || '?').substring(0, 3).toUpperCase();
-  const domain = extractDomain(comp.website || '');
+  // Top: head
+  const head = document.createElement('div');
+  head.className = 'card-head';
+  head.innerHTML = `
+    <div class="comp-logo" id="logo-${comp.id}">
+      ${comp.logo
+        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}"
+              onerror="this.parentNode.innerHTML='<span class=logo-initials>${initials}</span>'" />`
+        : `<span class="logo-initials">${initials}</span>`}
+    </div>
+    <div class="card-title-group">
+      <h3>${esc(comp.name)}</h3>
+      <span class="status-badge ${status}">${statusLabel(status)}</span>
+    </div>
+  `;
+  card.appendChild(head);
 
-  card.innerHTML = `
-    <div class="drag-handle" title="Drag to reorder">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1" fill="currentColor"/><circle cx="15" cy="5" r="1" fill="currentColor"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/><circle cx="9" cy="19" r="1" fill="currentColor"/><circle cx="15" cy="19" r="1" fill="currentColor"/></svg>
+  // Description
+  const desc = document.createElement('p');
+  desc.className = 'card-desc';
+  desc.textContent = comp.description || '';
+  card.appendChild(desc);
+
+  // Events list
+  const evList = document.createElement('div');
+  evList.className = 'events-list';
+  evList.id = `events-${comp.id}`;
+  (comp.events || []).forEach(ev => {
+    evList.appendChild(buildEventRow(ev));
+  });
+  card.appendChild(evList);
+
+  // Edit controls panel
+  card.appendChild(buildEditPanel(comp, initials));
+
+  // Footer
+  const foot = document.createElement('div');
+  foot.className = 'card-foot';
+  foot.id = `foot-${comp.id}`;
+
+  if (comp.instagram) {
+    const a = document.createElement('a');
+    a.className = 'social-btn insta';
+    a.href = comp.instagram; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = `${igSvg()} Instagram`;
+    foot.appendChild(a);
+  }
+  if (comp.facebook) {
+    const a = document.createElement('a');
+    a.className = 'social-btn fb';
+    a.href = comp.facebook; a.target = '_blank'; a.rel = 'noopener';
+    a.innerHTML = `${fbSvg()} Facebook`;
+    foot.appendChild(a);
+  }
+  const visit = document.createElement('a');
+  visit.className = 'visit-btn';
+  visit.href = comp.website; visit.target = '_blank'; visit.rel = 'noopener';
+  visit.innerHTML = `Visit site <svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>`;
+  foot.appendChild(visit);
+
+  card.appendChild(foot);
+  return card;
+}
+
+function buildEventRow(ev) {
+  const s = computeEventStatus(ev);
+  const row = document.createElement('div');
+  row.className = `event-row ${s === 'live' ? 'is-live' : s === 'in-market' ? 'is-in-market' : ''}`;
+  row.dataset.eventId = ev.id;
+
+  const marketTag = s === 'in-market' ? `<span class="market-tag">In Market</span>` : '';
+
+  row.innerHTML = `
+    <div class="event-dot ${s}"></div>
+    <div class="event-info">
+      <div class="event-name">${esc(ev.name)}${marketTag}</div>
+      <div class="event-meta">
+        <span class="event-date">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+          ${esc(ev.dates)}
+        </span>
+        <span class="event-loc">
+          <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          ${esc(ev.location)}
+        </span>
+      </div>
+    </div>
+  `;
+  return row;
+}
+
+// ─── BUILD EDIT PANEL ──────────────────────────
+function buildEditPanel(comp, initials) {
+  const panel = document.createElement('div');
+  panel.className = 'edit-controls-panel';
+  panel.id = `edit-panel-${comp.id}`;
+
+  // Comp-level fields
+  panel.innerHTML = `
+    <div class="edit-section-label">Competition Details</div>
+
+    <div class="edit-row-group">
+      <label>Name</label>
+      <input class="edit-field" type="text" value="${esc(comp.name)}"
+        oninput="updateComp('${comp.id}','name',this.value);document.querySelector('.card[data-id=${comp.id}] h3').textContent=this.value" />
+    </div>
+    <div class="edit-row-group">
+      <label>Description</label>
+      <input class="edit-field" type="text" value="${esc(comp.description||'')}"
+        oninput="updateComp('${comp.id}','description',this.value);document.querySelector('.card[data-id=${comp.id}] .card-desc').textContent=this.value" />
+    </div>
+    <div class="edit-row-group">
+      <label>Logo URL</label>
+      <input class="edit-field" type="url" value="${esc(comp.logo||'')}"
+        oninput="updateComp('${comp.id}','logo',this.value);refreshLogo('${comp.id}',this.value,'${initials}')" />
+    </div>
+    <div class="edit-row-group">
+      <label>Website URL</label>
+      <input class="edit-field" type="url" value="${esc(comp.website||'')}"
+        oninput="updateComp('${comp.id}','website',this.value)" />
+    </div>
+    <div class="edit-row-group">
+      <label>Instagram URL</label>
+      <input class="edit-field" type="url" value="${esc(comp.instagram||'')}"
+        oninput="updateComp('${comp.id}','instagram',this.value)" />
+    </div>
+    <div class="edit-row-group">
+      <label>Facebook URL</label>
+      <input class="edit-field" type="url" value="${esc(comp.facebook||'')}"
+        oninput="updateComp('${comp.id}','facebook',this.value)" />
     </div>
 
-    <div class="card-head">
-      <div class="comp-logo" id="logo-${comp.id}">
-        ${logoUrl
-          ? `<img src="${esc(logoUrl)}" alt="${esc(comp.name)}" onerror="logoFallback('${comp.id}','${initials}')" />`
-          : `<div class="logo-fallback" style="display:flex">${initials}</div>`}
-      </div>
-      <div class="card-title-group">
-        <h3 contenteditable="false" data-field="name" data-id="${comp.id}">${esc(comp.name)}</h3>
-        <span class="status-badge ${comp.status || 'upcoming'}">${statusLabel(comp.status)}</span>
-        <div class="edit-hint">Click fields below to edit</div>
-        <div class="edit-controls" style="margin-top:8px;">
-          <select class="edit-select" onchange="updateField('${comp.id}','status',this.value);updateCardStatus('${comp.id}',this.value)">
-            <option value="live" ${comp.status==='live'?'selected':''}>🔴 Live Now</option>
-            <option value="upcoming" ${comp.status==='upcoming'?'selected':''}>🔵 Upcoming</option>
-            <option value="past" ${comp.status==='past'?'selected':''}>⚪ Past</option>
-          </select>
-          <button class="btn btn-danger" style="font-size:11px;padding:4px 10px;" onclick="removeCompetition('${comp.id}')">Remove</button>
-        </div>
-      </div>
-    </div>
-
-    <div class="card-info">
-      <div class="info-row">
-        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
-        <span class="info-label" contenteditable="false" data-field="dates" data-id="${comp.id}">${esc(comp.dates || 'TBC')}</span>
-      </div>
-      <div class="info-row">
-        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-        <span class="info-label" contenteditable="false" data-field="location" data-id="${comp.id}">${esc(comp.location || 'TBC')}</span>
-      </div>
-      <div class="info-row" style="align-items:flex-start;margin-top:2px;">
-        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-top:2px;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
-        <span class="info-label card-desc" contenteditable="false" data-field="description" data-id="${comp.id}">${esc(comp.description || '')}</span>
-      </div>
-    </div>
-
-    <div class="edit-controls" style="flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid var(--border);">
-      <div class="edit-row">
-        <label>Logo URL</label>
-        <input class="edit-field" type="url" value="${esc(comp.logo||'')}" placeholder="https://..." oninput="updateField('${comp.id}','logo',this.value);updateLogo('${comp.id}',this.value,'${initials}')" />
-      </div>
-      <div class="edit-row">
-        <label>Website URL</label>
-        <input class="edit-field" type="url" value="${esc(comp.website||'')}" placeholder="https://..." oninput="updateField('${comp.id}','website',this.value)" />
-      </div>
-      <div class="edit-row">
-        <label>Sort Date (YYYY-MM-DD)</label>
-        <input class="edit-field" type="date" value="${esc(comp.sortDate||'')}" oninput="updateField('${comp.id}','sortDate',this.value)" />
-      </div>
-      <div class="edit-row">
-        <label>Instagram URL</label>
-        <input class="edit-field" type="url" value="${esc(comp.instagram||'')}" placeholder="https://instagram.com/..." oninput="updateField('${comp.id}','instagram',this.value);syncSocialLinks('${comp.id}')" />
-      </div>
-      <div class="edit-row">
-        <label>Facebook URL</label>
-        <input class="edit-field" type="url" value="${esc(comp.facebook||'')}" placeholder="https://facebook.com/..." oninput="updateField('${comp.id}','facebook',this.value);syncSocialLinks('${comp.id}')" />
-      </div>
-    </div>
-
-    <div class="card-foot" id="foot-${comp.id}">
-      ${comp.instagram ? `<a class="social-btn insta" href="${esc(comp.instagram)}" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        Instagram
-      </a>` : ''}
-      ${comp.facebook ? `<a class="social-btn fb" href="${esc(comp.facebook)}" target="_blank" rel="noopener">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        Facebook
-      </a>` : ''}
-      <a class="visit-btn" href="${esc(comp.website)}" target="_blank" rel="noopener" id="visit-${comp.id}">
-        Visit site
-        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
-      </a>
+    <div class="edit-section-label" style="margin-top:6px;">Events</div>
+    <div id="edit-events-${comp.id}"></div>
+    <button class="btn-add-event" onclick="addEvent('${comp.id}')">+ Add Event</button>
+    <div style="display:flex;justify-content:flex-end;margin-top:4px;">
+      <button class="btn-remove-comp" onclick="removeComp('${comp.id}')">Remove Competition</button>
     </div>
   `;
 
-  // Make inline fields editable in edit mode
-  card.querySelectorAll('[contenteditable][data-field]').forEach(el => {
-    el.addEventListener('focus', () => {
-      if (!document.body.classList.contains('edit-mode')) return;
-      el.contentEditable = 'true';
-    });
-    el.addEventListener('blur', () => {
-      el.contentEditable = 'false';
-      updateField(el.dataset.id, el.dataset.field, el.textContent.trim());
-    });
-    el.addEventListener('keydown', e => {
-      if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
-    });
+  // Build event blocks
+  const evContainer = panel.querySelector(`#edit-events-${comp.id}`);
+  (comp.events || []).forEach(ev => {
+    evContainer.appendChild(buildEditEventBlock(comp.id, ev));
+  });
+
+  return panel;
+}
+
+function buildEditEventBlock(compId, ev) {
+  const block = document.createElement('div');
+  block.className = 'edit-event-block';
+  block.dataset.eventId = ev.id;
+  block.innerHTML = `
+    <button class="remove-event" onclick="removeEvent('${compId}','${ev.id}')" title="Remove event">✕</button>
+    <div class="edit-row-group">
+      <label>Event Name</label>
+      <input class="edit-field" type="text" value="${esc(ev.name)}"
+        oninput="updateEvent('${compId}','${ev.id}','name',this.value)" />
+    </div>
+    <div class="edit-row-group">
+      <label>Status</label>
+      <select class="edit-select" onchange="updateEvent('${compId}','${ev.id}','status',this.value);rerenderCard('${compId}')">
+        <option value="live"     ${ev.status==='live'    ?'selected':''}>● Live Now</option>
+        <option value="upcoming" ${ev.status==='upcoming'?'selected':''}>Upcoming</option>
+      </select>
+    </div>
+    <div class="edit-row-group">
+      <label>Dates (display text)</label>
+      <input class="edit-field" type="text" value="${esc(ev.dates)}"
+        oninput="updateEvent('${compId}','${ev.id}','dates',this.value)" />
+    </div>
+    <div class="edit-row-group">
+      <label>Location</label>
+      <input class="edit-field" type="text" value="${esc(ev.location)}"
+        oninput="updateEvent('${compId}','${ev.id}','location',this.value)" />
+    </div>
+    <div class="edit-row-group">
+      <label>Sort Date (YYYY-MM-DD) — used for ordering &amp; In Market calculation</label>
+      <input class="edit-field" type="date" value="${esc(ev.sortDate)}"
+        oninput="updateEvent('${compId}','${ev.id}','sortDate',this.value);rerenderCard('${compId}')" />
+    </div>
+  `;
+  return block;
+}
+
+// ─── AFFILIATED CARD ───────────────────────────
+function buildAffCard(comp) {
+  const status   = computeCardStatus(comp);
+  const initials = (comp.shortName || comp.name || '?').slice(0, 4).toUpperCase();
+  const nextEv   = (comp.events || []).find(e => computeEventStatus(e) !== 'past');
+
+  const card = document.createElement('div');
+  card.className = 'aff-card';
+  card.dataset.id     = comp.id;
+  card.dataset.status = status;
+
+  card.innerHTML = `
+    <div class="aff-logo" id="aff-logo-${comp.id}">
+      ${comp.logo
+        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}"
+              onerror="this.parentNode.innerHTML='${initials}'" />`
+        : initials}
+    </div>
+    <div class="aff-info">
+      <h4>${esc(comp.name)}</h4>
+      <p>${nextEv ? esc(nextEv.dates) + ' · ' + esc(nextEv.location) : 'TBC'}</p>
+      <div class="aff-social">
+        ${comp.instagram ? `<a href="${esc(comp.instagram)}" target="_blank" rel="noopener" title="Instagram">${igSvg()}</a>` : ''}
+        ${comp.facebook  ? `<a href="${esc(comp.facebook)}"  target="_blank" rel="noopener" title="Facebook">${fbSvg()}</a>` : ''}
+        <a href="${esc(comp.website)}" target="_blank" rel="noopener" title="Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+      </div>
+    </div>
+  `;
+
+  card.addEventListener('click', e => {
+    if (!e.target.closest('a')) window.open(comp.website, '_blank', 'noopener');
   });
 
   return card;
 }
 
-// ─────────────────────────────────────────────
-// BUILD AFFILIATED CARD
-// ─────────────────────────────────────────────
-function buildAffCard(comp) {
-  const wrap = document.createElement('div');
-  wrap.className = 'aff-card';
-  wrap.dataset.id = comp.id;
-  wrap.dataset.status = comp.status || 'upcoming';
-
-  const initials = (comp.shortName || comp.name || '?').substring(0, 3).toUpperCase();
-
-  wrap.innerHTML = `
-    <div class="aff-logo" id="aff-logo-${comp.id}">
-      ${comp.logo
-        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}" onerror="this.parentNode.innerHTML='${initials}'" />`
-        : initials}
-    </div>
-    <div class="aff-info">
-      <h4>${esc(comp.name)}</h4>
-      <p>${esc(comp.dates || 'TBC')} · ${esc(comp.location || '')}</p>
-      <div class="aff-social">
-        ${comp.instagram ? `<a href="${esc(comp.instagram)}" target="_blank" title="Instagram">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
-        </a>` : ''}
-        ${comp.facebook ? `<a href="${esc(comp.facebook)}" target="_blank" title="Facebook">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        </a>` : ''}
-        <a href="${esc(comp.website)}" target="_blank" title="Website">
-          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
-        </a>
-      </div>
-    </div>
-    <svg class="aff-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
-  `;
-
-  wrap.addEventListener('click', e => {
-    if (document.body.classList.contains('edit-mode')) return;
-    if (!e.target.closest('a')) window.open(comp.website, '_blank', 'noopener');
-  });
-
-  return wrap;
-}
-
-// ─────────────────────────────────────────────
-// HELPERS
-// ─────────────────────────────────────────────
-function esc(str) {
-  if (!str) return '';
-  return String(str)
-    .replace(/&/g, '&amp;')
-    .replace(/</g, '&lt;')
-    .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
-}
-
-function statusLabel(s) {
-  return { live: '● LIVE NOW', upcoming: 'UPCOMING', past: 'PAST' }[s] || 'UPCOMING';
-}
-
-function extractDomain(url) {
-  try { return new URL(url).hostname.replace('www.', ''); }
-  catch { return ''; }
-}
-
-function logoFallback(id, initials) {
-  const el = document.getElementById(`logo-${id}`);
-  if (el) el.innerHTML = `<div class="logo-fallback" style="display:flex">${initials}</div>`;
-}
-
-// ─────────────────────────────────────────────
-// FILTER
-// ─────────────────────────────────────────────
-function filterCards(status, btn) {
+// ─── FILTER ────────────────────────────────────
+function setFilter(filter, btn) {
+  activeFilter = filter;
   document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
+  applyFilter(filter);
+}
 
-  const all = document.querySelectorAll('.card, .aff-card');
-  all.forEach(card => {
-    const cardStatus = card.dataset.status || 'upcoming';
-    const show = status === 'all' || cardStatus === status;
-    card.style.display = show ? '' : 'none';
+function applyFilter(filter) {
+  document.querySelectorAll('.card, .aff-card').forEach(card => {
+    if (card.classList.contains('add-card')) return;
+    const s = card.dataset.status;
+    const show = filter === 'all' || s === filter;
+    card.classList.toggle('hidden', !show);
   });
 }
 
-// ─────────────────────────────────────────────
-// EDIT MODE
-// ─────────────────────────────────────────────
+// ─── DATA MUTATIONS ────────────────────────────
+function updateComp(id, field, value) {
+  const c = appData.competitions.find(c => c.id === id);
+  if (c) c[field] = value;
+}
+
+function updateEvent(compId, evId, field, value) {
+  const c = appData.competitions.find(c => c.id === compId);
+  if (!c) return;
+  const ev = (c.events || []).find(e => e.id === evId);
+  if (ev) ev[field] = value;
+}
+
+function rerenderCard(compId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+
+  const oldCard = document.querySelector(`.card[data-id="${compId}"]`);
+  if (!oldCard) return;
+
+  const newStatus = computeCardStatus(comp);
+  oldCard.dataset.status = newStatus;
+
+  // Update status badge
+  const badge = oldCard.querySelector('.status-badge');
+  if (badge) {
+    badge.className = `status-badge ${newStatus}`;
+    badge.textContent = statusLabel(newStatus);
+  }
+
+  // Rebuild events list
+  const evList = document.getElementById(`events-${compId}`);
+  if (evList) {
+    evList.innerHTML = '';
+    (comp.events || []).forEach(ev => evList.appendChild(buildEventRow(ev)));
+  }
+
+  // Apply current filter
+  const show = activeFilter === 'all' || newStatus === activeFilter;
+  oldCard.classList.toggle('hidden', !show);
+}
+
+function removeComp(id) {
+  if (!confirm('Remove this competition?')) return;
+  appData.competitions = appData.competitions.filter(c => c.id !== id);
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if (card) card.remove();
+  showToast('Removed — save to make it permanent', 'info');
+}
+
+function addComp(affiliated) {
+  const id = 'comp_' + Date.now();
+  const newComp = {
+    id, name: 'New Competition', shortName: 'NEW',
+    website: 'https://', logo: '', instagram: '', facebook: '',
+    description: 'Add a description.', affiliated,
+    events: [{
+      id: 'ev_' + Date.now(),
+      name: 'Event 1', status: 'upcoming',
+      dates: 'TBC', location: 'TBC', sortDate: '2026-12-31'
+    }]
+  };
+  appData.competitions.push(newComp);
+  const grid = affiliated ? document.getElementById('aff-grid') : document.getElementById('main-grid');
+  const addBtn = grid.querySelector('.add-card');
+  const card = affiliated ? buildAffCard(newComp) : buildCard(newComp);
+  grid.insertBefore(card, addBtn);
+  showToast('New card added — fill in the edit panel', 'info');
+}
+
+function addEvent(compId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  const ev = {
+    id: 'ev_' + Date.now(),
+    name: 'New Event', status: 'upcoming',
+    dates: 'TBC', location: 'TBC', sortDate: '2026-12-31'
+  };
+  comp.events = comp.events || [];
+  comp.events.push(ev);
+
+  // Add to edit panel
+  const container = document.getElementById(`edit-events-${compId}`);
+  if (container) container.appendChild(buildEditEventBlock(compId, ev));
+
+  // Add to display list
+  const evList = document.getElementById(`events-${compId}`);
+  if (evList) evList.appendChild(buildEventRow(ev));
+}
+
+function removeEvent(compId, evId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  comp.events = (comp.events || []).filter(e => e.id !== evId);
+
+  // Remove from edit panel
+  const block = document.querySelector(`#edit-events-${compId} [data-event-id="${evId}"]`);
+  if (block) block.remove();
+
+  rerenderCard(compId);
+}
+
+function refreshLogo(id, url, initials) {
+  const el = document.getElementById(`logo-${id}`);
+  if (!el) return;
+  el.innerHTML = url
+    ? `<img src="${esc(url)}" alt="" onerror="this.parentNode.innerHTML='<span class=logo-initials>${initials}</span>'" />`
+    : `<span class="logo-initials">${initials}</span>`;
+}
+
+// ─── EDIT MODE ─────────────────────────────────
 function openEditModal() {
   document.getElementById('edit-modal').classList.add('open');
   setTimeout(() => document.getElementById('token-input').focus(), 100);
@@ -1296,174 +1437,48 @@ function closeEditModal() {
   document.getElementById('token-input').value = '';
 }
 
-async function unlockEdit() {
-  const token = document.getElementById('token-input').value.trim();
-  if (!token) return showError('Please enter a token.');
-
-  // Validate token by fetching file (also gets fresh SHA)
-  try {
-    showError('');
-    const res = await fetch(API_URL + `?ref=${BRANCH}`, {
-      headers: {
-        Authorization: `token ${token}`,
-        Accept: 'application/vnd.github.v3+json'
-      }
-    });
-    if (!res.ok) {
-      const err = await res.json();
-      return showError(err.message || 'Invalid token or no access.');
-    }
-    const json = await res.json();
-    currentFileSha = json.sha;
-    githubToken = token;
-    closeEditModal();
-    enableEditMode();
-  } catch (e) {
-    showError('Network error — check your connection.');
-  }
-}
-
-function showError(msg) {
+function showModalError(msg) {
   const el = document.getElementById('modal-error');
   el.textContent = msg;
   el.style.display = msg ? 'block' : 'none';
 }
 
-function enableEditMode() {
-  document.body.classList.add('edit-mode');
-  document.getElementById('btn-save').style.display = 'flex';
-  document.getElementById('btn-discard').style.display = 'flex';
-  // Enable contenteditable on all data fields
-  document.querySelectorAll('[data-field]').forEach(el => {
-    el.addEventListener('click', activateField);
-  });
-  showToast('Edit mode active — click any field to edit', 'info');
-}
+async function unlockEdit() {
+  const token = document.getElementById('token-input').value.trim();
+  if (!token) return showModalError('Please enter a token.');
+  showModalError('');
 
-function activateField(e) {
-  if (!document.body.classList.contains('edit-mode')) return;
-  e.target.contentEditable = 'true';
-  e.target.focus();
-}
-
-function disableEditMode() {
-  document.body.classList.remove('edit-mode');
-  document.getElementById('btn-save').style.display = 'none';
-  document.getElementById('btn-discard').style.display = 'none';
-  document.querySelectorAll('[data-field]').forEach(el => {
-    el.contentEditable = 'false';
-  });
+  try {
+    const res = await fetch(API_URL + `?ref=${BRANCH}`, {
+      headers: { Authorization: `token ${token}`, Accept: 'application/vnd.github.v3+json' }
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      return showModalError(err.message || 'Invalid token or no access.');
+    }
+    const json = await res.json();
+    currentFileSha = json.sha;
+    githubToken = token;
+    closeEditModal();
+    document.body.classList.add('edit-mode');
+    document.getElementById('btn-save').style.display = 'flex';
+    document.getElementById('btn-discard').style.display = 'flex';
+    showToast('Edit mode active — use the panels on each card', 'info');
+  } catch {
+    showModalError('Network error — check your connection.');
+  }
 }
 
 function discardChanges() {
-  if (!confirm('Discard all unsaved changes?')) return;
+  if (!confirm('Discard all unsaved changes and reload?')) return;
   githubToken = null;
-  disableEditMode();
-  init(); // Re-fetch fresh data
+  document.body.classList.remove('edit-mode');
+  document.getElementById('btn-save').style.display = 'none';
+  document.getElementById('btn-discard').style.display = 'none';
+  init();
 }
 
-// ─────────────────────────────────────────────
-// DATA MUTATIONS
-// ─────────────────────────────────────────────
-function updateField(id, field, value) {
-  const comp = appData.competitions.find(c => c.id === id);
-  if (comp) comp[field] = value;
-}
-
-function updateCardStatus(id, status) {
-  const card = document.querySelector(`.card[data-id="${id}"]`);
-  if (!card) return;
-  card.className = `card ${status}`;
-  card.dataset.status = status;
-  const badge = card.querySelector('.status-badge');
-  if (badge) {
-    badge.className = `status-badge ${status}`;
-    badge.textContent = statusLabel(status);
-  }
-}
-
-function updateLogo(id, url, initials) {
-  const el = document.getElementById(`logo-${id}`);
-  if (!el) return;
-  if (url) {
-    el.innerHTML = `<img src="${esc(url)}" alt="" onerror="logoFallback('${id}','${initials}')" />`;
-  } else {
-    el.innerHTML = `<div class="logo-fallback" style="display:flex">${initials}</div>`;
-  }
-}
-
-function syncSocialLinks(id) {
-  const comp = appData.competitions.find(c => c.id === id);
-  if (!comp) return;
-  // Rebuild footer social links
-  const foot = document.getElementById(`foot-${id}`);
-  if (!foot) return;
-  // Preserve visit btn
-  const visitBtn = foot.querySelector('.visit-btn');
-  const igLink = foot.querySelector('.social-btn.insta');
-  const fbLink = foot.querySelector('.social-btn.fb');
-
-  if (comp.instagram && !igLink) {
-    const a = document.createElement('a');
-    a.className = 'social-btn insta';
-    a.href = comp.instagram;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram`;
-    foot.insertBefore(a, visitBtn);
-  } else if (igLink) {
-    igLink.href = comp.instagram || '#';
-  }
-
-  if (comp.facebook && !fbLink) {
-    const a = document.createElement('a');
-    a.className = 'social-btn fb';
-    a.href = comp.facebook;
-    a.target = '_blank';
-    a.rel = 'noopener';
-    a.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook`;
-    foot.insertBefore(a, visitBtn);
-  } else if (fbLink) {
-    fbLink.href = comp.facebook || '#';
-  }
-}
-
-function removeCompetition(id) {
-  if (!confirm('Remove this competition?')) return;
-  appData.competitions = appData.competitions.filter(c => c.id !== id);
-  const card = document.querySelector(`.card[data-id="${id}"]`);
-  if (card) card.remove();
-  showToast('Removed — remember to Save Changes', 'info');
-}
-
-function addCompetition(affiliated) {
-  const id = 'comp_' + Date.now();
-  const newComp = {
-    id,
-    name: 'New Competition',
-    shortName: 'NEW',
-    website: 'https://',
-    logo: '',
-    status: 'upcoming',
-    dates: 'TBC',
-    location: 'TBC',
-    instagram: '',
-    facebook: '',
-    description: 'Add a description here.',
-    affiliated,
-    sortDate: '2026-12-31'
-  };
-  appData.competitions.push(newComp);
-  const grid = affiliated ? document.getElementById('aff-grid') : document.getElementById('main-grid');
-  const addBtn = grid.querySelector('.add-card');
-  const card = affiliated ? buildAffCard(newComp) : buildCard(newComp);
-  grid.insertBefore(card, addBtn);
-  showToast('New card added — edit the fields', 'info');
-}
-
-// ─────────────────────────────────────────────
-// SAVE
-// ─────────────────────────────────────────────
+// ─── SAVE ──────────────────────────────────────
 async function saveChanges() {
   if (!githubToken) { openEditModal(); return; }
 
@@ -1471,30 +1486,21 @@ async function saveChanges() {
   overlay.classList.add('show');
 
   try {
-    // Update lastUpdated
     appData.meta = appData.meta || {};
     appData.meta.lastUpdated = new Date().toISOString().split('T')[0];
 
     const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
 
-    // Get fresh SHA if we don't have one
     if (!currentFileSha) {
       const res = await fetch(API_URL + `?ref=${BRANCH}`, {
-        headers: {
-          Authorization: `token ${githubToken}`,
-          Accept: 'application/vnd.github.v3+json'
-        }
+        headers: { Authorization: `token ${githubToken}`, Accept: 'application/vnd.github.v3+json' }
       });
-      if (res.ok) {
-        const j = await res.json();
-        currentFileSha = j.sha;
-      }
+      if (res.ok) { const j = await res.json(); currentFileSha = j.sha; }
     }
 
     const body = {
       message: `Update SGM Hub data — ${new Date().toLocaleString('en-AU')}`,
-      content,
-      branch: BRANCH
+      content, branch: BRANCH
     };
     if (currentFileSha) body.sha = currentFileSha;
 
@@ -1508,19 +1514,16 @@ async function saveChanges() {
       body: JSON.stringify(body)
     });
 
-    if (!res.ok) {
-      const err = await res.json();
-      throw new Error(err.message || 'Save failed');
-    }
+    if (!res.ok) { const err = await res.json(); throw new Error(err.message || 'Save failed'); }
 
     const json = await res.json();
     currentFileSha = json.content?.sha;
-
     overlay.classList.remove('show');
     showToast('✓ Saved to GitHub successfully!', 'success');
-    disableEditMode();
-    document.getElementById('last-updated').textContent =
-      `Last updated: ${appData.meta.lastUpdated}`;
+    document.body.classList.remove('edit-mode');
+    document.getElementById('btn-save').style.display = 'none';
+    document.getElementById('btn-discard').style.display = 'none';
+    document.getElementById('last-updated').textContent = `Last updated: ${appData.meta.lastUpdated}`;
     githubToken = null;
 
   } catch (e) {
@@ -1529,26 +1532,35 @@ async function saveChanges() {
   }
 }
 
-// ─────────────────────────────────────────────
-// TOAST
-// ─────────────────────────────────────────────
-let toastTimer;
-function showToast(msg, type = 'info') {
-  const toast = document.getElementById('toast');
-  toast.textContent = msg;
-  toast.className = `toast ${type} show`;
-  clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+// ─── HELPERS ───────────────────────────────────
+function esc(str) {
+  return String(str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
 }
 
-// ─────────────────────────────────────────────
-// KEYBOARD
-// ─────────────────────────────────────────────
+function statusLabel(s) {
+  return { live: '● Live Now', 'in-market': '◆ In Market', upcoming: 'Upcoming', past: 'Past' }[s] || 'Upcoming';
+}
+
+function igSvg() {
+  return `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>`;
+}
+
+function fbSvg() {
+  return `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>`;
+}
+
+let toastTimer;
+function showToast(msg, type = 'info') {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+}
+
+// ─── KEYBOARD ──────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') {
-    closeEditModal();
-    if (document.body.classList.contains('edit-mode')) discardChanges();
-  }
+  if (e.key === 'Escape') closeEditModal();
   if ((e.metaKey || e.ctrlKey) && e.key === 's') {
     e.preventDefault();
     if (document.body.classList.contains('edit-mode')) saveChanges();
@@ -1559,9 +1571,7 @@ document.getElementById('token-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') unlockEdit();
 });
 
-// ─────────────────────────────────────────────
-// BOOT
-// ─────────────────────────────────────────────
+// ─── BOOT ──────────────────────────────────────
 init();
 </script>
 </body>
