@@ -330,7 +330,7 @@
       gap: 0;
       transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
       position: relative;
-      overflow: hidden;
+      overflow: visible;
     }
 
     .card::before {
@@ -339,6 +339,7 @@
       inset: 0;
       background: linear-gradient(135deg, rgba(255,255,255,0.025) 0%, transparent 55%);
       pointer-events: none;
+      z-index: 0;
     }
 
     .card:hover {
@@ -355,6 +356,8 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 2px;
+      pointer-events: none;
+      z-index: 0;
     }
 
     .card[data-status="live"]::after      { background: linear-gradient(90deg, var(--live), #f97316); }
@@ -590,6 +593,22 @@
     }
 
     .visit-btn:hover { background: rgba(249,115,22,0.2); border-color: var(--accent); }
+
+    /* Ensure all direct card children sit above ::before/::after overlays */
+    .card > * { position: relative; z-index: 1; }
+
+    /* In edit mode: no transform, inputs fully interactive */
+    body.edit-mode .card,
+    body.edit-mode .card:hover { transform: none !important; }
+
+    body.edit-mode .edit-field,
+    body.edit-mode .edit-select,
+    body.edit-mode input[type="checkbox"],
+    body.edit-mode .market-override-toggle {
+      position: relative;
+      z-index: 2;
+      pointer-events: all;
+    }
 
     /* ── EDIT CONTROLS (per card) ── */
     .edit-controls-panel {
