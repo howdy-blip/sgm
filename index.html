@@ -1,0 +1,1568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SGM Hub — Sports Group Melbourne</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg:       #070710;
+      --bg2:      #0e0e1c;
+      --card:     #13132a;
+      --card2:    #1a1a36;
+      --border:   rgba(255,255,255,0.07);
+      --border2:  rgba(255,255,255,0.14);
+      --accent:   #f97316;
+      --accent2:  #fb923c;
+      --live:     #ef4444;
+      --live-bg:  rgba(239,68,68,0.12);
+      --upcoming: #3b82f6;
+      --up-bg:    rgba(59,130,246,0.12);
+      --past:     #6b7280;
+      --past-bg:  rgba(107,114,128,0.1);
+      --text:     #f1f5f9;
+      --muted:    #94a3b8;
+      --dim:      #475569;
+      --radius:   14px;
+      --radius-sm:8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', system-ui, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── HEADER ── */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(7,7,16,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+
+    .header-inner {
+      max-width: 1280px;
+      margin: 0 auto;
+      height: 68px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      background: linear-gradient(135deg, var(--accent) 0%, #f43f5e 100%);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      font-size: 16px;
+      color: #fff;
+      flex-shrink: 0;
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+      line-height: 1;
+    }
+
+    .logo-text strong {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text);
+      letter-spacing: -0.3px;
+    }
+
+    .logo-text span {
+      font-size: 11px;
+      color: var(--muted);
+      font-weight: 500;
+      margin-top: 2px;
+      letter-spacing: 0.3px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: all 0.15s ease;
+      font-family: inherit;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--muted);
+      border: 1px solid var(--border2);
+    }
+
+    .btn-ghost:hover { background: var(--card); color: var(--text); }
+
+    .btn-accent {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-accent:hover { background: var(--accent2); transform: translateY(-1px); }
+
+    .btn-save {
+      background: #22c55e;
+      color: #fff;
+    }
+
+    .btn-save:hover { background: #16a34a; }
+
+    .btn-danger {
+      background: transparent;
+      color: var(--live);
+      border: 1px solid rgba(239,68,68,0.3);
+    }
+
+    .btn-danger:hover { background: var(--live-bg); }
+
+    .edit-badge {
+      display: none;
+      align-items: center;
+      gap: 6px;
+      padding: 5px 12px;
+      background: rgba(249,115,22,0.15);
+      border: 1px solid rgba(249,115,22,0.3);
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent);
+    }
+
+    .edit-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+
+    body.edit-mode .edit-badge { display: flex; }
+    body.edit-mode #btn-edit { display: none; }
+
+    /* ── HERO ── */
+    .hero {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 56px 24px 32px;
+    }
+
+    .hero h1 {
+      font-size: clamp(28px, 5vw, 48px);
+      font-weight: 900;
+      letter-spacing: -1.5px;
+      line-height: 1.05;
+      background: linear-gradient(135deg, #fff 0%, #94a3b8 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero h1 em {
+      font-style: normal;
+      background: linear-gradient(135deg, var(--accent) 0%, #f43f5e 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-sub {
+      margin-top: 10px;
+      font-size: 15px;
+      color: var(--muted);
+      font-weight: 400;
+    }
+
+    .last-updated {
+      margin-top: 6px;
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    /* ── FILTERS / TABS ── */
+    .filters {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 28px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1px solid var(--border2);
+      background: transparent;
+      color: var(--muted);
+      font-family: inherit;
+      transition: all 0.15s;
+    }
+
+    .filter-btn.active, .filter-btn:hover {
+      background: var(--card2);
+      color: var(--text);
+      border-color: var(--border2);
+    }
+
+    .filter-btn.active { border-color: var(--accent); color: var(--accent); }
+
+    /* ── SECTION LABELS ── */
+    .section-label {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-label h2 {
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      color: var(--dim);
+    }
+
+    .section-label::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border);
+    }
+
+    /* ── GRID ── */
+    .grid {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 16px;
+      margin-bottom: 48px;
+    }
+
+    /* ── CARD ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.02) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .card:hover {
+      border-color: var(--border2);
+      transform: translateY(-2px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+
+    .card.live {
+      border-color: rgba(239,68,68,0.3);
+    }
+
+    .card.live::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--live), #f97316);
+    }
+
+    .card.past {
+      opacity: 0.55;
+    }
+
+    body.edit-mode .card {
+      border-color: rgba(249,115,22,0.2);
+    }
+
+    /* ── CARD HEADER ── */
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+    }
+
+    .comp-logo {
+      width: 56px;
+      height: 56px;
+      border-radius: 10px;
+      background: var(--card2);
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--accent);
+      position: relative;
+    }
+
+    .comp-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      padding: 4px;
+    }
+
+    .logo-fallback {
+      display: none;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 18px;
+      color: var(--accent);
+    }
+
+    .card-title-group {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .card-title-group h3 {
+      font-size: 17px;
+      font-weight: 800;
+      color: var(--text);
+      line-height: 1.2;
+      letter-spacing: -0.3px;
+    }
+
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      margin-top: 5px;
+    }
+
+    .status-badge.live {
+      background: var(--live-bg);
+      color: var(--live);
+      border: 1px solid rgba(239,68,68,0.25);
+    }
+
+    .status-badge.live::before {
+      content: '';
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--live);
+      animation: pulse 1.2s infinite;
+    }
+
+    .status-badge.upcoming {
+      background: var(--up-bg);
+      color: var(--upcoming);
+      border: 1px solid rgba(59,130,246,0.25);
+    }
+
+    .status-badge.past {
+      background: var(--past-bg);
+      color: var(--past);
+      border: 1px solid rgba(107,114,128,0.2);
+    }
+
+    /* ── CARD INFO ── */
+    .card-info {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 13px;
+    }
+
+    .info-icon {
+      width: 16px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--dim);
+    }
+
+    .info-label {
+      color: var(--muted);
+      flex: 1;
+    }
+
+    .card-desc {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.55;
+    }
+
+    /* ── CARD FOOTER ── */
+    .card-foot {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding-top: 12px;
+      border-top: 1px solid var(--border);
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      border: 1px solid var(--border2);
+      color: var(--muted);
+      background: transparent;
+      transition: all 0.15s;
+    }
+
+    .social-btn:hover {
+      background: var(--card2);
+      color: var(--text);
+    }
+
+    .social-btn svg { flex-shrink: 0; }
+
+    .social-btn.insta:hover { border-color: #e1306c; color: #e1306c; }
+    .social-btn.fb:hover { border-color: #1877f2; color: #1877f2; }
+    .social-btn.web:hover { border-color: var(--accent); color: var(--accent); }
+
+    .visit-btn {
+      margin-left: auto;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
+      border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      text-decoration: none;
+      background: rgba(249,115,22,0.1);
+      color: var(--accent);
+      border: 1px solid rgba(249,115,22,0.2);
+      transition: all 0.15s;
+    }
+
+    .visit-btn:hover {
+      background: rgba(249,115,22,0.2);
+      border-color: var(--accent);
+    }
+
+    /* ── EDIT CONTROLS ── */
+    .edit-controls {
+      display: none;
+      gap: 6px;
+      margin-top: 4px;
+    }
+
+    body.edit-mode .edit-controls { display: flex; }
+
+    .edit-field {
+      background: rgba(0,0,0,0.3);
+      border: 1px dashed rgba(249,115,22,0.4);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 13px;
+      padding: 4px 8px;
+      width: 100%;
+      outline: none;
+      transition: border-color 0.15s;
+    }
+
+    .edit-field:focus {
+      border-color: var(--accent);
+      background: rgba(249,115,22,0.05);
+    }
+
+    .edit-select {
+      background: var(--card2);
+      border: 1px dashed rgba(249,115,22,0.4);
+      border-radius: 4px;
+      color: var(--text);
+      font-family: inherit;
+      font-size: 12px;
+      padding: 4px 8px;
+      outline: none;
+      cursor: pointer;
+    }
+
+    .edit-select:focus { border-color: var(--accent); }
+
+    .edit-row {
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      font-size: 11px;
+      color: var(--dim);
+      font-weight: 500;
+    }
+
+    body.edit-mode .info-label[data-field] {
+      cursor: text;
+    }
+
+    body.edit-mode .info-label[data-field]:hover {
+      background: rgba(249,115,22,0.06);
+      border-radius: 4px;
+    }
+
+    /* ── AFFILIATED SECTION ── */
+    .affiliated-section {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px 64px;
+    }
+
+    .affiliated-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 12px;
+    }
+
+    .aff-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      transition: all 0.15s;
+      text-decoration: none;
+    }
+
+    .aff-card:hover {
+      border-color: var(--border2);
+      background: var(--card);
+    }
+
+    .aff-logo {
+      width: 42px;
+      height: 42px;
+      border-radius: 8px;
+      background: var(--card);
+      border: 1px solid var(--border2);
+      overflow: hidden;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 14px;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .aff-logo img { width: 100%; height: 100%; object-fit: contain; padding: 3px; }
+
+    .aff-info { flex: 1; min-width: 0; }
+    .aff-info h4 { font-size: 14px; font-weight: 700; color: var(--text); }
+    .aff-info p { font-size: 12px; color: var(--muted); margin-top: 2px; }
+
+    .aff-social {
+      display: flex;
+      gap: 6px;
+      margin-top: 6px;
+    }
+
+    .aff-social a {
+      color: var(--dim);
+      text-decoration: none;
+      transition: color 0.15s;
+    }
+
+    .aff-social a:hover { color: var(--text); }
+
+    .aff-arrow {
+      color: var(--dim);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 24px;
+      text-align: center;
+    }
+
+    footer p {
+      font-size: 12px;
+      color: var(--dim);
+    }
+
+    footer a { color: var(--muted); text-decoration: none; }
+    footer a:hover { color: var(--text); }
+
+    /* ── MODAL ── */
+    .modal-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.75);
+      backdrop-filter: blur(8px);
+      z-index: 999;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .modal-overlay.open { display: flex; }
+
+    .modal {
+      background: var(--card);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius);
+      padding: 28px;
+      width: 100%;
+      max-width: 480px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .modal h2 {
+      font-size: 20px;
+      font-weight: 800;
+      letter-spacing: -0.4px;
+    }
+
+    .modal p {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    .modal p a {
+      color: var(--accent);
+      text-decoration: none;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-group label {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--muted);
+      letter-spacing: 0.3px;
+    }
+
+    .form-group input {
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: var(--radius-sm);
+      color: var(--text);
+      font-family: 'Inter', monospace;
+      font-size: 13px;
+      padding: 10px 14px;
+      outline: none;
+      width: 100%;
+      transition: border-color 0.15s;
+    }
+
+    .form-group input:focus { border-color: var(--accent); }
+    .form-group input::placeholder { color: var(--dim); }
+
+    .modal-actions {
+      display: flex;
+      gap: 10px;
+      justify-content: flex-end;
+    }
+
+    .modal-error {
+      display: none;
+      padding: 10px 14px;
+      background: rgba(239,68,68,0.1);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      color: #fca5a5;
+    }
+
+    /* ── TOAST ── */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      padding: 12px 20px;
+      border-radius: var(--radius-sm);
+      font-size: 13px;
+      font-weight: 600;
+      color: #fff;
+      z-index: 9999;
+      transform: translateY(80px);
+      opacity: 0;
+      transition: all 0.3s ease;
+      max-width: 320px;
+    }
+
+    .toast.show {
+      transform: translateY(0);
+      opacity: 1;
+    }
+
+    .toast.success { background: #22c55e; }
+    .toast.error   { background: var(--live); }
+    .toast.info    { background: var(--upcoming); }
+
+    /* ── SAVING OVERLAY ── */
+    .saving-overlay {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.5);
+      z-index: 9998;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      gap: 16px;
+      color: var(--text);
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .saving-overlay.show { display: flex; }
+
+    .spinner {
+      width: 32px;
+      height: 32px;
+      border: 3px solid var(--border2);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 600px) {
+      .grid { grid-template-columns: 1fr; }
+      .affiliated-grid { grid-template-columns: 1fr; }
+      .header-inner { gap: 8px; }
+      .logo-text span { display: none; }
+    }
+
+    /* ── EMPTY STATE ── */
+    .empty-state {
+      grid-column: 1 / -1;
+      text-align: center;
+      padding: 48px 24px;
+      color: var(--dim);
+      font-size: 14px;
+    }
+
+    /* ── ADD CARD BUTTON (edit mode) ── */
+    .add-card {
+      display: none;
+      background: transparent;
+      border: 2px dashed rgba(249,115,22,0.3);
+      border-radius: var(--radius);
+      padding: 20px;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--accent);
+      cursor: pointer;
+      transition: all 0.15s;
+      font-family: inherit;
+      opacity: 0.7;
+    }
+
+    .add-card:hover { opacity: 1; border-color: var(--accent); background: rgba(249,115,22,0.04); }
+    body.edit-mode .add-card { display: flex; }
+
+    /* ── DRAG HANDLE (edit mode) ── */
+    .drag-handle {
+      display: none;
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      padding: 4px;
+      color: var(--dim);
+      cursor: grab;
+      opacity: 0;
+      transition: opacity 0.15s;
+    }
+
+    body.edit-mode .drag-handle { display: flex; }
+    body.edit-mode .card:hover .drag-handle { opacity: 1; }
+
+    /* ── HIGHLIGHT EDIT FIELDS ── */
+    body.edit-mode .card-title-group h3,
+    body.edit-mode .info-label[data-field] {
+      position: relative;
+    }
+
+    .edit-hint {
+      display: none;
+      font-size: 10px;
+      color: var(--accent);
+      opacity: 0.7;
+      margin-top: 2px;
+    }
+
+    body.edit-mode .edit-hint { display: block; }
+  </style>
+</head>
+<body>
+
+<!-- ── HEADER ── -->
+<header>
+  <div class="header-inner">
+    <a class="logo-mark" href="#">
+      <div class="logo-icon">SGM</div>
+      <div class="logo-text">
+        <strong>SGM Hub</strong>
+        <span>Sports Group Melbourne</span>
+      </div>
+    </a>
+    <div class="header-actions">
+      <span class="edit-badge">Edit Mode</span>
+      <button class="btn btn-save" id="btn-save" style="display:none" onclick="saveChanges()">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg>
+        Save Changes
+      </button>
+      <button class="btn btn-danger" id="btn-discard" style="display:none" onclick="discardChanges()">Discard</button>
+      <button class="btn btn-ghost" id="btn-edit" onclick="openEditModal()">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+        Edit
+      </button>
+    </div>
+  </div>
+</header>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <h1>Your <em>Competition</em><br/>Command Centre</h1>
+  <p class="hero-sub">All SGM competitions, tournaments &amp; affiliated events in one place.</p>
+  <p class="last-updated" id="last-updated">Loading...</p>
+</section>
+
+<!-- ── FILTERS ── -->
+<div class="filters">
+  <button class="filter-btn active" onclick="filterCards('all', this)">All</button>
+  <button class="filter-btn" onclick="filterCards('live', this)">🔴 Live Now</button>
+  <button class="filter-btn" onclick="filterCards('upcoming', this)">Upcoming</button>
+  <button class="filter-btn" onclick="filterCards('past', this)">Past</button>
+</div>
+
+<!-- ── MAIN COMPETITIONS ── -->
+<div class="section-label">
+  <h2>Competitions &amp; Tournaments</h2>
+</div>
+<div class="grid" id="main-grid">
+  <div class="empty-state">Loading competitions...</div>
+</div>
+
+<!-- ── AFFILIATED COMPETITIONS ── -->
+<div class="section-label" id="aff-label">
+  <h2>Affiliated Competitions</h2>
+</div>
+<div class="affiliated-section">
+  <div class="affiliated-grid" id="aff-grid">
+    <div class="empty-state">Loading...</div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>SGM Hub &mdash; Sports Group Melbourne &mdash; Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
+</footer>
+
+<!-- ── EDIT MODAL ── -->
+<div class="modal-overlay" id="edit-modal">
+  <div class="modal">
+    <h2>🔐 Enter Admin Token</h2>
+    <p>
+      Enter your GitHub Personal Access Token to unlock editing.
+      The token needs <strong>Contents: Read &amp; Write</strong> permission for this repo.<br/>
+      <a href="https://github.com/settings/tokens/new?scopes=repo&description=SGM+Hub+Edit" target="_blank">Create a token →</a>
+    </p>
+    <div class="form-group">
+      <label>GITHUB TOKEN</label>
+      <input type="password" id="token-input" placeholder="ghp_xxxxxxxxxxxxxxxxxxxx" autocomplete="off" />
+    </div>
+    <div class="modal-error" id="modal-error"></div>
+    <div class="modal-actions">
+      <button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button>
+      <button class="btn btn-accent" onclick="unlockEdit()">Unlock Editing</button>
+    </div>
+  </div>
+</div>
+
+<!-- ── TOAST ── -->
+<div class="toast" id="toast"></div>
+
+<!-- ── SAVING OVERLAY ── -->
+<div class="saving-overlay" id="saving-overlay">
+  <div class="spinner"></div>
+  <span>Saving to GitHub...</span>
+</div>
+
+<script>
+// ─────────────────────────────────────────────
+// CONFIG
+// ─────────────────────────────────────────────
+const REPO   = 'howdy-blip/sgm';
+const BRANCH = 'main';
+const DATA_FILE = 'data.json';
+const RAW_URL = `https://raw.githubusercontent.com/${REPO}/${BRANCH}/${DATA_FILE}`;
+const API_URL = `https://api.github.com/repos/${REPO}/contents/${DATA_FILE}`;
+
+let appData = null;
+let githubToken = null;
+let currentFileSha = null;
+
+// ─────────────────────────────────────────────
+// INIT
+// ─────────────────────────────────────────────
+async function init() {
+  try {
+    // Try fetching from GitHub API first (gets SHA too)
+    const res = await fetch(API_URL + `?ref=${BRANCH}`, {
+      headers: { Accept: 'application/vnd.github.v3+json' }
+    });
+    if (res.ok) {
+      const json = await res.json();
+      currentFileSha = json.sha;
+      appData = JSON.parse(atob(json.content.replace(/\n/g, '')));
+    } else {
+      // Fallback: raw URL (no SHA)
+      const raw = await fetch(RAW_URL + '?t=' + Date.now());
+      appData = await raw.json();
+    }
+    render();
+  } catch (e) {
+    // Final fallback: try same-origin data.json
+    try {
+      const raw = await fetch('./data.json?t=' + Date.now());
+      appData = await raw.json();
+      render();
+    } catch (e2) {
+      document.getElementById('main-grid').innerHTML =
+        '<div class="empty-state">⚠️ Could not load data. Please check your connection.</div>';
+    }
+  }
+}
+
+// ─────────────────────────────────────────────
+// RENDER
+// ─────────────────────────────────────────────
+function render() {
+  if (!appData) return;
+
+  // Last updated
+  document.getElementById('last-updated').textContent =
+    `Last updated: ${appData.meta?.lastUpdated || 'unknown'}`;
+
+  const comps = sortCompetitions(appData.competitions || []);
+  const main = comps.filter(c => !c.affiliated);
+  const affiliated = comps.filter(c => c.affiliated);
+
+  // Main grid
+  const mainGrid = document.getElementById('main-grid');
+  mainGrid.innerHTML = '';
+  if (main.length === 0) {
+    mainGrid.innerHTML = '<div class="empty-state">No competitions found.</div>';
+  } else {
+    main.forEach(c => mainGrid.appendChild(buildCard(c)));
+  }
+  // Add card button
+  const addBtn = document.createElement('button');
+  addBtn.className = 'add-card';
+  addBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Competition`;
+  addBtn.onclick = () => addCompetition(false);
+  mainGrid.appendChild(addBtn);
+
+  // Affiliated grid
+  const affGrid = document.getElementById('aff-grid');
+  affGrid.innerHTML = '';
+  if (affiliated.length === 0) {
+    affGrid.innerHTML = '<div class="empty-state">No affiliated competitions.</div>';
+  } else {
+    affiliated.forEach(c => affGrid.appendChild(buildAffCard(c)));
+  }
+  const addAffBtn = document.createElement('button');
+  addAffBtn.className = 'add-card';
+  addAffBtn.innerHTML = `<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg> Add Affiliated`;
+  addAffBtn.onclick = () => addCompetition(true);
+  affGrid.appendChild(addAffBtn);
+}
+
+function sortCompetitions(comps) {
+  const order = { live: 0, upcoming: 1, past: 2 };
+  return [...comps].sort((a, b) => {
+    const so = (order[a.status] ?? 1) - (order[b.status] ?? 1);
+    if (so !== 0) return so;
+    // Sort upcoming by date
+    if (a.status === 'upcoming' && b.status === 'upcoming') {
+      const da = new Date(a.sortDate || '2099-01-01');
+      const db = new Date(b.sortDate || '2099-01-01');
+      return da - db;
+    }
+    return 0;
+  });
+}
+
+// ─────────────────────────────────────────────
+// BUILD CARD
+// ─────────────────────────────────────────────
+function buildCard(comp) {
+  const card = document.createElement('div');
+  card.className = `card ${comp.status || 'upcoming'}`;
+  card.dataset.id = comp.id;
+  card.dataset.status = comp.status || 'upcoming';
+
+  const logoUrl = comp.logo || '';
+  const initials = (comp.shortName || comp.name || '?').substring(0, 3).toUpperCase();
+  const domain = extractDomain(comp.website || '');
+
+  card.innerHTML = `
+    <div class="drag-handle" title="Drag to reorder">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="5" r="1" fill="currentColor"/><circle cx="15" cy="5" r="1" fill="currentColor"/><circle cx="9" cy="12" r="1" fill="currentColor"/><circle cx="15" cy="12" r="1" fill="currentColor"/><circle cx="9" cy="19" r="1" fill="currentColor"/><circle cx="15" cy="19" r="1" fill="currentColor"/></svg>
+    </div>
+
+    <div class="card-head">
+      <div class="comp-logo" id="logo-${comp.id}">
+        ${logoUrl
+          ? `<img src="${esc(logoUrl)}" alt="${esc(comp.name)}" onerror="logoFallback('${comp.id}','${initials}')" />`
+          : `<div class="logo-fallback" style="display:flex">${initials}</div>`}
+      </div>
+      <div class="card-title-group">
+        <h3 contenteditable="false" data-field="name" data-id="${comp.id}">${esc(comp.name)}</h3>
+        <span class="status-badge ${comp.status || 'upcoming'}">${statusLabel(comp.status)}</span>
+        <div class="edit-hint">Click fields below to edit</div>
+        <div class="edit-controls" style="margin-top:8px;">
+          <select class="edit-select" onchange="updateField('${comp.id}','status',this.value);updateCardStatus('${comp.id}',this.value)">
+            <option value="live" ${comp.status==='live'?'selected':''}>🔴 Live Now</option>
+            <option value="upcoming" ${comp.status==='upcoming'?'selected':''}>🔵 Upcoming</option>
+            <option value="past" ${comp.status==='past'?'selected':''}>⚪ Past</option>
+          </select>
+          <button class="btn btn-danger" style="font-size:11px;padding:4px 10px;" onclick="removeCompetition('${comp.id}')">Remove</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-info">
+      <div class="info-row">
+        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        <span class="info-label" contenteditable="false" data-field="dates" data-id="${comp.id}">${esc(comp.dates || 'TBC')}</span>
+      </div>
+      <div class="info-row">
+        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span class="info-label" contenteditable="false" data-field="location" data-id="${comp.id}">${esc(comp.location || 'TBC')}</span>
+      </div>
+      <div class="info-row" style="align-items:flex-start;margin-top:2px;">
+        <svg class="info-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" width="16" height="16" style="margin-top:2px;"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+        <span class="info-label card-desc" contenteditable="false" data-field="description" data-id="${comp.id}">${esc(comp.description || '')}</span>
+      </div>
+    </div>
+
+    <div class="edit-controls" style="flex-direction:column;gap:6px;padding-top:8px;border-top:1px solid var(--border);">
+      <div class="edit-row">
+        <label>Logo URL</label>
+        <input class="edit-field" type="url" value="${esc(comp.logo||'')}" placeholder="https://..." oninput="updateField('${comp.id}','logo',this.value);updateLogo('${comp.id}',this.value,'${initials}')" />
+      </div>
+      <div class="edit-row">
+        <label>Website URL</label>
+        <input class="edit-field" type="url" value="${esc(comp.website||'')}" placeholder="https://..." oninput="updateField('${comp.id}','website',this.value)" />
+      </div>
+      <div class="edit-row">
+        <label>Sort Date (YYYY-MM-DD)</label>
+        <input class="edit-field" type="date" value="${esc(comp.sortDate||'')}" oninput="updateField('${comp.id}','sortDate',this.value)" />
+      </div>
+      <div class="edit-row">
+        <label>Instagram URL</label>
+        <input class="edit-field" type="url" value="${esc(comp.instagram||'')}" placeholder="https://instagram.com/..." oninput="updateField('${comp.id}','instagram',this.value);syncSocialLinks('${comp.id}')" />
+      </div>
+      <div class="edit-row">
+        <label>Facebook URL</label>
+        <input class="edit-field" type="url" value="${esc(comp.facebook||'')}" placeholder="https://facebook.com/..." oninput="updateField('${comp.id}','facebook',this.value);syncSocialLinks('${comp.id}')" />
+      </div>
+    </div>
+
+    <div class="card-foot" id="foot-${comp.id}">
+      ${comp.instagram ? `<a class="social-btn insta" href="${esc(comp.instagram)}" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        Instagram
+      </a>` : ''}
+      ${comp.facebook ? `<a class="social-btn fb" href="${esc(comp.facebook)}" target="_blank" rel="noopener">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        Facebook
+      </a>` : ''}
+      <a class="visit-btn" href="${esc(comp.website)}" target="_blank" rel="noopener" id="visit-${comp.id}">
+        Visit site
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+      </a>
+    </div>
+  `;
+
+  // Make inline fields editable in edit mode
+  card.querySelectorAll('[contenteditable][data-field]').forEach(el => {
+    el.addEventListener('focus', () => {
+      if (!document.body.classList.contains('edit-mode')) return;
+      el.contentEditable = 'true';
+    });
+    el.addEventListener('blur', () => {
+      el.contentEditable = 'false';
+      updateField(el.dataset.id, el.dataset.field, el.textContent.trim());
+    });
+    el.addEventListener('keydown', e => {
+      if (e.key === 'Enter') { e.preventDefault(); el.blur(); }
+    });
+  });
+
+  return card;
+}
+
+// ─────────────────────────────────────────────
+// BUILD AFFILIATED CARD
+// ─────────────────────────────────────────────
+function buildAffCard(comp) {
+  const wrap = document.createElement('div');
+  wrap.className = 'aff-card';
+  wrap.dataset.id = comp.id;
+  wrap.dataset.status = comp.status || 'upcoming';
+
+  const initials = (comp.shortName || comp.name || '?').substring(0, 3).toUpperCase();
+
+  wrap.innerHTML = `
+    <div class="aff-logo" id="aff-logo-${comp.id}">
+      ${comp.logo
+        ? `<img src="${esc(comp.logo)}" alt="${esc(comp.name)}" onerror="this.parentNode.innerHTML='${initials}'" />`
+        : initials}
+    </div>
+    <div class="aff-info">
+      <h4>${esc(comp.name)}</h4>
+      <p>${esc(comp.dates || 'TBC')} · ${esc(comp.location || '')}</p>
+      <div class="aff-social">
+        ${comp.instagram ? `<a href="${esc(comp.instagram)}" target="_blank" title="Instagram">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </a>` : ''}
+        ${comp.facebook ? `<a href="${esc(comp.facebook)}" target="_blank" title="Facebook">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+        </a>` : ''}
+        <a href="${esc(comp.website)}" target="_blank" title="Website">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+        </a>
+      </div>
+    </div>
+    <svg class="aff-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+  `;
+
+  wrap.addEventListener('click', e => {
+    if (document.body.classList.contains('edit-mode')) return;
+    if (!e.target.closest('a')) window.open(comp.website, '_blank', 'noopener');
+  });
+
+  return wrap;
+}
+
+// ─────────────────────────────────────────────
+// HELPERS
+// ─────────────────────────────────────────────
+function esc(str) {
+  if (!str) return '';
+  return String(str)
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;');
+}
+
+function statusLabel(s) {
+  return { live: '● LIVE NOW', upcoming: 'UPCOMING', past: 'PAST' }[s] || 'UPCOMING';
+}
+
+function extractDomain(url) {
+  try { return new URL(url).hostname.replace('www.', ''); }
+  catch { return ''; }
+}
+
+function logoFallback(id, initials) {
+  const el = document.getElementById(`logo-${id}`);
+  if (el) el.innerHTML = `<div class="logo-fallback" style="display:flex">${initials}</div>`;
+}
+
+// ─────────────────────────────────────────────
+// FILTER
+// ─────────────────────────────────────────────
+function filterCards(status, btn) {
+  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+  btn.classList.add('active');
+
+  const all = document.querySelectorAll('.card, .aff-card');
+  all.forEach(card => {
+    const cardStatus = card.dataset.status || 'upcoming';
+    const show = status === 'all' || cardStatus === status;
+    card.style.display = show ? '' : 'none';
+  });
+}
+
+// ─────────────────────────────────────────────
+// EDIT MODE
+// ─────────────────────────────────────────────
+function openEditModal() {
+  document.getElementById('edit-modal').classList.add('open');
+  setTimeout(() => document.getElementById('token-input').focus(), 100);
+}
+
+function closeEditModal() {
+  document.getElementById('edit-modal').classList.remove('open');
+  document.getElementById('modal-error').style.display = 'none';
+  document.getElementById('token-input').value = '';
+}
+
+async function unlockEdit() {
+  const token = document.getElementById('token-input').value.trim();
+  if (!token) return showError('Please enter a token.');
+
+  // Validate token by fetching file (also gets fresh SHA)
+  try {
+    showError('');
+    const res = await fetch(API_URL + `?ref=${BRANCH}`, {
+      headers: {
+        Authorization: `token ${token}`,
+        Accept: 'application/vnd.github.v3+json'
+      }
+    });
+    if (!res.ok) {
+      const err = await res.json();
+      return showError(err.message || 'Invalid token or no access.');
+    }
+    const json = await res.json();
+    currentFileSha = json.sha;
+    githubToken = token;
+    closeEditModal();
+    enableEditMode();
+  } catch (e) {
+    showError('Network error — check your connection.');
+  }
+}
+
+function showError(msg) {
+  const el = document.getElementById('modal-error');
+  el.textContent = msg;
+  el.style.display = msg ? 'block' : 'none';
+}
+
+function enableEditMode() {
+  document.body.classList.add('edit-mode');
+  document.getElementById('btn-save').style.display = 'flex';
+  document.getElementById('btn-discard').style.display = 'flex';
+  // Enable contenteditable on all data fields
+  document.querySelectorAll('[data-field]').forEach(el => {
+    el.addEventListener('click', activateField);
+  });
+  showToast('Edit mode active — click any field to edit', 'info');
+}
+
+function activateField(e) {
+  if (!document.body.classList.contains('edit-mode')) return;
+  e.target.contentEditable = 'true';
+  e.target.focus();
+}
+
+function disableEditMode() {
+  document.body.classList.remove('edit-mode');
+  document.getElementById('btn-save').style.display = 'none';
+  document.getElementById('btn-discard').style.display = 'none';
+  document.querySelectorAll('[data-field]').forEach(el => {
+    el.contentEditable = 'false';
+  });
+}
+
+function discardChanges() {
+  if (!confirm('Discard all unsaved changes?')) return;
+  githubToken = null;
+  disableEditMode();
+  init(); // Re-fetch fresh data
+}
+
+// ─────────────────────────────────────────────
+// DATA MUTATIONS
+// ─────────────────────────────────────────────
+function updateField(id, field, value) {
+  const comp = appData.competitions.find(c => c.id === id);
+  if (comp) comp[field] = value;
+}
+
+function updateCardStatus(id, status) {
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if (!card) return;
+  card.className = `card ${status}`;
+  card.dataset.status = status;
+  const badge = card.querySelector('.status-badge');
+  if (badge) {
+    badge.className = `status-badge ${status}`;
+    badge.textContent = statusLabel(status);
+  }
+}
+
+function updateLogo(id, url, initials) {
+  const el = document.getElementById(`logo-${id}`);
+  if (!el) return;
+  if (url) {
+    el.innerHTML = `<img src="${esc(url)}" alt="" onerror="logoFallback('${id}','${initials}')" />`;
+  } else {
+    el.innerHTML = `<div class="logo-fallback" style="display:flex">${initials}</div>`;
+  }
+}
+
+function syncSocialLinks(id) {
+  const comp = appData.competitions.find(c => c.id === id);
+  if (!comp) return;
+  // Rebuild footer social links
+  const foot = document.getElementById(`foot-${id}`);
+  if (!foot) return;
+  // Preserve visit btn
+  const visitBtn = foot.querySelector('.visit-btn');
+  const igLink = foot.querySelector('.social-btn.insta');
+  const fbLink = foot.querySelector('.social-btn.fb');
+
+  if (comp.instagram && !igLink) {
+    const a = document.createElement('a');
+    a.className = 'social-btn insta';
+    a.href = comp.instagram;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg> Instagram`;
+    foot.insertBefore(a, visitBtn);
+  } else if (igLink) {
+    igLink.href = comp.instagram || '#';
+  }
+
+  if (comp.facebook && !fbLink) {
+    const a = document.createElement('a');
+    a.className = 'social-btn fb';
+    a.href = comp.facebook;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.innerHTML = `<svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg> Facebook`;
+    foot.insertBefore(a, visitBtn);
+  } else if (fbLink) {
+    fbLink.href = comp.facebook || '#';
+  }
+}
+
+function removeCompetition(id) {
+  if (!confirm('Remove this competition?')) return;
+  appData.competitions = appData.competitions.filter(c => c.id !== id);
+  const card = document.querySelector(`.card[data-id="${id}"]`);
+  if (card) card.remove();
+  showToast('Removed — remember to Save Changes', 'info');
+}
+
+function addCompetition(affiliated) {
+  const id = 'comp_' + Date.now();
+  const newComp = {
+    id,
+    name: 'New Competition',
+    shortName: 'NEW',
+    website: 'https://',
+    logo: '',
+    status: 'upcoming',
+    dates: 'TBC',
+    location: 'TBC',
+    instagram: '',
+    facebook: '',
+    description: 'Add a description here.',
+    affiliated,
+    sortDate: '2026-12-31'
+  };
+  appData.competitions.push(newComp);
+  const grid = affiliated ? document.getElementById('aff-grid') : document.getElementById('main-grid');
+  const addBtn = grid.querySelector('.add-card');
+  const card = affiliated ? buildAffCard(newComp) : buildCard(newComp);
+  grid.insertBefore(card, addBtn);
+  showToast('New card added — edit the fields', 'info');
+}
+
+// ─────────────────────────────────────────────
+// SAVE
+// ─────────────────────────────────────────────
+async function saveChanges() {
+  if (!githubToken) { openEditModal(); return; }
+
+  const overlay = document.getElementById('saving-overlay');
+  overlay.classList.add('show');
+
+  try {
+    // Update lastUpdated
+    appData.meta = appData.meta || {};
+    appData.meta.lastUpdated = new Date().toISOString().split('T')[0];
+
+    const content = btoa(unescape(encodeURIComponent(JSON.stringify(appData, null, 2))));
+
+    // Get fresh SHA if we don't have one
+    if (!currentFileSha) {
+      const res = await fetch(API_URL + `?ref=${BRANCH}`, {
+        headers: {
+          Authorization: `token ${githubToken}`,
+          Accept: 'application/vnd.github.v3+json'
+        }
+      });
+      if (res.ok) {
+        const j = await res.json();
+        currentFileSha = j.sha;
+      }
+    }
+
+    const body = {
+      message: `Update SGM Hub data — ${new Date().toLocaleString('en-AU')}`,
+      content,
+      branch: BRANCH
+    };
+    if (currentFileSha) body.sha = currentFileSha;
+
+    const res = await fetch(API_URL, {
+      method: 'PUT',
+      headers: {
+        Authorization: `token ${githubToken}`,
+        Accept: 'application/vnd.github.v3+json',
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(body)
+    });
+
+    if (!res.ok) {
+      const err = await res.json();
+      throw new Error(err.message || 'Save failed');
+    }
+
+    const json = await res.json();
+    currentFileSha = json.content?.sha;
+
+    overlay.classList.remove('show');
+    showToast('✓ Saved to GitHub successfully!', 'success');
+    disableEditMode();
+    document.getElementById('last-updated').textContent =
+      `Last updated: ${appData.meta.lastUpdated}`;
+    githubToken = null;
+
+  } catch (e) {
+    overlay.classList.remove('show');
+    showToast(`Save failed: ${e.message}`, 'error');
+  }
+}
+
+// ─────────────────────────────────────────────
+// TOAST
+// ─────────────────────────────────────────────
+let toastTimer;
+function showToast(msg, type = 'info') {
+  const toast = document.getElementById('toast');
+  toast.textContent = msg;
+  toast.className = `toast ${type} show`;
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => toast.classList.remove('show'), 3500);
+}
+
+// ─────────────────────────────────────────────
+// KEYBOARD
+// ─────────────────────────────────────────────
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') {
+    closeEditModal();
+    if (document.body.classList.contains('edit-mode')) discardChanges();
+  }
+  if ((e.metaKey || e.ctrlKey) && e.key === 's') {
+    e.preventDefault();
+    if (document.body.classList.contains('edit-mode')) saveChanges();
+  }
+});
+
+document.getElementById('token-input').addEventListener('keydown', e => {
+  if (e.key === 'Enter') unlockEdit();
+});
+
+// ─────────────────────────────────────────────
+// BOOT
+// ─────────────────────────────────────────────
+init();
+</script>
+</body>
+</html>
