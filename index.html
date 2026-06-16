@@ -169,6 +169,69 @@
     .hero-sub   { margin-top: 8px; font-size: 14px; color: var(--muted); }
     .last-updated { margin-top: 4px; font-size: 11px; color: var(--dim); }
 
+    .today-date {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: 10px;
+      padding: 6px 14px;
+      background: rgba(255,255,255,0.04);
+      border: 1px solid var(--border2);
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    .today-date .tz-label {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+      color: var(--dim);
+      background: var(--bg2);
+      border: 1px solid var(--border2);
+      border-radius: 4px;
+      padding: 1px 5px;
+    }
+
+    .market-override-toggle {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 10px;
+      background: rgba(245,158,11,0.06);
+      border: 1px solid rgba(245,158,11,0.2);
+      border-radius: var(--radius-sm);
+      cursor: pointer;
+      transition: background 0.15s;
+      user-select: none;
+    }
+
+    .market-override-toggle:hover { background: rgba(245,158,11,0.12); }
+
+    .market-override-toggle input[type=checkbox] {
+      accent-color: var(--market);
+      width: 15px;
+      height: 15px;
+      cursor: pointer;
+      flex-shrink: 0;
+    }
+
+    .market-override-toggle span {
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--market);
+      line-height: 1.3;
+    }
+
+    .market-override-toggle small {
+      font-size: 10px;
+      color: var(--dim);
+      font-weight: 400;
+      display: block;
+      margin-top: 1px;
+    }
+
     /* ── FILTERS ── */
     .filters {
       max-width: 1300px;
@@ -876,6 +939,13 @@
 <section class="hero">
   <h1>Your <em>Competition</em><br/>Command Centre</h1>
   <p class="hero-sub">All SGM competitions, tournaments &amp; affiliated events — sorted by what's on now.</p>
+  <div>
+    <span class="today-date" id="today-date">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+      <span id="date-text">—</span>
+      <span class="tz-label">AEST</span>
+    </span>
+  </div>
   <p class="last-updated" id="last-updated">Loading...</p>
 </section>
 
@@ -955,14 +1025,27 @@ let currentFileSha = null;
 let activeFilter   = 'all';
 
 // ─── STATUS ENGINE ─────────────────────────────
+
+// Returns today as a plain Date at midnight in Melbourne local time,
+// so all date comparisons stay anchored to AEST/AEDT regardless of
+// where the browser is running.
 function today() {
-  const d = new Date();
-  d.setHours(0,0,0,0);
-  return d;
+  const melbStr = new Date().toLocaleDateString('en-CA', { timeZone: 'Australia/Melbourne' }); // YYYY-MM-DD
+  const [y, m, d] = melbStr.split('-').map(Number);
+  return new Date(y, m - 1, d);
+}
+
+// Melbourne-aware display date (e.g. "Tuesday, 16 June 2026")
+function getMelbourneDateDisplay() {
+  return new Date().toLocaleDateString('en-AU', {
+    timeZone: 'Australia/Melbourne',
+    weekday: 'long', day: 'numeric', month: 'long', year: 'numeric'
+  });
 }
 
 function computeEventStatus(event) {
   if (event.status === 'live') return 'live';
+  if (event.manualInMarket)   return 'in-market'; // explicit override
   const d = new Date(event.sortDate);
   const t = today();
   if (d < t) return 'past';
@@ -1227,6 +1310,8 @@ function buildEditEventBlock(compId, ev) {
   const block = document.createElement('div');
   block.className = 'edit-event-block';
   block.dataset.eventId = ev.id;
+
+  const checkId = `mim-${compId}-${ev.id}`;
   block.innerHTML = `
     <button class="remove-event" onclick="removeEvent('${compId}','${ev.id}')" title="Remove event">✕</button>
     <div class="edit-row-group">
@@ -1252,10 +1337,18 @@ function buildEditEventBlock(compId, ev) {
         oninput="updateEvent('${compId}','${ev.id}','location',this.value)" />
     </div>
     <div class="edit-row-group">
-      <label>Sort Date (YYYY-MM-DD) — used for ordering &amp; In Market calculation</label>
+      <label>Sort Date (YYYY-MM-DD) — used for ordering &amp; auto In Market window</label>
       <input class="edit-field" type="date" value="${esc(ev.sortDate)}"
         oninput="updateEvent('${compId}','${ev.id}','sortDate',this.value);rerenderCard('${compId}')" />
     </div>
+    <label class="market-override-toggle" for="${checkId}">
+      <input type="checkbox" id="${checkId}" ${ev.manualInMarket ? 'checked' : ''}
+        onchange="updateEvent('${compId}','${ev.id}','manualInMarket',this.checked);rerenderCard('${compId}')" />
+      <span>
+        ◆ Mark as In Market (manual override)
+        <small>Use this to force in-market status regardless of the 12-week auto window</small>
+      </span>
+    </label>
   `;
   return block;
 }
@@ -1325,7 +1418,12 @@ function updateEvent(compId, evId, field, value) {
   const c = appData.competitions.find(c => c.id === compId);
   if (!c) return;
   const ev = (c.events || []).find(e => e.id === evId);
-  if (ev) ev[field] = value;
+  if (ev) {
+    // Preserve boolean type for checkbox fields
+    ev[field] = (field === 'manualInMarket') ? Boolean(value) : value;
+    // Clean up false overrides to keep JSON tidy
+    if (field === 'manualInMarket' && !value) delete ev.manualInMarket;
+  }
 }
 
 function rerenderCard(compId) {
@@ -1571,7 +1669,32 @@ document.getElementById('token-input').addEventListener('keydown', e => {
   if (e.key === 'Enter') unlockEdit();
 });
 
+// ─── DATE DISPLAY ──────────────────────────────
+function refreshDateDisplay() {
+  const el = document.getElementById('date-text');
+  if (el) el.textContent = getMelbourneDateDisplay();
+}
+
+// Refresh date at midnight Melbourne time (checks every minute)
+function scheduleMidnightRefresh() {
+  const now = new Date();
+  // Get current Melbourne time
+  const melbNow = new Date(now.toLocaleString('en-AU', { timeZone: 'Australia/Melbourne' }));
+  const nextMidnight = new Date(melbNow);
+  nextMidnight.setHours(24, 0, 30, 0); // 30s after midnight to be safe
+  const msUntilMidnight = nextMidnight - melbNow;
+
+  setTimeout(() => {
+    // Re-render everything with the new date (status calculations refresh)
+    if (appData) render();
+    refreshDateDisplay();
+    scheduleMidnightRefresh(); // schedule next day
+  }, msUntilMidnight);
+}
+
 // ─── BOOT ──────────────────────────────────────
+refreshDateDisplay();
+scheduleMidnightRefresh();
 init();
 </script>
 </body>
