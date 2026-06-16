@@ -594,66 +594,56 @@
 
     .visit-btn:hover { background: rgba(249,115,22,0.2); border-color: var(--accent); }
 
-    /* Ensure all direct card children sit above ::before/::after overlays */
-    .card > * { position: relative; z-index: 1; }
-
-    /* In edit mode: no transform, inputs fully interactive */
+    /* In edit mode: no hover transform */
     body.edit-mode .card,
     body.edit-mode .card:hover { transform: none !important; }
 
-    body.edit-mode .edit-field,
-    body.edit-mode .edit-select,
-    body.edit-mode input[type="checkbox"],
-    body.edit-mode .market-override-toggle {
-      position: relative;
-      z-index: 2;
-      pointer-events: all;
-    }
-
-    /* ── EDIT CONTROLS (per card) ── */
-    .edit-controls-panel {
+    /* ── PER-CARD EDIT BUTTON (visible only in edit mode) ── */
+    .card-edit-btn {
       display: none;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: 12px;
-      padding: 14px;
-      background: rgba(249,115,22,0.04);
-      border: 1px dashed rgba(249,115,22,0.25);
+      align-items: center;
+      gap: 5px;
+      padding: 6px 12px;
       border-radius: var(--radius-sm);
+      font-size: 12px;
+      font-weight: 600;
+      font-family: inherit;
+      cursor: pointer;
+      background: rgba(249,115,22,0.1);
+      border: 1px solid rgba(249,115,22,0.3);
+      color: var(--accent);
+      transition: all 0.15s;
     }
 
-    body.edit-mode .edit-controls-panel { display: flex; }
+    .card-edit-btn:hover { background: rgba(249,115,22,0.2); border-color: var(--accent); }
+    body.edit-mode .card-edit-btn { display: inline-flex; }
 
+    /* ── CARD EDIT MODAL FORM STYLES ── */
     .edit-section-label {
       font-size: 10px;
       font-weight: 700;
       letter-spacing: 1px;
       text-transform: uppercase;
       color: var(--accent);
-      margin-bottom: 2px;
+      margin: 10px 0 4px;
     }
 
-    .edit-row-group {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-    }
+    .edit-row-group { display: flex; flex-direction: column; gap: 4px; }
 
     .edit-row-group label {
-      font-size: 10px;
+      font-size: 11px;
       font-weight: 600;
-      color: var(--dim);
-      letter-spacing: 0.3px;
+      color: var(--muted);
     }
 
     .edit-field {
-      background: rgba(0,0,0,0.3);
+      background: var(--bg2);
       border: 1px solid var(--border2);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       color: var(--text);
       font-family: inherit;
-      font-size: 12px;
-      padding: 5px 8px;
+      font-size: 13px;
+      padding: 8px 10px;
       width: 100%;
       outline: none;
       transition: border-color 0.15s;
@@ -662,78 +652,76 @@
     .edit-field:focus { border-color: var(--accent); }
 
     .edit-select {
-      background: var(--card2);
+      background: var(--bg2);
       border: 1px solid var(--border2);
-      border-radius: 4px;
+      border-radius: var(--radius-sm);
       color: var(--text);
       font-family: inherit;
-      font-size: 12px;
-      padding: 5px 8px;
+      font-size: 13px;
+      padding: 8px 10px;
       outline: none;
       cursor: pointer;
       width: 100%;
+      transition: border-color 0.15s;
     }
 
     .edit-select:focus { border-color: var(--accent); }
 
     .edit-event-block {
-      background: rgba(0,0,0,0.2);
+      background: rgba(255,255,255,0.03);
       border: 1px solid var(--border2);
       border-radius: var(--radius-sm);
-      padding: 10px;
+      padding: 12px;
       display: flex;
       flex-direction: column;
-      gap: 6px;
-      position: relative;
+      gap: 8px;
+      margin-bottom: 8px;
     }
 
-    .edit-event-block .remove-event {
-      position: absolute;
-      top: 6px;
-      right: 6px;
-      background: transparent;
-      border: none;
-      color: var(--dim);
-      cursor: pointer;
-      font-size: 14px;
-      line-height: 1;
-      padding: 2px 4px;
-      border-radius: 4px;
-      transition: all 0.15s;
+    .event-block-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 2px;
     }
 
-    .edit-event-block .remove-event:hover { color: var(--live); background: var(--live-bg); }
-
-    .btn-add-event {
-      background: transparent;
-      border: 1px dashed rgba(249,115,22,0.3);
-      border-radius: var(--radius-sm);
-      color: var(--accent);
+    .event-block-header span {
       font-size: 12px;
-      font-weight: 600;
-      font-family: inherit;
-      padding: 6px 12px;
-      cursor: pointer;
-      width: 100%;
-      transition: all 0.15s;
+      font-weight: 700;
+      color: var(--text);
     }
 
-    .btn-add-event:hover { background: rgba(249,115,22,0.06); border-color: var(--accent); }
-
-    .btn-remove-comp {
+    .btn-remove-event {
       background: transparent;
-      border: 1px solid rgba(239,68,68,0.25);
-      border-radius: var(--radius-sm);
+      border: 1px solid rgba(239,68,68,0.3);
+      border-radius: 4px;
       color: var(--live);
       font-size: 11px;
       font-weight: 600;
       font-family: inherit;
-      padding: 5px 10px;
+      padding: 3px 8px;
       cursor: pointer;
       transition: all 0.15s;
     }
 
-    .btn-remove-comp:hover { background: var(--live-bg); }
+    .btn-remove-event:hover { background: var(--live-bg); }
+
+    .btn-add-event {
+      background: transparent;
+      border: 1px dashed rgba(249,115,22,0.4);
+      border-radius: var(--radius-sm);
+      color: var(--accent);
+      font-size: 13px;
+      font-weight: 600;
+      font-family: inherit;
+      padding: 8px 12px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.15s;
+      margin-top: 4px;
+    }
+
+    .btn-add-event:hover { background: rgba(249,115,22,0.06); border-color: var(--accent); }
 
     /* ── AFFILIATED ── */
     .affiliated-section {
@@ -1039,6 +1027,21 @@
   </div>
 </div>
 
+<!-- CARD EDIT MODAL -->
+<div class="modal-overlay" id="card-edit-modal">
+  <div class="modal" style="max-width:560px;max-height:88vh;display:flex;flex-direction:column;padding:0;overflow:hidden;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:12px;padding:22px 24px 16px;border-bottom:1px solid var(--border);flex-shrink:0;">
+      <h2 id="card-edit-title" style="font-size:17px;">Edit Competition</h2>
+      <button class="btn btn-ghost" onclick="closeCardEdit()" style="padding:5px 10px;font-size:16px;">✕</button>
+    </div>
+    <div id="card-edit-body" style="flex:1;overflow-y:auto;padding:16px 24px 8px;display:flex;flex-direction:column;gap:8px;"></div>
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;padding:14px 24px 18px;border-top:1px solid var(--border);flex-shrink:0;">
+      <button class="btn btn-danger" onclick="removeCompFromModal()">Remove Competition</button>
+      <button class="btn btn-accent" onclick="closeCardEdit()">Done</button>
+    </div>
+  </div>
+</div>
+
 <!-- TOAST -->
 <div class="toast" id="toast"></div>
 
@@ -1225,13 +1228,17 @@ function buildCard(comp) {
   });
   card.appendChild(evList);
 
-  // Edit controls panel
-  card.appendChild(buildEditPanel(comp, initials));
-
   // Footer
   const foot = document.createElement('div');
   foot.className = 'card-foot';
   foot.id = `foot-${comp.id}`;
+
+  // Edit button (only visible in edit mode via CSS)
+  const editBtn = document.createElement('button');
+  editBtn.className = 'card-edit-btn';
+  editBtn.innerHTML = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit`;
+  editBtn.onclick = (e) => { e.stopPropagation(); openCardEdit(comp.id); };
+  foot.appendChild(editBtn);
 
   if (comp.instagram) {
     const a = document.createElement('a');
@@ -1284,109 +1291,143 @@ function buildEventRow(ev) {
   return row;
 }
 
-// ─── BUILD EDIT PANEL ──────────────────────────
-function buildEditPanel(comp, initials) {
-  const panel = document.createElement('div');
-  panel.className = 'edit-controls-panel';
-  panel.id = `edit-panel-${comp.id}`;
+// ─── CARD EDIT MODAL ───────────────────────────
+let currentEditCompId = null;
 
-  // Comp-level fields
-  panel.innerHTML = `
-    <div class="edit-section-label">Competition Details</div>
+function openCardEdit(compId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  currentEditCompId = compId;
+  document.getElementById('card-edit-title').textContent = comp.name;
+  renderCardEditBody(compId);
+  document.getElementById('card-edit-modal').classList.add('open');
+}
 
+function closeCardEdit() {
+  document.getElementById('card-edit-modal').classList.remove('open');
+  if (currentEditCompId) rerenderCard(currentEditCompId);
+  currentEditCompId = null;
+}
+
+function renderCardEditBody(compId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  const body = document.getElementById('card-edit-body');
+
+  let eventsHtml = (comp.events || []).map(ev => `
+    <div class="edit-event-block" data-event-id="${esc(ev.id)}">
+      <div class="event-block-header">
+        <span>${esc(ev.name)}</span>
+        <button class="btn-remove-event" onclick="removeEventModal('${esc(compId)}','${esc(ev.id)}')">Remove</button>
+      </div>
+      <div class="edit-row-group">
+        <label>Event Name</label>
+        <input class="edit-field" type="text" value="${esc(ev.name)}"
+          oninput="updateEvent('${esc(compId)}','${esc(ev.id)}','name',this.value);this.closest('.edit-event-block').querySelector('.event-block-header span').textContent=this.value" />
+      </div>
+      <div class="edit-row-group">
+        <label>Status</label>
+        <select class="edit-select" onchange="updateEvent('${esc(compId)}','${esc(ev.id)}','status',this.value)">
+          <option value="live"     ${ev.status==='live'    ?'selected':''}>● Live Now</option>
+          <option value="upcoming" ${ev.status==='upcoming'?'selected':''}>Upcoming</option>
+        </select>
+      </div>
+      <div class="edit-row-group">
+        <label>Dates (display text)</label>
+        <input class="edit-field" type="text" value="${esc(ev.dates)}"
+          oninput="updateEvent('${esc(compId)}','${esc(ev.id)}','dates',this.value)" />
+      </div>
+      <div class="edit-row-group">
+        <label>Location</label>
+        <input class="edit-field" type="text" value="${esc(ev.location)}"
+          oninput="updateEvent('${esc(compId)}','${esc(ev.id)}','location',this.value)" />
+      </div>
+      <div class="edit-row-group">
+        <label>Sort Date (YYYY-MM-DD) — used for card ordering &amp; auto 12-week In Market window</label>
+        <input class="edit-field" type="date" value="${esc(ev.sortDate)}"
+          oninput="updateEvent('${esc(compId)}','${esc(ev.id)}','sortDate',this.value)" />
+      </div>
+      <div class="edit-row-group">
+        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+          <input type="checkbox" ${ev.manualInMarket ? 'checked' : ''}
+            onchange="updateEvent('${esc(compId)}','${esc(ev.id)}','manualInMarket',this.checked)"
+            style="width:16px;height:16px;accent-color:var(--market);cursor:pointer;flex-shrink:0;" />
+          <span style="color:var(--market);font-weight:600;">◆ Mark as In Market (manual override)
+            <span style="display:block;font-size:10px;color:var(--dim);font-weight:400;margin-top:1px;">Forces In Market status regardless of the 12-week auto window</span>
+          </span>
+        </label>
+      </div>
+    </div>
+  `).join('');
+
+  body.innerHTML = `
+    <div class="edit-section-label" style="margin-top:0;">Competition Details</div>
     <div class="edit-row-group">
       <label>Name</label>
       <input class="edit-field" type="text" value="${esc(comp.name)}"
-        oninput="updateComp('${comp.id}','name',this.value);document.querySelector('.card[data-id=${comp.id}] h3').textContent=this.value" />
+        oninput="updateComp('${esc(compId)}','name',this.value);document.getElementById('card-edit-title').textContent=this.value" />
     </div>
     <div class="edit-row-group">
       <label>Description</label>
       <input class="edit-field" type="text" value="${esc(comp.description||'')}"
-        oninput="updateComp('${comp.id}','description',this.value);document.querySelector('.card[data-id=${comp.id}] .card-desc').textContent=this.value" />
-    </div>
-    <div class="edit-row-group">
-      <label>Logo URL</label>
-      <input class="edit-field" type="url" value="${esc(comp.logo||'')}"
-        oninput="updateComp('${comp.id}','logo',this.value);refreshLogo('${comp.id}',this.value,'${initials}')" />
+        oninput="updateComp('${esc(compId)}','description',this.value)" />
     </div>
     <div class="edit-row-group">
       <label>Website URL</label>
       <input class="edit-field" type="url" value="${esc(comp.website||'')}"
-        oninput="updateComp('${comp.id}','website',this.value)" />
+        oninput="updateComp('${esc(compId)}','website',this.value)" />
     </div>
     <div class="edit-row-group">
       <label>Instagram URL</label>
       <input class="edit-field" type="url" value="${esc(comp.instagram||'')}"
-        oninput="updateComp('${comp.id}','instagram',this.value)" />
+        oninput="updateComp('${esc(compId)}','instagram',this.value)" />
     </div>
     <div class="edit-row-group">
       <label>Facebook URL</label>
       <input class="edit-field" type="url" value="${esc(comp.facebook||'')}"
-        oninput="updateComp('${comp.id}','facebook',this.value)" />
+        oninput="updateComp('${esc(compId)}','facebook',this.value)" />
     </div>
 
-    <div class="edit-section-label" style="margin-top:6px;">Events</div>
-    <div id="edit-events-${comp.id}"></div>
-    <button class="btn-add-event" onclick="addEvent('${comp.id}')">+ Add Event</button>
-    <div style="display:flex;justify-content:flex-end;margin-top:4px;">
-      <button class="btn-remove-comp" onclick="removeComp('${comp.id}')">Remove Competition</button>
-    </div>
+    <div class="edit-section-label">Events</div>
+    ${eventsHtml}
+    <button class="btn-add-event" onclick="addEventModal('${esc(compId)}')">+ Add Event</button>
   `;
-
-  // Build event blocks
-  const evContainer = panel.querySelector(`#edit-events-${comp.id}`);
-  (comp.events || []).forEach(ev => {
-    evContainer.appendChild(buildEditEventBlock(comp.id, ev));
-  });
-
-  return panel;
 }
 
-function buildEditEventBlock(compId, ev) {
-  const block = document.createElement('div');
-  block.className = 'edit-event-block';
-  block.dataset.eventId = ev.id;
+function addEventModal(compId) {
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  const ev = {
+    id: 'ev_' + Date.now(),
+    name: 'New Event', status: 'upcoming',
+    dates: 'TBC', location: 'TBC', sortDate: '2026-12-31'
+  };
+  comp.events = comp.events || [];
+  comp.events.push(ev);
+  renderCardEditBody(compId);
+  // Scroll to bottom of modal so user sees the new event
+  const body = document.getElementById('card-edit-body');
+  body.scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
 
-  const checkId = `mim-${compId}-${ev.id}`;
-  block.innerHTML = `
-    <button class="remove-event" onclick="removeEvent('${compId}','${ev.id}')" title="Remove event">✕</button>
-    <div class="edit-row-group">
-      <label>Event Name</label>
-      <input class="edit-field" type="text" value="${esc(ev.name)}"
-        oninput="updateEvent('${compId}','${ev.id}','name',this.value)" />
-    </div>
-    <div class="edit-row-group">
-      <label>Status</label>
-      <select class="edit-select" onchange="updateEvent('${compId}','${ev.id}','status',this.value);rerenderCard('${compId}')">
-        <option value="live"     ${ev.status==='live'    ?'selected':''}>● Live Now</option>
-        <option value="upcoming" ${ev.status==='upcoming'?'selected':''}>Upcoming</option>
-      </select>
-    </div>
-    <div class="edit-row-group">
-      <label>Dates (display text)</label>
-      <input class="edit-field" type="text" value="${esc(ev.dates)}"
-        oninput="updateEvent('${compId}','${ev.id}','dates',this.value)" />
-    </div>
-    <div class="edit-row-group">
-      <label>Location</label>
-      <input class="edit-field" type="text" value="${esc(ev.location)}"
-        oninput="updateEvent('${compId}','${ev.id}','location',this.value)" />
-    </div>
-    <div class="edit-row-group">
-      <label>Sort Date (YYYY-MM-DD) — used for ordering &amp; auto In Market window</label>
-      <input class="edit-field" type="date" value="${esc(ev.sortDate)}"
-        oninput="updateEvent('${compId}','${ev.id}','sortDate',this.value);rerenderCard('${compId}')" />
-    </div>
-    <label class="market-override-toggle" for="${checkId}">
-      <input type="checkbox" id="${checkId}" ${ev.manualInMarket ? 'checked' : ''}
-        onchange="updateEvent('${compId}','${ev.id}','manualInMarket',this.checked);rerenderCard('${compId}')" />
-      <span>
-        ◆ Mark as In Market (manual override)
-        <small>Use this to force in-market status regardless of the 12-week auto window</small>
-      </span>
-    </label>
-  `;
-  return block;
+function removeEventModal(compId, evId) {
+  if (!confirm('Remove this event?')) return;
+  const comp = appData.competitions.find(c => c.id === compId);
+  if (!comp) return;
+  comp.events = (comp.events || []).filter(e => e.id !== evId);
+  renderCardEditBody(compId);
+}
+
+function removeCompFromModal() {
+  if (!currentEditCompId || !confirm('Remove this competition entirely?')) return;
+  appData.competitions = appData.competitions.filter(c => c.id !== currentEditCompId);
+  const card = document.querySelector(
+    `.card[data-id="${currentEditCompId}"], .aff-card[data-id="${currentEditCompId}"]`
+  );
+  if (card) card.remove();
+  document.getElementById('card-edit-modal').classList.remove('open');
+  currentEditCompId = null;
+  showToast('Removed — remember to Save Changes', 'info');
 }
 
 // ─── AFFILIATED CARD ───────────────────────────
@@ -1418,8 +1459,17 @@ function buildAffCard(comp) {
   `;
 
   card.addEventListener('click', e => {
+    if (e.target.closest('.card-edit-btn')) return;
+    if (document.body.classList.contains('edit-mode')) { openCardEdit(comp.id); return; }
     if (!e.target.closest('a')) window.open(comp.website, '_blank', 'noopener');
   });
+
+  const affEditBtn = document.createElement('button');
+  affEditBtn.className = 'card-edit-btn';
+  affEditBtn.style.cssText = 'margin-left:auto;margin-top:6px;';
+  affEditBtn.innerHTML = `<svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg> Edit`;
+  affEditBtn.onclick = (e) => { e.stopPropagation(); openCardEdit(comp.id); };
+  card.querySelector('.aff-info').appendChild(affEditBtn);
 
   return card;
 }
@@ -1488,13 +1538,6 @@ function rerenderCard(compId) {
   oldCard.classList.toggle('hidden', !show);
 }
 
-function removeComp(id) {
-  if (!confirm('Remove this competition?')) return;
-  appData.competitions = appData.competitions.filter(c => c.id !== id);
-  const card = document.querySelector(`.card[data-id="${id}"]`);
-  if (card) card.remove();
-  showToast('Removed — save to make it permanent', 'info');
-}
 
 function addComp(affiliated) {
   const id = 'comp_' + Date.now();
@@ -1513,40 +1556,9 @@ function addComp(affiliated) {
   const addBtn = grid.querySelector('.add-card');
   const card = affiliated ? buildAffCard(newComp) : buildCard(newComp);
   grid.insertBefore(card, addBtn);
-  showToast('New card added — fill in the edit panel', 'info');
+  openCardEdit(id); // open modal immediately
 }
 
-function addEvent(compId) {
-  const comp = appData.competitions.find(c => c.id === compId);
-  if (!comp) return;
-  const ev = {
-    id: 'ev_' + Date.now(),
-    name: 'New Event', status: 'upcoming',
-    dates: 'TBC', location: 'TBC', sortDate: '2026-12-31'
-  };
-  comp.events = comp.events || [];
-  comp.events.push(ev);
-
-  // Add to edit panel
-  const container = document.getElementById(`edit-events-${compId}`);
-  if (container) container.appendChild(buildEditEventBlock(compId, ev));
-
-  // Add to display list
-  const evList = document.getElementById(`events-${compId}`);
-  if (evList) evList.appendChild(buildEventRow(ev));
-}
-
-function removeEvent(compId, evId) {
-  const comp = appData.competitions.find(c => c.id === compId);
-  if (!comp) return;
-  comp.events = (comp.events || []).filter(e => e.id !== evId);
-
-  // Remove from edit panel
-  const block = document.querySelector(`#edit-events-${compId} [data-event-id="${evId}"]`);
-  if (block) block.remove();
-
-  rerenderCard(compId);
-}
 
 function refreshLogo(id, url, initials) {
   const el = document.getElementById(`logo-${id}`);
@@ -1688,7 +1700,7 @@ function showToast(msg, type = 'info') {
 
 // ─── KEYBOARD ──────────────────────────────────
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') closeEditModal();
+  if (e.key === 'Escape') { closeEditModal(); closeCardEdit(); }
   if ((e.metaKey || e.ctrlKey) && e.key === 's') {
     e.preventDefault();
     if (document.body.classList.contains('edit-mode')) saveChanges();
