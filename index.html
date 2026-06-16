@@ -1183,7 +1183,6 @@ function buildCard(comp) {
   head.innerHTML = `
     <div class="comp-logo" id="logo-${comp.id}">
       <span class="logo-initials">${initials}</span>
-      ${comp.logo ? `<img src="${esc(comp.logo)}" alt="" onerror="this.remove()" />` : ''}
     </div>
     <div class="card-title-group">
       <h3>${esc(comp.name)}</h3>
@@ -1385,7 +1384,6 @@ function buildAffCard(comp) {
   card.innerHTML = `
     <div class="aff-logo" id="aff-logo-${comp.id}">
       <span>${initials}</span>
-      ${comp.logo ? `<img src="${esc(comp.logo)}" alt="" onerror="this.remove()" />` : ''}
     </div>
     <div class="aff-info">
       <h4>${esc(comp.name)}</h4>
@@ -1533,9 +1531,7 @@ function removeEvent(compId, evId) {
 
 function refreshLogo(id, url, initials) {
   const el = document.getElementById(`logo-${id}`);
-  if (!el) return;
-  el.innerHTML = `<span class="logo-initials">${initials}</span>` +
-    (url ? `<img src="${esc(url)}" alt="" onerror="this.remove()" />` : '');
+  if (el) el.innerHTML = `<span class="logo-initials">${initials}</span>`;
 }
 
 // ─── EDIT MODE ─────────────────────────────────
