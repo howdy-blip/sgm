@@ -112,6 +112,15 @@
     padding: 4px 10px; border-radius: 100px; white-space: nowrap;
   }
 
+  .card-head-right { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+  .btn-example {
+    font-size: 11px; font-weight: 700; color: var(--text);
+    background: var(--card2); border: 1px solid var(--border2);
+    padding: 4px 12px; border-radius: 100px; white-space: nowrap;
+    text-decoration: none; cursor: pointer; transition: border-color .15s, color .15s;
+  }
+  .btn-example:hover { border-color: var(--accent); color: var(--accent2); }
+
   .dropzone {
     border: 1.5px dashed var(--border2);
     border-radius: var(--radius-sm);
@@ -215,7 +224,10 @@
         <h3>Solus Email</h3>
         <p>Stand-alone email sent to the full database. Upload up to 5 images and write the accompanying copy.</p>
       </div>
-      <span class="spec-tag">Max 5 files</span>
+      <div class="card-head-right">
+        <span class="spec-tag">Max 5 files</span>
+        <a class="btn-example" href="#" target="_blank" rel="noopener">See example</a>
+      </div>
     </div>
 
     <div class="dropzone" tabindex="0">
@@ -241,7 +253,10 @@
         <h3>Newsletter Banners</h3>
         <p>Contracted for three rotating banner placements in the newsletter.</p>
       </div>
-      <span class="spec-tag">1200px -150px. Max 5 files</span>
+      <div class="card-head-right">
+        <span class="spec-tag">1200px -150px. Max 5 files</span>
+        <a class="btn-example" href="https://drive.google.com/file/d/1TydX6isArMCyA5CSGp4yxTV9Re76L1d5/view?usp=drive_link" target="_blank" rel="noopener">See example</a>
+      </div>
     </div>
 
     <div class="dropzone" tabindex="0">
@@ -264,7 +279,10 @@
         <h3>Newsletter Featured Article</h3>
         <p>One featured article slot with a hero image and accompanying copy.</p>
       </div>
-      <span class="spec-tag">1920px - 1080px. Max 1 file</span>
+      <div class="card-head-right">
+        <span class="spec-tag">1920px - 1080px. Max 1 file</span>
+        <a class="btn-example" href="#" target="_blank" rel="noopener">See example</a>
+      </div>
     </div>
 
     <div class="dropzone" tabindex="0">
@@ -290,7 +308,10 @@
         <h3>Registrants Email</h3>
         <p>Solus-style email sent directly to registered participants of the competition. Can carry a more exclusive offer.</p>
       </div>
-      <span class="spec-tag">Max 5 files</span>
+      <div class="card-head-right">
+        <span class="spec-tag">Max 5 files</span>
+        <a class="btn-example" href="#" target="_blank" rel="noopener">See example</a>
+      </div>
     </div>
 
     <div class="dropzone" tabindex="0">
