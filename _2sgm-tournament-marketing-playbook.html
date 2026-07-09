@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SGM Tournament Marketing Playbook</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --chalk:#F1F1F1;
+    --chalk-line:#DCDCDC;
+    --ink:#181818;
+    --pitch:#B91E2B;
+    --pitch-dark:#7A1218;
+    --lime:#141414;
+    --amber:#E8A23B;
+    --steel:#4B7A8C;
+    --plum:#7C3E5C;
+    --card-shadow: 0 1px 0 rgba(0,0,0,0.06);
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--chalk);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 80px 0;
+  }
+  .wrap{max-width:1080px;margin:0 auto;padding:0 28px;}
+
+  /* HERO */
+  .hero{
+    background:
+      radial-gradient(1200px 400px at 10% -10%, rgba(0,0,0,0.28), transparent 60%),
+      var(--pitch);
+    color:var(--chalk);
+    padding:56px 0 40px 0;
+    border-bottom:6px solid var(--lime);
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    right:-60px;top:-60px;
+    width:320px;height:320px;
+    border-radius:50%;
+    border:2px dashed rgba(241,241,241,0.14);
+  }
+  .eyebrow{
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.14em;
+    text-transform:uppercase;
+    font-size:13px;
+    color:var(--chalk);
+    margin:0 0 10px 0;
+  }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+    font-size:clamp(34px,5.5vw,58px);
+    line-height:0.98;
+    margin:0 0 14px 0;
+  }
+  .hero p.sub{
+    font-size:16px;
+    max-width:560px;
+    line-height:1.55;
+    color:rgba(246,243,234,0.82);
+    margin:0;
+  }
+
+  /* PREREQUISITES */
+  .prereq-section{padding:26px 0 4px 0;}
+  .prereq-card{
+    background:#FFFFFF;
+    color:var(--ink);
+    border-radius:16px;
+    padding:26px 28px 24px 28px;
+    border:1px solid var(--chalk-line);
+    position:relative;
+    transition:border-color .18s ease, box-shadow .18s ease, transform .18s ease;
+  }
+  .prereq-card:hover{
+    border-color:var(--pitch);
+    box-shadow:0 6px 20px rgba(0,0,0,0.08);
+    transform:translateY(-1px);
+  }
+  .prereq-eyebrow{
+    font-family:'Anton',sans-serif;
+    letter-spacing:0.12em;
+    text-transform:uppercase;
+    font-size:11.5px;
+    color:var(--pitch);
+    display:block;
+    margin-bottom:8px;
+  }
+  .prereq-title{
+    font-family:'Anton',sans-serif;
+    font-weight:400;
+    text-transform:uppercase;
+    font-size:19px;
+    line-height:1.25;
+    letter-spacing:0.01em;
+    margin:0 0 16px 0;
+    max-width:680px;
+    color:var(--ink);
+  }
+  .prereq-list li{color:var(--ink);font-weight:500;}
+  .prereq-list li::before{background:var(--pitch);}
+  .prereq-group-label{
+    font-family:'Anton',sans-serif;
+    text-transform:uppercase;
+    font-size:11.5px;
+    letter-spacing:0.06em;
+    color:#7A7A7A;
+    margin:18px 0 8px 0;
+  }
+
+  /* FILTER BAR */
+  .filterbar{
+    position:sticky;top:0;z-index:20;
+    background:var(--chalk);
+    border-bottom:1px solid var(--chalk-line);
+    padding:14px 0;
+  }
+  .filter-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
+  .filter-label{
+    font-family:'Anton',sans-serif;
+    font-size:11px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#7A7A7A;
+    margin-right:6px;
+  }
+  .chip{
+    border:1.5px solid var(--chalk-line);
+    background:#fff;
+    color:var(--ink);
+    padding:7px 14px;
+    border-radius:100px;
+    font-size:13px;
+    font-weight:600;
+    cursor:pointer;
+    display:inline-flex;align-items:center;gap:7px;
+    transition:all .15s ease;
+  }
+  .chip .dot{width:8px;height:8px;border-radius:50%;background:#ccc;}
+  .chip.active{border-color:transparent;color:#fff;}
+  .chip[data-ch="all"].active{background:var(--ink);}
+  .chip[data-ch="organic"].active{background:var(--pitch);}
+  .chip[data-ch="paid"].active{background:var(--amber);}
+  .chip[data-ch="newsletter"].active{background:var(--steel);}
+  .chip[data-ch="email"].active{background:var(--plum);}
+  .chip[data-ch="organic"] .dot{background:var(--pitch);}
+  .chip[data-ch="paid"] .dot{background:var(--amber);}
+  .chip[data-ch="newsletter"] .dot{background:var(--steel);}
+  .chip[data-ch="email"] .dot{background:var(--plum);}
+  .chip.active .dot{background:#fff;}
+  .chip:hover{transform:translateY(-1px);}
+
+  /* TIMELINE */
+  .timeline-section{padding:40px 0 8px 0;}
+  .section-title{
+    font-family:'Anton',sans-serif;
+    text-transform:uppercase;
+    font-size:22px;
+    letter-spacing:0.01em;
+    margin:0 0 4px 0;
+  }
+  .section-hint{
+    font-size:13.5px;
+    color:#5C5C5C;
+    margin:0 0 24px 0;
+    max-width:640px;
+    line-height:1.5;
+  }
+  .track-scroll{overflow-x:auto;padding-bottom:6px;}
+  .track{
+    position:relative;
+    min-width:920px;
+    height:auto;
+    padding:18px 0 0 0;
+  }
+  .track-line{
+    position:absolute;
+    left:0;right:0;top:56px;
+    height:3px;
+    background:var(--chalk-line);
+    border-radius:3px;
+  }
+  .weeks{
+    display:grid;
+    grid-template-columns:repeat(13,1fr);
+    position:relative;
+  }
+  .week-col{position:relative;padding-top:0;}
+  .week-num{
+    font-family:'Anton',sans-serif;
+    font-size:15px;
+    text-align:center;
+    color:var(--ink);
+    margin-bottom:4px;
+  }
+  .week-num span{display:block;font-family:'Inter',sans-serif;font-weight:600;font-size:9px;letter-spacing:0.06em;text-transform:uppercase;color:#8A8A8A;}
+  .week-markers{
+    height:96px;
+    position:relative;
+    display:flex;flex-direction:column;align-items:center;justify-content:flex-end;
+    gap:4px;
+    padding-bottom:0;
+  }
+  .marker{
+    width:13px;height:13px;border-radius:50%;
+    border:2px solid var(--chalk);
+    cursor:pointer;
+    transition:transform .12s ease;
+    flex-shrink:0;
+  }
+  .marker:hover{transform:scale(1.35);}
+  .marker.organic{background:var(--pitch);}
+  .marker.paid{background:var(--amber);}
+  .marker.newsletter{background:var(--steel);}
+  .marker.email{background:var(--plum);}
+  .marker.hidden{display:none;}
+  .stem{
+    position:absolute;top:56px;left:50%;transform:translateX(-50%);
+    width:2px;height:0;background:var(--chalk-line);
+  }
+  .today-flag{
+    text-align:center;
+    font-family:'Anton',sans-serif;
+    font-size:10px;
+    letter-spacing:0.08em;
+    background:var(--ink);
+    color:var(--chalk);
+    padding:3px 7px;
+    border-radius:4px;
+    margin-top:8px;
+    display:inline-block;
+  }
+
+  /* DETAIL PANEL */
+  .detail-panel{
+    margin-top:28px;
+    background:#fff;
+    border:1px solid var(--chalk-line);
+    border-radius:14px;
+    padding:20px 22px;
+    box-shadow:var(--card-shadow);
+    min-height:64px;
+  }
+  .detail-panel .placeholder{color:#999999;font-size:13.5px;}
+  .detail-item{display:none;gap:14px;align-items:flex-start;}
+  .detail-item.show{display:flex;}
+  .detail-tag{
+    flex-shrink:0;
+    font-family:'Anton',sans-serif;
+    font-size:11px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    color:#fff;
+    padding:6px 10px;
+    border-radius:7px;
+    white-space:nowrap;
+  }
+  .detail-item[data-ch="organic"] .detail-tag{background:var(--pitch);}
+  .detail-item[data-ch="paid"] .detail-tag{background:var(--amber);}
+  .detail-item[data-ch="newsletter"] .detail-tag{background:var(--steel);}
+  .detail-item[data-ch="email"] .detail-tag{background:var(--plum);}
+  .detail-text strong{display:block;font-size:15px;margin-bottom:3px;}
+  .detail-text span{font-size:13.5px;color:#555555;line-height:1.5;}
+
+  /* MODULES */
+  .modules{padding:52px 0 0 0;}
+  .module{
+    border:1px solid var(--chalk-line);
+    border-radius:16px;
+    background:#fff;
+    margin-bottom:14px;
+    overflow:hidden;
+    box-shadow:var(--card-shadow);
+  }
+  .module-head{
+    display:flex;
+    align-items:center;
+    flex-wrap:wrap;
+    gap:10px 16px;
+    padding:20px 22px;
+    cursor:pointer;
+    user-select:none;
+  }
+  .module-badge{
+    font-family:'Anton',sans-serif;
+    color:#fff;
+    font-size:12px;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    padding:7px 12px;
+    border-radius:8px;
+    flex-shrink:0;
+  }
+  .module[data-ch="organic"] .module-badge{background:var(--pitch);}
+  .module[data-ch="paid"] .module-badge{background:var(--amber);}
+  .module[data-ch="newsletter"] .module-badge{background:var(--steel);}
+  .module[data-ch="email"] .module-badge{background:var(--plum);}
+  .module-head h3{
+    font-family:'Anton',sans-serif;
+    text-transform:uppercase;
+    font-weight:400;
+    font-size:19px;
+    margin:0;
+    flex-grow:1;
+  }
+  .module-head .timing{
+    font-size:12.5px;
+    color:#7A7A7A;
+    font-weight:600;
+    flex-shrink:0;
+  }
+  .chevron{
+    width:22px;height:22px;flex-shrink:0;
+    transition:transform .2s ease;
+    color:#999999;
+  }
+  .module.open .chevron{transform:rotate(180deg);}
+  .module-body{
+    max-height:0;
+    overflow:hidden;
+    transition:max-height .28s ease;
+  }
+  .module.open .module-body{max-height:1400px;}
+  .module-inner{padding:0 22px 24px 22px;}
+  .module-inner p.lead{
+    font-size:14px;
+    color:#454545;
+    line-height:1.6;
+    margin:0 0 16px 0;
+    padding-top:2px;
+    border-top:1px solid var(--chalk-line);
+    padding-top:16px;
+  }
+  .phase-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;}
+  .phase{
+    background:var(--chalk);
+    border-radius:11px;
+    padding:14px 16px;
+  }
+  .phase h4{
+    font-family:'Anton',sans-serif;
+    text-transform:uppercase;
+    font-size:12.5px;
+    letter-spacing:0.03em;
+    margin:0 0 8px 0;
+    color:var(--pitch-dark);
+  }
+  .phase ul{margin:0;padding-left:18px;}
+  .phase li{font-size:13px;line-height:1.55;margin-bottom:5px;color:#323232;}
+  .note{
+    margin-top:14px;
+    font-size:12.5px;
+    color:#7A7A7A;
+    font-style:italic;
+    line-height:1.5;
+  }
+  .flat-list{
+    margin:0;
+    padding:0;
+    list-style:none;
+    columns:2;
+    column-gap:22px;
+  }
+  .flat-list li{
+    font-size:13.5px;
+    line-height:1.5;
+    color:#323232;
+    margin-bottom:9px;
+    padding-left:16px;
+    position:relative;
+    break-inside:avoid;
+  }
+  .flat-list li::before{
+    content:"";
+    position:absolute;
+    left:0;top:7px;
+    width:6px;height:6px;
+    border-radius:50%;
+    background:var(--pitch);
+  }
+  .flat-list.single{columns:1;}
+  @media (max-width:640px){
+    .flat-list{columns:1;}
+  }
+
+  @media (max-width:640px){
+    .wrap{padding:0 16px;}
+    .filter-row{gap:6px;}
+    .chip{padding:6px 11px;font-size:12px;}
+    h1{font-size:32px;}
+  }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Sports Group Melbourne &mdash; Tournament Marketing</p>
+    <h1>The 12&#8209;Week Playbook</h1>
+    <p class="sub">One system for every SGM tournament launch. Organic builds the story from week 12, paid support adds weight once there's proof to promote and will carry awareness and registrations, and email support through newsletters and solus keeps the club network warm all the way to kickoff.</p>
+  </div>
+</div>
+
+<div class="wrap prereq-section">
+  <div class="prereq-card">
+    <span class="prereq-eyebrow">Before go-live</span>
+    <h2 class="prereq-title">Competition information must be locked in prior to pushing</h2>
+    <ul class="flat-list single prereq-list">
+      <li>Venue</li>
+      <li>Dates</li>
+      <li>Competition structure</li>
+      <li>Pricing</li>
+      <li>Interstate competitions should have already locked in / engaged clubs to assist in campaign launch</li>
+      <li>Supporting club alongside competitions for interstate should be championing within their area</li>
+      <li>Accepting collaboration and sharing on posts needs to be encouraged from operations to clubs registering, to help raise awareness (more important for new comps)</li>
+      <li>Registration link/form tested and live before anything goes out</li>
+      <li>A named contact or enquiries email confirmed for club questions</li>
+      <li>For new competitions, operations to ask clubs to send through photos of their club &mdash; gives usable content to promote where there's currently none</li>
+      <li>Partner, hosting club and any government support details confirmed, including how each should be credited</li>
+      <li>Logos and brand assets supplied for any partners, hosting clubs or sponsors featuring in content</li>
+    </ul>
+  </div>
+</div>
+
+<div class="filterbar">
+  <div class="wrap">
+    <div class="filter-row">
+      <span class="filter-label">Show</span>
+      <button class="chip active" data-ch="all"><span class="dot"></span>All channels</button>
+      <button class="chip" data-ch="organic"><span class="dot"></span>Organic</button>
+      <button class="chip" data-ch="paid"><span class="dot"></span>Paid</button>
+      <button class="chip" data-ch="newsletter"><span class="dot"></span>Newsletter</button>
+      <button class="chip" data-ch="email"><span class="dot"></span>Dedicated email</button>
+    </div>
+  </div>
+</div>
+
+<div class="wrap timeline-section">
+  <h2 class="section-title">Campaign timeline</h2>
+  <p class="section-hint">Weeks out from event day. Filter by channel above, then click any dot for the detail. Week 0 is event weekend.</p>
+
+  <div class="track-scroll">
+    <div class="track">
+      <div class="track-line"></div>
+      <div class="weeks" id="weeks"></div>
+    </div>
+  </div>
+
+  <div class="detail-panel" id="detailPanel">
+    <p class="placeholder">Click a dot on the timeline to see what's happening that week.</p>
+  </div>
+</div>
+
+<div class="wrap modules">
+  <h2 class="section-title">The four modules</h2>
+  <p class="section-hint">Same content as the timeline, laid out as a reference. Click a module to expand it.</p>
+
+  <!-- ORGANIC -->
+  <div class="module" data-ch="organic">
+    <div class="module-head" onclick="toggleModule(this)">
+      <span class="module-badge">Organic</span>
+      <h3>Weeks 12 &rarr; 0</h3>
+      <span class="timing">Always on</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="module-body">
+      <div class="module-inner">
+        <p class="lead">Runs the full 12 weeks. These are the content angles to draw on throughout, since there's no highlight reel or crowd photos yet for a new competition &mdash; several of these can run as graphics, announcements or copy-only posts before any imagery exists.</p>
+        <ul class="flat-list">
+          <li>Tournament announcement post + registration link live</li>
+          <li>Key dates</li>
+          <li>Venue</li>
+          <li>Countdown graphics</li>
+          <li>"Locked in" posts as clubs register</li>
+          <li>Milestone posts &mdash; 30, 50 or whatever targets</li>
+          <li>Sponsor announcements</li>
+          <li>Behind&#8209;the&#8209;scenes: if available from location / clubs associated</li>
+          <li>Fixture release</li>
+          <li>Final registration call / spots closing</li>
+          <li>Logistics posts: if viable and supplied</li>
+          <li>Sponsor activations (on&#8209;field presence, giveaways)</li>
+          <li>Live coverage: results, standout moments, photography</li>
+          <li>Real&#8209;time story updates across the event</li>
+          <li>Sponsor shout&#8209;outs from the venue</li>
+          <li>Thank&#8209;you / wrap post seeding next tournament</li>
+          <li>Champions / winners post</li>
+          <li>Photography based posts where available</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- PAID -->
+  <div class="module" data-ch="paid">
+    <div class="module-head" onclick="toggleModule(this)">
+      <span class="module-badge">Paid</span>
+      <h3>Supports organic</h3>
+      <span class="timing">*Timing varies per competition, ideally from week 10</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="module-body">
+      <div class="module-inner">
+        <p class="lead">Budget is limited, so spend needs to work harder than a broad awareness push can afford. Week 10 is the sweet spot: early enough to still influence registrations, late enough that hopefully a handful of clubs have signed on from SGM and affiliated club relationships, and been provided to marketing to post. Paid ads need to start once there is social proof to put behind the spend, rather than boosting an empty page.</p>
+        <ul class="flat-list single">
+          <li>Launch Meta ads once first handful of clubs are registered</li>
+          <li>Target parents in the tournament catchment area</li>
+        </ul>
+        <p class="lead" style="margin-top:16px;margin-bottom:8px;font-weight:700;color:var(--ink);">If budget permits and needs additional push:</p>
+        <ul class="flat-list single">
+          <li>Urgency messaging as registration nears close, as an ad</li>
+        </ul>
+        <p class="note">Given the limited budget, timing is everything: too early and spend is wasted with nothing to promote, too late and paid loses the runway to influence registrations. Timed right, paid brings in a lift in registrations and awareness that organic alone can't deliver.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- NEWSLETTER -->
+  <div class="module" data-ch="newsletter">
+    <div class="module-head" onclick="toggleModule(this)">
+      <span class="module-badge">Newsletter</span>
+      <h3>Monthly feature</h3>
+      <span class="timing">Timing flexible, always within the lead&#8209;up</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="module-body">
+      <div class="module-inner">
+        <p class="lead">A monthly feature in the newsletter, sitting alongside social rather than duplicating it. Exact timing shifts depending on when each edition goes out, but within the 12&#8209;week lead&#8209;up it will always be included.</p>
+        <ul class="flat-list single">
+          <li>Registration status &mdash; teams in, spots remaining</li>
+          <li>Key dates, venue and format detail</li>
+          <li>Draw / fixture and what to expect on the day, once available</li>
+        </ul>
+        <p class="note">May also pick up an additional feature prior to the 12&#8209;week lead&#8209;in, if a newsletter edition falls before the campaign officially starts.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- DEDICATED EMAIL -->
+  <div class="module" data-ch="email">
+    <div class="module-head" onclick="toggleModule(this)">
+      <span class="module-badge">Dedicated email</span>
+      <h3>CMWeb and/or Mailchimp</h3>
+      <span class="timing">Upon launch, plus case&#8209;by&#8209;case</span>
+      <svg class="chevron" viewBox="0 0 24 24" fill="none"><path d="M6 9l6 6 6-6" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    </div>
+    <div class="module-body">
+      <div class="module-inner">
+        <p class="lead">A dedicated email upon launch, sent via CMWeb and/or Mailchimp depending on the competition and audience. Positioned just after organic launch so there's already something to point to (teams in, venue confirmed), and early enough to still move club registration decisions.</p>
+        <div class="phase-grid">
+          <div class="phase">
+            <h4>Launch send</h4>
+            <ul>
+              <li>Direct registration push straight to the club/coach audience</li>
+              <li>Single clear call to action: register your team</li>
+            </ul>
+          </div>
+          <div class="phase">
+            <h4>Content</h4>
+            <ul>
+              <li>Tournament essentials: dates, venue, format, cost</li>
+              <li>Early registration proof point if available (teams already in)</li>
+              <li>Direct link to the registration form</li>
+            </ul>
+          </div>
+        </div>
+        <p class="note">Further dedicated sends used on a case&#8209;by&#8209;case basis where an additional push is needed.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const weeks = [12,11,10,9,8,7,6,5,4,3,2,1,0];
+
+  const events = {
+    12: [
+      {ch:'organic', title:'Tournament announcement + rego open', detail:'First post goes live. Registration link active, key dates confirmed.'},
+      {ch:'newsletter', title:'Newsletter feature', detail:'Illustrative placement &mdash; actual timing depends on the send schedule. Announce the tournament, key dates, registration open.'}
+    ],
+    11: [
+      {ch:'organic', title:'Format & venue explainer', detail:'"What is SGM" content, venue reveal, countdown graphic launched.'}
+    ],
+    10: [
+      {ch:'organic', title:'First "teams in" posts', detail:'Early registering clubs get shout-out posts once a handful are locked in.'},
+      {ch:'paid', title:'Paid activates', detail:'Meta ads launch once a handful of clubs are registered, so there is real proof to promote. Start of the 4-week flight.'},
+      {ch:'email', title:'Dedicated email &mdash; launch', detail:'Sent via CMWeb and/or Mailchimp depending on the competition and audience. Positioned just after organic launch, with teams in and venue confirmed to point to.'}
+    ],
+    9: [
+      {ch:'organic', title:'Sponsor intros + BTS prep', detail:'Sponsor introduction posts, behind-the-scenes venue/staff prep.'},
+      {ch:'paid', title:'Targeting live', detail:'Ads targeting parents in the tournament catchment area.'}
+    ],
+    8: [
+      {ch:'organic', title:'Milestone: teams registered', detail:'Milestone post on numbers registered / spots remaining.'},
+      {ch:'newsletter', title:'Newsletter feature', detail:'Illustrative placement &mdash; teams in, spots remaining, venue and sponsor detail.'},
+      {ch:'paid', title:'Creative refresh', detail:'Ad creative refreshed using latest milestone and venue content.'}
+    ],
+    7: [
+      {ch:'organic', title:'Sponsor activation content', detail:'On-field sponsor presence teased, more BTS content.'},
+      {ch:'paid', title:'Budget spent, flight closes', detail:'4-week flight wraps here on a $250-500 budget. Optional urgency-messaging ad only if extra budget is available closer to close-off.'}
+    ],
+    6: [
+      {ch:'organic', title:'"Tag a team" + FAQ', detail:'UGC-style prompts, more FAQ content answering logistics questions.'}
+    ],
+    5: [
+      {ch:'organic', title:'Capacity milestone update', detail:'Spots remaining update, staff/volunteer spotlights.'}
+    ],
+    4: [
+      {ch:'organic', title:'Draw & schedule release', detail:'Draw published, meet-the-teams graphics begin.'},
+      {ch:'newsletter', title:'Newsletter feature', detail:'Illustrative placement &mdash; registration closing date, draw timing, what to expect.'}
+    ],
+    3: [
+      {ch:'organic', title:'Meet the teams', detail:'Division breakdowns and team lineup graphics continue.'}
+    ],
+    2: [
+      {ch:'organic', title:'Final registration call', detail:'Last chance messaging as registration nears close.'}
+    ],
+    1: [
+      {ch:'organic', title:'Logistics + daily countdown', detail:'What to bring, parking, spectator info. Daily countdown posts begin.'}
+    ],
+    0: [
+      {ch:'organic', title:'Live coverage + wrap', detail:'Real-time results and photography, sponsor shout-outs, thank-you/wrap post.'}
+    ]
+  };
+
+  const weeksContainer = document.getElementById('weeks');
+  weeks.forEach(w => {
+    const col = document.createElement('div');
+    col.className = 'week-col';
+    const label = w === 0 ? 'Event' : 'Weeks out';
+    col.innerHTML = `
+      <div class="week-num">${w}<span>${label}</span></div>
+      <div class="week-markers" data-week="${w}"></div>
+    `;
+    weeksContainer.appendChild(col);
+  });
+
+  function renderMarkers(){
+    weeks.forEach(w => {
+      const container = document.querySelector(`.week-markers[data-week="${w}"]`);
+      container.innerHTML = '';
+      (events[w]||[]).forEach((ev, i) => {
+        const dot = document.createElement('div');
+        dot.className = `marker ${ev.ch}`;
+        dot.title = ev.title;
+        dot.addEventListener('click', () => showDetail(w, ev));
+        container.appendChild(dot);
+      });
+    });
+  }
+  renderMarkers();
+
+  function showDetail(week, ev){
+    const panel = document.getElementById('detailPanel');
+    const labelMap = {organic:'Organic', paid:'Paid', newsletter:'Newsletter', email:'Dedicated email'};
+    const weekLabel = week === 0 ? 'Event week' : `Week ${week} out`;
+    panel.innerHTML = `
+      <div class="detail-item show" data-ch="${ev.ch}">
+        <span class="detail-tag">${labelMap[ev.ch]} &middot; ${weekLabel}</span>
+        <div class="detail-text">
+          <strong>${ev.title}</strong>
+          <span>${ev.detail}</span>
+        </div>
+      </div>
+    `;
+  }
+
+  // Filtering
+  const chips = document.querySelectorAll('.chip');
+  chips.forEach(chip => {
+    chip.addEventListener('click', () => {
+      chips.forEach(c => c.classList.remove('active'));
+      chip.classList.add('active');
+      const ch = chip.dataset.ch;
+      document.querySelectorAll('.marker').forEach(m => {
+        if(ch === 'all' || m.classList.contains(ch)){
+          m.classList.remove('hidden');
+        } else {
+          m.classList.add('hidden');
+        }
+      });
+      document.querySelectorAll('.module').forEach(mod => {
+        if(ch === 'all' || mod.dataset.ch === ch){
+          mod.style.display = '';
+        } else {
+          mod.style.display = 'none';
+        }
+      });
+      document.getElementById('detailPanel').innerHTML = '<p class="placeholder">Click a dot on the timeline to see what happens that week.</p>';
+    });
+  });
+
+  function toggleModule(headEl){
+    headEl.parentElement.classList.toggle('open');
+  }
+  // Open organic by default
+  document.querySelector('.module[data-ch="organic"]').classList.add('open');
+</script>
+
+</body>
+</html>
