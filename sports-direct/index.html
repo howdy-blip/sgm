@@ -144,6 +144,7 @@
     font-size: 12px; max-width: 220px;
   }
   .file-chip img { width: 32px; height: 32px; object-fit: cover; border-radius: 4px; flex-shrink: 0; }
+    .file-chip .ficon { width: 32px; height: 32px; display: flex; align-items: center; justify-content: center; font-size: 10px; font-weight: 700; color: var(--muted); background: var(--card2); border-radius: 4px; flex-shrink: 0; }
   .file-chip .fname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
   .file-chip .fwarn { color: #fbbf24; font-size: 10px; display: block; }
   .file-chip button {
@@ -161,6 +162,15 @@
   textarea:focus, .dropzone:focus-visible { outline: none; border-color: var(--accent); }
   textarea::placeholder { color: var(--dim); }
   label.field-label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-top: 16px; margin-bottom: 6px; }
+
+    input[type="text"].field-input {
+          width: 100%; margin-top: 8px;
+          background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius-sm);
+          color: var(--text); font-family: inherit; font-size: 13.5px; padding: 10px 12px;
+    }
+    input[type="text"].field-input:focus { outline: none; border-color: var(--accent); }
+    input[type="text"].field-input::placeholder { color: var(--dim); }
+    .field-note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
 
   .card-foot { display: flex; align-items: center; justify-content: space-between; margin-top: 18px; gap: 12px; flex-wrap: wrap; }
   .status { font-size: 12px; color: var(--muted); }
@@ -238,6 +248,9 @@
     <label class="field-label">Email copy (please include call to action link)</label>
     <textarea placeholder="Write the solus email copy here..."></textarea>
 
+        <label class="field-label">Call to action click through link</label>
+        <input type="text" class="field-input cta-input" placeholder="https://..." />
+
     <div class="card-foot">
       <span class="status"></span>
       <button class="btn-submit">Submit to Drive</button>
@@ -263,6 +276,9 @@
       <p><strong>Click to upload</strong> or drag banners here</p>
     </div>
     <div class="file-list"></div>
+
+        <label class="field-label">Call to action click through link</label>
+        <input type="text" class="field-input cta-input" placeholder="https://..." />
 
     <div class="card-foot">
       <span class="status"></span>
@@ -293,6 +309,9 @@
     <label class="field-label">Article copy</label>
     <textarea placeholder="Write the featured article copy here..."></textarea>
 
+        <label class="field-label">Call to action click through link</label>
+        <input type="text" class="field-input cta-input" placeholder="https://..." />
+
     <div class="card-foot">
       <span class="status"></span>
       <button class="btn-submit">Submit to Drive</button>
@@ -322,6 +341,9 @@
     <label class="field-label">Email copy (please include call to action link)</label>
     <textarea placeholder="Write the registrants email copy here..."></textarea>
 
+        <label class="field-label">Call to action click through link</label>
+        <input type="text" class="field-input cta-input" placeholder="https://..." />
+
     <div class="card-foot">
       <span class="status"></span>
       <button class="btn-submit">Submit to Drive</button>
@@ -329,6 +351,63 @@
   </div>
 
 </div>
+
+<!-- PAID SOCIAL AD CAMPAIGN -->
+      <div class="card" data-card="paidsocial">
+    <div class="card-head">
+      <div>
+        <h3>Paid Social Ad Campaign</h3>
+        <p>Can be utilised for digital competition, assist in existing business campaign, discounted offers and more.</p>
+      </div>
+      <div class="card-head-right">
+        <span class="spec-tag">Images or video. Max 5 files. META ad placement size</span>
+      </div>
+    </div>
+
+    <div class="dropzone" tabindex="0">
+      <input type="file" accept="image/*,video/*" multiple />
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>Click to upload</strong> or drag images or video here</p>
+    </div>
+    <div class="file-list"></div>
+
+    <label class="field-label">Suggested ad copy</label>
+    <textarea placeholder="Write the suggested ad copy here..."></textarea>
+    <p class="field-note">We may adjust this to suit our audience, but will send for your approval before it goes live.</p>
+
+    <label class="field-label">Call to action click through link</label>
+    <input type="text" class="field-input cta-input" placeholder="https://..." />
+
+    <div class="card-foot">
+      <span class="status"></span>
+      <button class="btn-submit">Submit to Drive</button>
+    </div>
+  </div>
+
+  <!-- OTHER UPLOADS -->
+  <div class="card" data-card="otheruploads">
+    <div class="card-head">
+      <div>
+        <h3>Other Uploads</h3>
+        <p>If there are other assets, business branding, style guides etc. to upload, please upload here.</p>
+      </div>
+      <div class="card-head-right">
+        <span class="spec-tag">Max 10 files</span>
+      </div>
+    </div>
+
+    <div class="dropzone" tabindex="0">
+      <input type="file" multiple />
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>Click to upload</strong> or drag files here</p>
+    </div>
+    <div class="file-list"></div>
+
+    <div class="card-foot">
+      <span class="status"></span>
+      <button class="btn-submit">Submit to Drive</button>
+    </div>
+  </div>
 
 <footer>
   <p>Sports Direct Digital Assets Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
@@ -351,7 +430,9 @@ const CARD_CONFIG = {
   solus:       { folderName: "Solus Email",        maxFiles: 5, textFileName: "solus-email-copy" },
   banners:     { folderName: "Newsletter Banners",  maxFiles: 5, expectW: 1200, expectH: 150 },
   article:     { folderName: "Featured Article",    maxFiles: 1, expectW: 1920, expectH: 1080, textFileName: "featured-article-copy" },
-  registrants: { folderName: "Registrants Email",   maxFiles: 5, textFileName: "registrants-email-copy" }
+  registrants: { folderName: "Registrants Email",   maxFiles: 5, textFileName: "registrants-email-copy" },
+  paidsocial:   { folderName: "Paid Social Ad Campaign", maxFiles: 5, textFileName: "paid-social-ad-copy" },
+  otheruploads: { folderName: "Other Uploads",       maxFiles: 10 }
 };
 
 // state[cardKey] = [{file, dataUrl, w, h}]
@@ -367,6 +448,7 @@ document.querySelectorAll(".card").forEach(card => {
   const statusEl = card.querySelector(".status");
   const submitBtn = card.querySelector(".btn-submit");
   const textarea = card.querySelector("textarea");
+  const ctaInput = card.querySelector(".cta-input");
 
   dropzone.addEventListener("click", () => input.click());
   dropzone.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") input.click(); });
@@ -389,13 +471,18 @@ document.querySelectorAll(".card").forEach(card => {
       const reader = new FileReader();
       reader.onload = () => {
         const dataUrl = reader.result;
-        const img = new Image();
-        img.onload = () => {
-          const entry = { file, dataUrl, w: img.naturalWidth, h: img.naturalHeight };
-          state[key].push(entry);
+        if (file.type && file.type.startsWith("image/")) {
+          const img = new Image();
+          img.onload = () => {
+            const entry = { file, dataUrl, w: img.naturalWidth, h: img.naturalHeight };
+            state[key].push(entry);
+            renderFiles();
+          };
+          img.src = dataUrl;
+        } else {
+          state[key].push({ file, dataUrl });
           renderFiles();
-        };
-        img.src = dataUrl;
+        }
       };
       reader.readAsDataURL(file);
     }
@@ -408,7 +495,7 @@ document.querySelectorAll(".card").forEach(card => {
       chip.className = "file-chip";
       const mismatch = cfg.expectW && (entry.w !== cfg.expectW || entry.h !== cfg.expectH);
       chip.innerHTML = `
-        <img src="${entry.dataUrl}" alt="" />
+        ${entry.dataUrl && entry.dataUrl.startsWith("data:image") ? `<img src="${entry.dataUrl}" alt="" />` : `<span class="ficon">FILE</span>`}
         <div>
           <span class="fname">${entry.file.name}</span>
           ${mismatch ? `<span class="fwarn">â  ${entry.w}Ã${entry.h}, expected ${cfg.expectW}Ã${cfg.expectH}</span>` : ""}
@@ -430,7 +517,9 @@ document.querySelectorAll(".card").forEach(card => {
 
   submitBtn.addEventListener("click", async () => {
     const files = state[key];
-    const text = textarea ? textarea.value.trim() : "";
+    const copyText = textarea ? textarea.value.trim() : "";
+    const ctaText = ctaInput ? ctaInput.value.trim() : "";
+    const text = [copyText, ctaText ? ("Call to action link: " + ctaText) : ""].filter(Boolean).join("\n\n");
 
     if (!files.length && !text) {
       setStatus("Add at least one file or some copy first.", "err");
