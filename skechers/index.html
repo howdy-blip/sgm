@@ -213,11 +213,11 @@
 </header>
 
 <div class="config-banner" id="config-banner" style="display:none">
-  <div>Ã¢ÂÂ  This page is not yet connected to Google Drive. Paste your deployed Apps Script URL into the <code>APPS_SCRIPT_URL</code> variable near the bottom of this file, then re-publish.</div>
+  <div>ÃÂ¢ÃÂÃÂ  This page is not yet connected to Google Drive. Paste your deployed Apps Script URL into the <code>APPS_SCRIPT_URL</code> variable near the bottom of this file, then re-publish.</div>
 </div>
 
 <div class="hero">
-  <h1>SkechersÂ <em>Digital</em> Assets</h1>
+  <h1>SkechersÃÂ <em>Digital</em> Assets</h1>
   <p class="hero-sub">Upload creative and copy for Skechers email and newsletter placements. Everything submitted below saves straight into the shared Google Drive folder, sorted by placement.</p>
 </div>
 
@@ -233,7 +233,7 @@
         <p>Contracted for three rotating banner placements in the newsletter.</p>
       </div>
       <div class="card-head-right">
-        <span class="spec-tag">1200px -Â150px. Max 5 files</span>
+        <span class="spec-tag">1200px -ÃÂ150px. Max 5 files</span>
         <a class="btn-example" href="https://drive.google.com/file/d/1TydX6isArMCyA5CSGp4yxTV9Re76L1d5/view?usp=drive_link" target="_blank" rel="noopener">See example</a>
       </div>
     </div>
@@ -306,13 +306,6 @@
     </div>
     <div class="file-list"></div>
 
-    <label class="field-label">Suggested ad copy</label>
-    <textarea placeholder="Write the suggested ad copy here..."></textarea>
-    <p class="field-note">We may adjust this to suit our audience, but will send for your approval before it goes live.</p>
-
-    <label class="field-label">Call to action click through link</label>
-    <input type="text" class="field-input cta-input" placeholder="https://..." />
-
     <div class="card-foot">
       <span class="status"></span>
       <button class="btn-submit">Submit to Drive</button>
@@ -347,7 +340,7 @@
 </div>
   
   <footer>
-  <p>SkechersÂ Digital AssetsÂÂ Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
+  <p>SkechersÃÂ Digital AssetsÃÂÃÂ Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
 </footer>
 
 <script>
@@ -433,9 +426,9 @@ document.querySelectorAll(".card").forEach(card => {
         ${entry.dataUrl && entry.dataUrl.startsWith("data:image") ? `<img src="${entry.dataUrl}" alt="" />` : `<span class="ficon">FILE</span>`}
         <div>
           <span class="fname">${entry.file.name}</span>
-          ${mismatch ? `<span class="fwarn">Ã¢ÂÂ  ${entry.w}ÃÂ${entry.h}, expected ${cfg.expectW}ÃÂ${cfg.expectH}</span>` : ""}
+          ${mismatch ? `<span class="fwarn">ÃÂ¢ÃÂÃÂ  ${entry.w}ÃÂÃÂ${entry.h}, expected ${cfg.expectW}ÃÂÃÂ${cfg.expectH}</span>` : ""}
         </div>
-        <button data-i="${i}" aria-label="Remove">ÃÂ</button>
+        <button data-i="${i}" aria-label="Remove">ÃÂÃÂ</button>
       `;
       chip.querySelector("button").addEventListener("click", () => {
         state[key].splice(i, 1);
@@ -461,7 +454,7 @@ document.querySelectorAll(".card").forEach(card => {
       return;
     }
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
-      setStatus("Drive connection not configured yet Ã¢ÂÂ see the notice above.", "err");
+      setStatus("Drive connection not configured yet ÃÂ¢ÃÂÃÂ see the notice above.", "err");
       return;
     }
 
