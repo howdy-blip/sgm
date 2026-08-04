@@ -213,11 +213,11 @@
 </header>
 
 <div class="config-banner" id="config-banner" style="display:none">
-  <div>â  This page is not yet connected to Google Drive. Paste your deployed Apps Script URL into the <code>APPS_SCRIPT_URL</code> variable near the bottom of this file, then re-publish.</div>
+  <div>Ã¢ÂÂ  This page is not yet connected to Google Drive. Paste your deployed Apps Script URL into the <code>APPS_SCRIPT_URL</code> variable near the bottom of this file, then re-publish.</div>
 </div>
 
 <div class="hero">
-  <h1>Skechers <em>Digital</em> Assets</h1>
+  <h1>SkechersÂ <em>Digital</em> Assets</h1>
   <p class="hero-sub">Upload creative and copy for Skechers email and newsletter placements. Everything submitted below saves straight into the shared Google Drive folder, sorted by placement.</p>
 </div>
 
@@ -233,7 +233,7 @@
         <p>Contracted for three rotating banner placements in the newsletter.</p>
       </div>
       <div class="card-head-right">
-        <span class="spec-tag">1200px -150px. Max 5 files</span>
+        <span class="spec-tag">1200px -Â150px. Max 5 files</span>
         <a class="btn-example" href="https://drive.google.com/file/d/1TydX6isArMCyA5CSGp4yxTV9Re76L1d5/view?usp=drive_link" target="_blank" rel="noopener">See example</a>
       </div>
     </div>
@@ -244,38 +244,6 @@
       <p><strong>Click to upload</strong> or drag banners here</p>
     </div>
     <div class="file-list"></div>
-
-        <label class="field-label">Call to action click through link</label>
-        <input type="text" class="field-input cta-input" placeholder="https://..." />
-
-    <div class="card-foot">
-      <span class="status"></span>
-      <button class="btn-submit">Submit to Drive</button>
-    </div>
-  </div>
-
-  <!-- FEATURED ARTICLE -->
-  <div class="card" data-card="article">
-    <div class="card-head">
-      <div>
-        <h3>Newsletter Featured Article</h3>
-        <p>One featured article slot with a hero image and accompanying copy. This is best placed for organic style, ie. appearance or activation at finals, store opening etc. If there it text, minimal or large (for mobile rendering)</p>
-      </div>
-      <div class="card-head-right">
-        <span class="spec-tag">1920px - 1080px. Max 1 file</span>
-        <a class="btn-example" href="https://drive.google.com/file/d/1CQaeaDGcDvcbffc2M2XEiWnKmOx2WBp-/view?usp=drive_link" target="_blank" rel="noopener">See example</a>
-      </div>
-    </div>
-
-    <div class="dropzone" tabindex="0">
-      <input type="file" accept="image/*" />
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
-      <p><strong>Click to upload</strong> or drag the featured image here</p>
-    </div>
-    <div class="file-list"></div>
-
-    <label class="field-label">Article copy</label>
-    <textarea placeholder="Write the featured article copy here..."></textarea>
 
         <label class="field-label">Call to action click through link</label>
         <input type="text" class="field-input cta-input" placeholder="https://..." />
@@ -319,15 +287,15 @@
   </div>
 
 
-<!-- PAID SOCIAL AD CAMPAIGN -->
-      <div class="card" data-card="paidsocial">
-              <div class="card-head">
+<!-- PRE ROLL ADVERTS -->
+  <div class="card" data-card="prerolladverts">
+    <div class="card-head">
       <div>
-        <h3>Paid Social Ad Campaign</h3>
-        <p>Can be utilised for digital competition, assist in existing business campaign, discounted offers and more.</p>
+        <h3>Pre Roll Adverts</h3>
+        <p>Static image or video. Video up to 1 min.</p>
       </div>
       <div class="card-head-right">
-        <span class="spec-tag">Images or video. Max 5 files. META ad placement size</span>
+        <span class="spec-tag">1920px x 1080px. Max 5 files</span>
       </div>
     </div>
 
@@ -379,7 +347,7 @@
 </div>
   
   <footer>
-  <p>Skechers Digital Assets Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
+  <p>SkechersÂ Digital AssetsÂÂ Built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
 </footer>
 
 <script>
@@ -397,9 +365,8 @@ if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
 // Placement config: card key -> { folderName, maxFiles, expectW, expectH, textFileName }
 const CARD_CONFIG = {
   banners:     { folderName: "Newsletter Banners",  maxFiles: 5, expectW: 1200, expectH: 150 },
-  article:     { folderName: "Featured Article",    maxFiles: 1, expectW: 1920, expectH: 1080, textFileName: "featured-article-copy" },
   registrants: { folderName: "Registrants Email",   maxFiles: 5, textFileName: "registrants-email-copy" },
-  paidsocial:   { folderName: "Paid Social Ad Campaign", maxFiles: 5, textFileName: "paid-social-ad-copy" },
+  prerolladverts: { folderName: "Pre Roll Adverts", maxFiles: 5, textFileName: "pre-roll-adverts-copy" },
   otheruploads: { folderName: "Other Uploads",       maxFiles: 10 }
 };
 
@@ -466,9 +433,9 @@ document.querySelectorAll(".card").forEach(card => {
         ${entry.dataUrl && entry.dataUrl.startsWith("data:image") ? `<img src="${entry.dataUrl}" alt="" />` : `<span class="ficon">FILE</span>`}
         <div>
           <span class="fname">${entry.file.name}</span>
-          ${mismatch ? `<span class="fwarn">â  ${entry.w}Ã${entry.h}, expected ${cfg.expectW}Ã${cfg.expectH}</span>` : ""}
+          ${mismatch ? `<span class="fwarn">Ã¢ÂÂ  ${entry.w}ÃÂ${entry.h}, expected ${cfg.expectW}ÃÂ${cfg.expectH}</span>` : ""}
         </div>
-        <button data-i="${i}" aria-label="Remove">Ã</button>
+        <button data-i="${i}" aria-label="Remove">ÃÂ</button>
       `;
       chip.querySelector("button").addEventListener("click", () => {
         state[key].splice(i, 1);
@@ -494,7 +461,7 @@ document.querySelectorAll(".card").forEach(card => {
       return;
     }
     if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
-      setStatus("Drive connection not configured yet â see the notice above.", "err");
+      setStatus("Drive connection not configured yet Ã¢ÂÂ see the notice above.", "err");
       return;
     }
 
