@@ -9,61 +9,61 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
 <style>
 :root {
-  --bg: #070710;
-  --bg2: #0e0e1c;
-  --card: #13132a;
-  --card2: #1a1a36;
-  --border: rgba(255,255,255,0.07);
-  --border2: rgba(255,255,255,0.14);
-  --accent: #f97316;
-  --accent2: #fb923c;
-  --text: #f1f5f9;
-  --muted: #94a3b8;
-  --dim: #475569;
-  --radius: 14px;
-  --radius-sm: 8px;
+--bg: #101B2D;
+--bg2: #1B2C47;
+--card: #1B2C47;
+--card2: #24395C;
+--border: rgba(255,255,255,0.10);
+--border2: rgba(255,255,255,0.18);
+--accent: #f97316;
+--accent2: #fb923c;
+--text: #f1f5f9;
+--muted: #94a3b8;
+--dim: #475569;
+--radius: 14px;
+--radius-sm: 8px;
 }
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 body {
-  font-family: 'Inter', system-ui, sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  min-height: 100vh;
-  -webkit-font-smoothing: antialiased;
+font-family: 'Inter', system-ui, sans-serif;
+background: var(--bg);
+color: var(--text);
+min-height: 100vh;
+-webkit-font-smoothing: antialiased;
 }
 header {
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  background: rgba(7,7,16,0.88);
-  backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border);
-  padding: 0 24px;
+position: sticky;
+top: 0;
+z-index: 100;
+background: rgba(7,7,16,0.88);
+backdrop-filter: blur(20px);
+border-bottom: 1px solid var(--border);
+padding: 0 24px;
 }
 .header-inner {
-  max-width: 1300px;
-  margin: 0 auto;
-  height: 68px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
+max-width: 1300px;
+margin: 0 auto;
+height: 68px;
+display: flex;
+align-items: center;
+justify-content: space-between;
+gap: 16px;
 }
 .logo-mark { display: flex; align-items: center; gap: 12px; text-decoration: none; }
 .logo-icon {
-  width: 40px; height: 40px;
-  background: linear-gradient(135deg, var(--accent) 0%, #f43f5e 100%);
-  border-radius: 10px;
-  display: flex; align-items: center; justify-content: center;
-  font-weight: 900; font-size: 15px; color: #fff; flex-shrink: 0; letter-spacing: -0.5px;
+width: 40px; height: 40px;
+background: linear-gradient(135deg, var(--accent) 0%, #f43f5e 100%);
+border-radius: 10px;
+display: flex; align-items: center; justify-content: center;
+font-weight: 900; font-size: 15px; color: #fff; flex-shrink: 0; letter-spacing: -0.5px;
 }
 .logo-text strong { font-size: 16px; font-weight: 800; color: var(--text); }
 .logo-text span { font-size: 11px; color: var(--muted); font-weight: 500; margin-top: 2px; display: block; }
 .btn {
-  display: inline-flex; align-items: center; gap: 6px;
-  padding: 8px 16px; border-radius: var(--radius-sm);
-  font-size: 13px; font-weight: 600; cursor: pointer; border: none;
-  transition: all 0.15s ease; font-family: inherit; text-decoration: none; white-space: nowrap;
+display: inline-flex; align-items: center; gap: 6px;
+padding: 8px 16px; border-radius: var(--radius-sm);
+font-size: 13px; font-weight: 600; cursor: pointer; border: none;
+transition: all 0.15s ease; font-family: inherit; text-decoration: none; white-space: nowrap;
 }
 .btn-ghost { background: transparent; color: var(--muted); border: 1px solid var(--border2); }
 .btn-ghost:hover { background: var(--card); color: var(--text); }
@@ -77,59 +77,59 @@ main { max-width: 1300px; margin: 0 auto; padding: 48px 24px 100px; }
 .hero p { margin-top: 14px; font-size: 15px; color: var(--muted); max-width: 640px; line-height: 1.6; }
 
 .notice {
-  margin-top: 28px;
-  background: rgba(245,158,11,0.08);
-  border: 1px solid rgba(245,158,11,0.25);
-  border-radius: var(--radius-sm);
-  padding: 14px 18px;
-  font-size: 13px;
-  color: #fbbf24;
-  line-height: 1.6;
+margin-top: 28px;
+background: rgba(245,158,11,0.08);
+border: 1px solid rgba(245,158,11,0.25);
+border-radius: var(--radius-sm);
+padding: 14px 18px;
+font-size: 13px;
+color: #fbbf24;
+line-height: 1.6;
 }
 .notice strong { color: #fcd34d; }
 
 .section-title {
-  margin-top: 48px;
-  margin-bottom: 20px;
-  font-size: 12px;
-  font-weight: 700;
-  letter-spacing: 1.5px;
-  text-transform: uppercase;
-  color: var(--dim);
-  border-bottom: 1px solid var(--border);
-  padding-bottom: 14px;
+margin-top: 48px;
+margin-bottom: 20px;
+font-size: 12px;
+font-weight: 700;
+letter-spacing: 1.5px;
+text-transform: uppercase;
+color: var(--dim);
+border-bottom: 1px solid var(--border);
+padding-bottom: 14px;
 }
 
 .grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-  gap: 20px;
+display: grid;
+grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+gap: 20px;
 }
 
 .card {
-  background: var(--card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius);
-  overflow: hidden;
-  display: flex;
-  flex-direction: column;
+background: var(--card);
+border: 1px solid var(--border);
+border-radius: var(--radius);
+overflow: hidden;
+display: flex;
+flex-direction: column;
 }
 .card-bar { height: 4px; width: 100%; }
 .card-body { padding: 22px; display: flex; flex-direction: column; gap: 16px; flex: 1; }
 
 .logo-plate {
-  height: 160px;
-  border-radius: var(--radius-sm);
-  background-color: #e5e7eb;
-  background-image:
-    linear-gradient(45deg, #d1d5db 25%, transparent 25%),
-    linear-gradient(-45deg, #d1d5db 25%, transparent 25%),
-    linear-gradient(45deg, transparent 75%, #d1d5db 75%),
-    linear-gradient(-45deg, transparent 75%, #d1d5db 75%);
-  background-size: 20px 20px;
-  background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
-  display: flex; align-items: center; justify-content: center;
-  padding: 16px;
+height: 160px;
+border-radius: var(--radius-sm);
+background-color: #e5e7eb;
+background-image:
+linear-gradient(45deg, #d1d5db 25%, transparent 25%),
+linear-gradient(-45deg, #d1d5db 25%, transparent 25%),
+linear-gradient(45deg, transparent 75%, #d1d5db 75%),
+linear-gradient(-45deg, transparent 75%, #d1d5db 75%);
+background-size: 20px 20px;
+background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
+display: flex; align-items: center; justify-content: center;
+padding: 16px;
 }
 .logo-plate img { max-width: 100%; max-height: 100%; object-fit: contain; }
 
@@ -138,16 +138,16 @@ main { max-width: 1300px; margin: 0 auto; padding: 48px 24px 100px; }
 
 .swatch-row { display: flex; flex-wrap: wrap; gap: 10px; }
 .swatch {
-  display: flex; align-items: center; gap: 8px;
-  background: var(--card2);
-  border: 1px solid var(--border2);
-  border-radius: 999px;
-  padding: 4px 10px 4px 4px;
-  cursor: pointer;
-  font-size: 11px;
-  font-weight: 600;
-  color: var(--muted);
-  transition: all 0.15s ease;
+display: flex; align-items: center; gap: 8px;
+background: var(--card2);
+border: 1px solid var(--border2);
+border-radius: 999px;
+padding: 4px 10px 4px 4px;
+cursor: pointer;
+font-size: 11px;
+font-weight: 600;
+color: var(--muted);
+transition: all 0.15s ease;
 }
 .swatch:hover { border-color: var(--accent); color: var(--text); }
 .swatch-dot { width: 20px; height: 20px; border-radius: 50%; border: 1px solid rgba(255,255,255,0.2); flex-shrink: 0; }
@@ -162,178 +162,219 @@ footer { max-width: 1300px; margin: 0 auto; padding: 0 24px 60px; color: var(--d
 <body>
 
 <header>
-  <div class="header-inner">
-    <a href="/" class="logo-mark">
-      <div class="logo-icon">SGM</div>
-      <div class="logo-text"><strong>SGM Hub</strong><span>Branding &amp; Logos</span></div>
-    </a>
-    <div class="header-actions">
-      <a href="/" class="btn btn-ghost">&larr; Back to Hub</a>
-    </div>
-  </div>
+<div class="header-inner">
+<a href="/" class="logo-mark">
+<div class="logo-icon">SGM</div>
+<div class="logo-text"><strong>SGM Hub</strong><span>Branding &amp; Logos</span></div>
+</a>
+<div class="header-actions">
+<a href="/" class="btn btn-ghost">&larr; Back to Hub</a>
+</div>
+</div>
 </header>
 
 <main>
-  <div class="hero">
-    <h1>Competition <span>Logos</span> &amp; Brand Colours</h1>
-    <p>Official logo files and brand colours for every SGM competition. Click a colour swatch to copy its hex code, and use the download button to grab the full logo pack (PNG, SVG, EPS) for that competition from Google Drive.</p>
-  </div>
+<div class="hero">
+<h1>Competition <span>Logos</span> &amp; Brand Colours</h1>
+<p>Official logo files and brand colours for every SGM competition. Click a colour swatch to copy its hex code, and use the download button to grab the full logo pack (PNG, SVG, EPS) for that competition from Google Drive.</p>
+</div>
 
-  <div class="notice">
-    <strong>Note:</strong> these download links point to our Google Drive folders. Please contact us if you do not have permission to open.
-  </div>
+<div class="notice">
+<strong>Note:</strong> these download links point to our Google Drive folders. Please contact us if you do not have permission to open.
+</div>
 
-  <div class="section-title">Competitions &amp; Tournaments</div>
+<div class="section-title">Competitions &amp; Tournaments</div>
 
-  <div class="grid" id="grid"></div>
+<div class="grid" id="grid"></div>
 
-  <div class="section-title">School &amp; Community Cups</div>
-  <div class="grid" id="grid-schools"></div>
+<div class="section-title">School &amp; Community Cups</div>
+<div class="grid" id="grid-schools"></div>
 </main>
 
 <footer>
-  SGM Hub — Branding &amp; Logos. Logo files remain the property of their respective competitions.
+SGM Hub — Branding &amp; Logos. Logo files remain the property of their respective competitions.
 </footer>
 
 <script>
 const competitions = [
-  {
-    name: "Junior Champions League",
-    shortName: "JCL",
-    thumb: "1BL-yqFyPZOwvCJRExZmOTaIRKkeMS7QG",
-    folder: "1FTIHlVO04d1fjyZevs-1x-q7H7NLXgEf",
-    colors: [
-      { name: "Teal", hex: "#01F0D2" },
-      { name: "Black", hex: "#000000" },
-      { name: "White", hex: "#FFFFFF" }
-    ]
-  },
-  {
-    name: "ACT Youth Cup",
-    shortName: "ACTYC",
-    thumb: "14U1Q2quLtmvncjmHsRUk2kAidweI3uO9",
-    folder: "1T7V5jdNc6mRP5jwfzPyQgIUmtlOI10HF",
-    colors: [
-      { name: "Navy", hex: "#052C6B" },
-      { name: "Gold", hex: "#FAB40E" },
-      { name: "Green", hex: "#1E9459" }
-    ]
-  },
-  {
-    name: "Auckland Champions Cup",
-    shortName: "ACC",
-    thumb: "1T1Gx0_14hnfrBnS__WxWCJkacW07-R6R",
-    folder: "1UI1Nn_u3GUPegjiGAep2Y1n07s27TO2Z",
-    colors: [
-      { name: "Blue", hex: "#212196" },
-      { name: "Yellow", hex: "#DDB838" }
-    ]
-  },
-  {
-    name: "Football Fiesta",
-    shortName: "FF",
-    thumb: "1LtfkpPyfcenair6YLqpgqY8iZQEg3knF",
-    folder: "1llSQ3vEQgHHa0NNhnTQYCpAFs_XPlwD_",
-    colors: [
-      { name: "Red", hex: "#DD1212" },
-      { name: "White", hex: "#FFFFFF" }
-    ]
-  },
-  {
-    name: "Futsal Melbourne Cup",
-    shortName: "FMC",
-    thumb: "11PhzNTIjuSQ-7Shlr3BYEDAZHoweDEhN",
-    folder: "1gJY_eUIEUDY1frC13h_ng-o3k4KUXl57",
-    colors: [
-      { name: "Yellow", hex: "#FFDE59" },
-      { name: "Black", hex: "#000000" },
-      { name: "White", hex: "#FFFFFF" }
-    ]
-  },
-  {
-    name: "Junior Academy League",
-    shortName: "JAL",
-    thumb: "1S8wOrs2fuIGfGAYyTcGaCwDc1SDyz1da",
-    folder: "1JwJHkZEPjpuF2n4QTms-NkSIL-VIPVAY",
-    colors: [
-      { name: "Black", hex: "#000000" },
-      { name: "White", hex: "#FFFFFF" }
-    ]
-  },
-  {
-    name: "Youth Super Cup",
-    shortName: "YSC",
-    thumb: "1xX9UurTNuMXfaI0t26mlkZ2A1fYM-Kpp",
-    folder: "1DQGgKqhqUiKj8DMbhZFBAMVHAND89Vv3",
-    colors: [
-      { name: "Gold", hex: "#AF8E0F" }
-    ]
-  }
+{
+name: "Junior Champions League",
+shortName: "JCL",
+thumb: "1BL-yqFyPZOwvCJRExZmOTaIRKkeMS7QG",
+folder: "1FTIHlVO04d1fjyZevs-1x-q7H7NLXgEf",
+colors: [
+{ name: "Teal", hex: "#01F0D2" },
+{ name: "Black", hex: "#000000" },
+{ name: "White", hex: "#FFFFFF" }
+]
+},
+{
+name: "ACT Youth Cup",
+shortName: "ACTYC",
+thumb: "14U1Q2quLtmvncjmHsRUk2kAidweI3uO9",
+folder: "1T7V5jdNc6mRP5jwfzPyQgIUmtlOI10HF",
+colors: [
+{ name: "Navy", hex: "#052C6B" },
+{ name: "Gold", hex: "#FAB40E" },
+{ name: "Green", hex: "#1E9459" }
+]
+},
+{
+name: "Auckland Champions Cup",
+shortName: "ACC",
+thumb: "1T1Gx0_14hnfrBnS__WxWCJkacW07-R6R",
+folder: "1UI1Nn_u3GUPegjiGAep2Y1n07s27TO2Z",
+colors: [
+{ name: "Blue", hex: "#212196" },
+{ name: "Yellow", hex: "#DDB838" }
+]
+},
+{
+name: "Football Fiesta",
+shortName: "FF",
+thumb: "1LtfkpPyfcenair6YLqpgqY8iZQEg3knF",
+folder: "1llSQ3vEQgHHa0NNhnTQYCpAFs_XPlwD_",
+colors: [
+{ name: "Red", hex: "#DD1212" },
+{ name: "White", hex: "#FFFFFF" }
+]
+},
+{
+name: "Futsal Melbourne Cup",
+shortName: "FMC",
+thumb: "11PhzNTIjuSQ-7Shlr3BYEDAZHoweDEhN",
+folder: "1gJY_eUIEUDY1frC13h_ng-o3k4KUXl57",
+colors: [
+{ name: "Yellow", hex: "#FFDE59" },
+{ name: "Black", hex: "#000000" },
+{ name: "White", hex: "#FFFFFF" }
+]
+},
+{
+name: "Junior Academy League",
+shortName: "JAL",
+thumb: "1S8wOrs2fuIGfGAYyTcGaCwDc1SDyz1da",
+folder: "1JwJHkZEPjpuF2n4QTms-NkSIL-VIPVAY",
+colors: [
+{ name: "Black", hex: "#000000" },
+{ name: "White", hex: "#FFFFFF" }
+]
+},
+{
+name: "Youth Super Cup",
+shortName: "YSC",
+thumb: "1xX9UurTNuMXfaI0t26mlkZ2A1fYM-Kpp",
+folder: "1DQGgKqhqUiKj8DMbhZFBAMVHAND89Vv3",
+colors: [
+{ name: "Gold", hex: "#AF8E0F" }
+]
+},
+{
+name: "Cambridge Cup",
+shortName: "CC",
+thumb: "1updwTcw0y1Mwj48oPFaDXyzsVd3Xuw-d",
+folder: "1WxvonOSsELSxr915oiJx7oi6pcP1Bmdu",
+colors: [
+{ name: "Navy", hex: "#1D2739" },
+{ name: "Red", hex: "#DA2421" }
+]
+},
+{
+name: "Taranaki Cup",
+shortName: "TC",
+thumb: "19KY9MWnJUAyBj1_4UX9cMjKfuWQ80_VI",
+folder: "1RJXkCSsSQhgP0DiPkRr6Z2bVE-EfgB5a",
+colors: [
+{ name: "Gold", hex: "#FFBF00" },
+{ name: "Green", hex: "#00632E" }
+]
+},
+{
+name: "Ballarat Girls Cup",
+shortName: "BGC",
+thumb: "1skfS20rB9qxTWv_F7q4_7_0xEhFm_Vcq",
+folder: "1xmB_mCM9A0ImGsxESnnuMXkeF8c6M767",
+colors: [
+{ name: "Purple", hex: "#543084" },
+{ name: "Lavender", hex: "#D8A8FC" }
+]
+},
+{
+name: "SGM",
+shortName: "SGM",
+thumb: "1jdWpwTOjkDHuP4xRPLsWhMTSNCXs9Wu1",
+folder: "1d0kOB4Fo-YDwhU6kpNPilPZeli3yXkRV",
+colors: [
+{ name: "Red", hex: "#C02327" },
+{ name: "Blue", hex: "#0C5491" },
+{ name: "Gold", hex: "#F9B527" }
+]
+}
 ];
 
 const schoolCups = [
-  {
-    name: "Schools Cup Invitational",
-    shortName: "SC",
-    thumb: "1RwiJ37cGY4HDCAMsksANXzdDoebuHcJ9",
-    folder: "1I7_DN8GZhMBnVqlqd2G2F9w9wQsQEjIr",
-    colors: [
-      { name: "Green", hex: "#09FF08" },
-      { name: "Black", hex: "#000000" }
-    ]
-  },
- 
+{
+name: "Schools Cup Invitational",
+shortName: "SC",
+thumb: "1RwiJ37cGY4HDCAMsksANXzdDoebuHcJ9",
+folder: "1I7_DN8GZhMBnVqlqd2G2F9w9wQsQEjIr",
+colors: [
+{ name: "Green", hex: "#09FF08" },
+{ name: "Black", hex: "#000000" }
+]
+},
+
 ];
 
 function thumbUrl(id, size) {
-  return `https://drive.google.com/thumbnail?id=${id}&sz=w${size || 600}`;
+return `https://drive.google.com/thumbnail?id=${id}&sz=w${size || 600}`;
 }
 function folderUrl(id) {
-  return `https://drive.google.com/drive/folders/${id}`;
+return `https://drive.google.com/drive/folders/${id}`;
 }
 
 function renderCard(c) {
-  const bar = c.colors.length
-    ? `linear-gradient(90deg, ${c.colors.map(col => col.hex).join(',')})`
-    : 'var(--border2)';
-  const logoInner = c.thumb
-    ? `<img src="${thumbUrl(c.thumb, 600)}" alt="${c.name} logo" loading="lazy" />`
-    : `<span style="color:#64748b;font-size:12px;font-weight:600;">No single logo file</span>`;
-  const swatches = c.colors.map(col => `
-    <div class="swatch" data-hex="${col.hex}" title="Click to copy ${col.hex}">
-      <span class="swatch-dot" style="background:${col.hex}"></span>
-      ${col.name} · ${col.hex}
-    </div>`).join('');
-  const note = c.note ? `<div class="comp-sub">${c.note}</div>` : '';
-  return `
-  <div class="card">
-    <div class="card-bar" style="background:${bar}"></div>
-    <div class="card-body">
-      <div class="logo-plate">${logoInner}</div>
-      <div>
-        <div class="comp-name">${c.name}</div>
-        <div class="comp-sub">${c.shortName}</div>
-        ${note}
-      </div>
-      <div class="swatch-row">${swatches || '<span class="comp-sub">No brand colours extracted</span>'}</div>
-      <div class="card-actions">
-        <a class="btn btn-accent" href="${folderUrl(c.folder)}" target="_blank" rel="noopener">Download logo pack</a>
-      </div>
-    </div>
-  </div>`;
+const bar = c.colors.length
+? `linear-gradient(90deg, ${c.colors.map(col => col.hex).join(',')})`
+: 'var(--border2)';
+const logoInner = c.thumb
+? `<img src="${thumbUrl(c.thumb, 600)}" alt="${c.name} logo" loading="lazy" />`
+: `<span style="color:#64748b;font-size:12px;font-weight:600;">No single logo file</span>`;
+const swatches = c.colors.map(col => `
+<div class="swatch" data-hex="${col.hex}" title="Click to copy ${col.hex}">
+<span class="swatch-dot" style="background:${col.hex}"></span>
+${col.name} · ${col.hex}
+</div>`).join('');
+const note = c.note ? `<div class="comp-sub">${c.note}</div>` : '';
+return `
+<div class="card">
+<div class="card-bar" style="background:${bar}"></div>
+<div class="card-body">
+<div class="logo-plate">${logoInner}</div>
+<div>
+<div class="comp-name">${c.name}</div>
+<div class="comp-sub">${c.shortName}</div>
+${note}
+</div>
+<div class="swatch-row">${swatches || '<span class="comp-sub">No brand colours extracted</span>'}</div>
+<div class="card-actions">
+<a class="btn btn-accent" href="${folderUrl(c.folder)}" target="_blank" rel="noopener">Download logo pack</a>
+</div>
+</div>
+</div>`;
 }
 
 document.getElementById('grid').innerHTML = competitions.map(renderCard).join('');
 document.getElementById('grid-schools').innerHTML = schoolCups.map(renderCard).join('');
 
 document.addEventListener('click', (e) => {
-  const sw = e.target.closest('.swatch');
-  if (!sw) return;
-  const hex = sw.getAttribute('data-hex');
-  navigator.clipboard.writeText(hex).then(() => {
-    sw.classList.add('copied');
-    setTimeout(() => sw.classList.remove('copied'), 1200);
-  });
+const sw = e.target.closest('.swatch');
+if (!sw) return;
+const hex = sw.getAttribute('data-hex');
+navigator.clipboard.writeText(hex).then(() => {
+sw.classList.add('copied');
+setTimeout(() => sw.classList.remove('copied'), 1200);
+});
 });
 </script>
 
