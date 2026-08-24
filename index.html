@@ -1,6 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <style id="sgm-gate-style">body{visibility:hidden !important;}</style>
+  <script>
+    (function(){
+      var CORRECT = "SGM2026!!";
+      function buildGate(){
+        var overlay = document.createElement('div');
+        overlay.id = 'sgm-password-gate';
+        overlay.style.cssText = 'position:fixed;inset:0;z-index:999999;background:#070710;display:flex;align-items:center;justify-content:center;font-family:Inter,system-ui,sans-serif;visibility:visible;';
+        overlay.innerHTML = '<div style="background:#13132a;border:1px solid rgba(255,255,255,0.1);border-radius:14px;padding:40px;max-width:360px;width:90%;text-align:center;"><div style="font-weight:800;font-size:20px;color:#f1f5f9;margin-bottom:8px;">SGM Hub</div><div style="color:#94a3b8;font-size:14px;margin-bottom:20px;">Enter password to continue</div><input id="sgm-gate-input" type="password" placeholder="Password" style="width:100%;padding:12px;border-radius:8px;border:1px solid rgba(255,255,255,0.14);background:#1a1a36;color:#f1f5f9;font-size:15px;margin-bottom:12px;box-sizing:border-box;" /><div id="sgm-gate-error" style="color:#ef4444;font-size:13px;min-height:18px;margin-bottom:8px;"></div><button id="sgm-gate-submit" style="width:100%;padding:12px;border-radius:8px;border:none;background:#f97316;color:#070710;font-weight:700;font-size:15px;cursor:pointer;">Enter</button></div>';
+        document.body.appendChild(overlay);
+        var input = document.getElementById('sgm-gate-input');
+        var err = document.getElementById('sgm-gate-error');
+        var btn = document.getElementById('sgm-gate-submit');
+        function unlock(){
+          var s = document.getElementById('sgm-gate-style');
+          if (s) s.remove();
+            overlay.remove();
+        }
+        function tryUnlock(){
+          if (input.value === CORRECT) {
+            sessionStorage.setItem('sgm_unlocked','yes');
+            unlock();
+          } else {
+            err.textContent = 'Incorrect password';
+            input.value = '';
+            input.focus();
+          }
+        }
+        btn.addEventListener('click', tryUnlock);
+        input.addEventListener('keydown', function(e){ if (e.key === 'Enter') tryUnlock(); });
+        input.focus();
+      }
+      if (sessionStorage.getItem('sgm_unlocked') === 'yes') {
+        document.addEventListener('DOMContentLoaded', function(){
+          var s = document.getElementById('sgm-gate-style');
+          if (s) s.remove();
+        });
+      } else {
+        if (document.readyState === 'loading') {
+          document.addEventListener('DOMContentLoaded', buildGate);
+        } else {
+          buildGate();
+        }
+      }
+    })();
+  </script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>SGM Hub — Sports Group Melbourne</title>
