@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Sports Direct Giveaway - Club Entry</title>
+<meta name="description" content="Enter your club's video content for the Sports Direct giveaway." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg:         #070710;
+    --bg2:        #0e0e1c;
+    --card:       #13132a;
+    --card2:      #1a1a36;
+    --border:     rgba(255,255,255,0.07);
+    --border2:    rgba(255,255,255,0.14);
+    --accent:     #f97316;
+    --accent2:    #fb923c;
+    --live:       #ef4444;
+    --ok:         #22c55e;
+    --ok-bg:      rgba(34,197,94,0.10);
+    --text:       #f1f5f9;
+    --muted:      #94a3b8;
+    --dim:        #475569;
+    --radius:     14px;
+    --radius-sm:  8px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .logo-band {
+    padding: 40px 24px 8px;
+    display: flex;
+    justify-content: center;
+  }
+  .logo-band img {
+    max-width: 420px;
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .hero {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 24px 24px 8px;
+    text-align: center;
+  }
+  .hero h1 { font-size: 30px; font-weight: 800; letter-spacing: -0.5px; }
+  .hero h1 em { font-style: normal; color: var(--accent); }
+  .hero-sub { color: var(--muted); font-size: 14px; margin-top: 10px; line-height: 1.6; }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 24px 24px 80px; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px;
+  }
+
+  label.field-label {
+    display: block; font-size: 12px; font-weight: 600; color: var(--muted);
+    margin-top: 18px; margin-bottom: 6px;
+  }
+  label.field-label:first-child { margin-top: 0; }
+  label.field-label .req { color: var(--accent2); }
+
+  input[type="text"].field-input,
+  input[type="email"].field-input {
+    width: 100%;
+    background: var(--bg2); border: 1px solid var(--border2); border-radius: var(--radius-sm);
+    color: var(--text); font-family: inherit; font-size: 13.5px; padding: 10px 12px;
+  }
+  input.field-input:focus { outline: none; border-color: var(--accent); }
+  input.field-input::placeholder { color: var(--dim); }
+  input.field-input.invalid { border-color: var(--live); }
+
+  .field-note { font-size: 12px; color: var(--muted); margin-top: 6px; line-height: 1.5; }
+
+  .dropzone {
+    border: 1.5px dashed var(--border2);
+    border-radius: var(--radius-sm);
+    padding: 28px 16px;
+    text-align: center;
+    cursor: pointer;
+    transition: border-color .15s, background .15s;
+    background: var(--bg2);
+  }
+  .dropzone:hover, .dropzone.drag { border-color: var(--accent); background: rgba(249,115,22,0.04); }
+  .dropzone.invalid { border-color: var(--live); }
+  .dropzone svg { color: var(--dim); margin-bottom: 8px; }
+  .dropzone p { font-size: 13px; color: var(--muted); }
+  .dropzone p strong { color: var(--text); }
+  .dropzone input { display: none; }
+
+  .file-list { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 14px; }
+  .file-chip {
+    display: flex; align-items: center; gap: 8px;
+    background: var(--card2); border: 1px solid var(--border2);
+    border-radius: var(--radius-sm); padding: 6px 8px 6px 6px;
+    font-size: 12px; max-width: 100%;
+  }
+  .file-chip .ficon {
+    width: 32px; height: 32px; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; font-weight: 700; color: var(--muted); background: var(--card2);
+    border-radius: 4px; flex-shrink: 0;
+  }
+  .file-chip .fname { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .file-chip .fsize { color: var(--dim); font-size: 11px; display: block; }
+  .file-chip .fwarn { color: #fbbf24; font-size: 10px; display: block; }
+  .file-chip button {
+    background: none; border: none; color: var(--dim); cursor: pointer; font-size: 15px;
+    padding: 0 2px; line-height: 1; flex-shrink: 0;
+  }
+  .file-chip button:hover { color: var(--live); }
+
+  .consent-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 22px; padding: 14px; background: var(--bg2);
+    border: 1px solid var(--border2); border-radius: var(--radius-sm);
+  }
+  .consent-row.invalid { border-color: var(--live); }
+  .consent-row input[type="checkbox"] {
+    margin-top: 3px; width: 16px; height: 16px; flex-shrink: 0; accent-color: var(--accent);
+  }
+  .consent-row label { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+  .consent-row label .req { color: var(--accent2); }
+
+  .card-foot {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-top: 22px; gap: 12px; flex-wrap: wrap;
+  }
+  .status { font-size: 12px; color: var(--muted); }
+  .status.ok { color: var(--ok); }
+  .status.err { color: var(--live); }
+
+  .btn-submit {
+    background: var(--accent); color: #fff; border: none; font-weight: 700; font-size: 13px;
+    padding: 12px 22px; border-radius: var(--radius-sm); cursor: pointer;
+    display: inline-flex; align-items: center; gap: 8px; transition: background .15s;
+    width: 100%; justify-content: center;
+  }
+  .btn-submit:hover { background: var(--accent2); }
+  .btn-submit:disabled { background: var(--dim); cursor: not-allowed; }
+
+  footer { text-align: center; padding: 10px 0 50px; font-size: 12px; color: var(--dim); }
+  footer a { color: var(--muted); }
+
+  .config-banner { max-width: 640px; margin: 20px auto 0; padding: 0 24px; }
+  .config-banner div {
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
+    border-radius: var(--radius-sm); padding: 12px 16px; font-size: 12.5px; color: #fca5a5; line-height: 1.6;
+  }
+</style>
+</head>
+<body>
+
+<div class="logo-band">
+  <img src="logos.png" alt="Junior Champions League and Sports Direct" />
+</div>
+
+<div class="hero">
+  <h1>Sports Direct <em>Giveaway</em></h1>
+  <p class="hero-sub">Enter your club's video content below for a chance to win. Fill in your details, attach your video, and confirm you have permission to share it &mdash; one entry per club.</p>
+</div>
+
+<div class="config-banner" id="config-banner" style="display:none">
+  <div>&#9888; This form is not yet connected to Google Drive. Paste your deployed Apps Script URL into the <code>APPS_SCRIPT_URL</code> variable near the bottom of this file, then re-publish.</div>
+</div>
+
+<div class="wrap">
+  <div class="card">
+
+    <label class="field-label">Team / Club Name <span class="req">*</span></label>
+    <input type="text" class="field-input" id="clubName" placeholder="e.g. Melbourne City FC" />
+
+    <label class="field-label">Age Group <span class="req">*</span></label>
+    <input type="text" class="field-input" id="ageGroup" placeholder="e.g. U12 Boys" />
+
+    <label class="field-label">Manager Name <span class="req">*</span></label>
+    <input type="text" class="field-input" id="managerName" placeholder="Full name" />
+
+    <label class="field-label">Email <span class="req">*</span></label>
+    <input type="email" class="field-input" id="email" placeholder="you@club.com.au" />
+
+    <label class="field-label">Video Upload <span class="req">*</span></label>
+    <div class="dropzone" id="dropzone" tabindex="0">
+      <input type="file" id="videoInput" accept="video/*" />
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+      <p><strong>Click to upload</strong> or drag your video here</p>
+    </div>
+    <p class="field-note">One video file per entry.</p>
+    <div class="file-list" id="fileList"></div>
+
+    <div class="consent-row" id="consentRow">
+      <input type="checkbox" id="consent" />
+      <label for="consent"><span class="req">*</span> I confirm we have permission from everyone featured in this video (including parents/guardians of any minors) for the content to be used by Junior Champions League and Sports Direct for promotional and marketing purposes.</label>
+    </div>
+
+    <div class="card-foot">
+      <span class="status" id="status"></span>
+      <button class="btn-submit" id="submitBtn">Submit Entry</button>
+    </div>
+
+  </div>
+
+  <footer>
+    <p>Sports Direct Giveaway built by <a href="https://broadcollective.com.au" target="_blank">Broad Collective</a></p>
+  </footer>
+</div>
+
+<script>
+/* ============================================================
+   CONFIG
+   Paste the deployed Google Apps Script Web App URL below.
+   ============================================================ */
+const APPS_SCRIPT_URL = "PASTE_YOUR_APPS_SCRIPT_URL_HERE";
+
+if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+  document.getElementById("config-banner").style.display = "block";
+}
+
+const clubNameEl = document.getElementById("clubName");
+const ageGroupEl = document.getElementById("ageGroup");
+const managerNameEl = document.getElementById("managerName");
+const emailEl = document.getElementById("email");
+const dropzone = document.getElementById("dropzone");
+const videoInput = document.getElementById("videoInput");
+const fileList = document.getElementById("fileList");
+const consentRow = document.getElementById("consentRow");
+const consentEl = document.getElementById("consent");
+const statusEl = document.getElementById("status");
+const submitBtn = document.getElementById("submitBtn");
+
+let videoEntry = null; // { file, dataUrl }
+const MAX_MB = 500;
+
+dropzone.addEventListener("click", () => videoInput.click());
+dropzone.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") videoInput.click(); });
+dropzone.addEventListener("dragover", e => { e.preventDefault(); dropzone.classList.add("drag"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag"));
+dropzone.addEventListener("drop", e => {
+  e.preventDefault();
+  dropzone.classList.remove("drag");
+  if (e.dataTransfer.files.length) handleFile(e.dataTransfer.files[0]);
+});
+videoInput.addEventListener("change", () => {
+  if (videoInput.files.length) handleFile(videoInput.files[0]);
+  videoInput.value = "";
+});
+
+function handleFile(file) {
+  dropzone.classList.remove("invalid");
+  const sizeMb = file.size / (1024 * 1024);
+  const reader = new FileReader();
+  reader.onload = () => {
+    videoEntry = { file, dataUrl: reader.result, oversize: sizeMb > MAX_MB };
+    renderFile();
+  };
+  reader.readAsDataURL(file);
+}
+
+function renderFile() {
+  fileList.innerHTML = "";
+  if (!videoEntry) return;
+  const sizeMb = (videoEntry.file.size / (1024 * 1024)).toFixed(1);
+  const chip = document.createElement("div");
+  chip.className = "file-chip";
+  chip.innerHTML = `
+    <span class="ficon">VID</span>
+    <div>
+      <span class="fname">${videoEntry.file.name}</span>
+      <span class="fsize">${sizeMb} MB</span>
+      ${videoEntry.oversize ? `<span class="fwarn">&#9888; Over ${MAX_MB}MB &mdash; may fail to upload</span>` : ""}
+    </div>
+    <button aria-label="Remove">&times;</button>
+  `;
+  chip.querySelector("button").addEventListener("click", () => {
+    videoEntry = null;
+    renderFile();
+  });
+  fileList.appendChild(chip);
+}
+
+function setStatus(msg, type) {
+  statusEl.textContent = msg;
+  statusEl.className = "status" + (type ? " " + type : "");
+}
+
+function markInvalid(el) { el.classList.add("invalid"); }
+function clearInvalid(el) { el.classList.remove("invalid"); }
+
+[clubNameEl, ageGroupEl, managerNameEl, emailEl].forEach(el => {
+  el.addEventListener("input", () => clearInvalid(el));
+});
+consentEl.addEventListener("change", () => { if (consentEl.checked) consentRow.classList.remove("invalid"); });
+
+submitBtn.addEventListener("click", async () => {
+  const clubName = clubNameEl.value.trim();
+  const ageGroup = ageGroupEl.value.trim();
+  const managerName = managerNameEl.value.trim();
+  const email = emailEl.value.trim();
+
+  let missing = [];
+  [ [clubNameEl, clubName], [ageGroupEl, ageGroup], [managerNameEl, managerName] ].forEach(([el, val]) => {
+    if (!val) { markInvalid(el); missing.push(true); } else { clearInvalid(el); }
+  });
+  if (!email || !emailEl.checkValidity()) { markInvalid(emailEl); missing.push(true); } else { clearInvalid(emailEl); }
+  if (!videoEntry) { dropzone.classList.add("invalid"); missing.push(true); } else { dropzone.classList.remove("invalid"); }
+  if (!consentEl.checked) { consentRow.classList.add("invalid"); missing.push(true); } else { consentRow.classList.remove("invalid"); }
+
+  if (missing.length) {
+    setStatus("Please complete all required fields and tick the permission box.", "err");
+    return;
+  }
+
+  if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
+    setStatus("Upload isn't connected yet &mdash; see the notice above.", "err");
+    return;
+  }
+
+  submitBtn.disabled = true;
+  setStatus("Uploading...");
+
+  try {
+    const text = [
+      `Club/Team Name: ${clubName}`,
+      `Age Group: ${ageGroup}`,
+      `Manager Name: ${managerName}`,
+      `Email: ${email}`,
+      `Permission confirmed: Yes`,
+      `Submitted: ${new Date().toISOString()}`
+    ].join("\n");
+
+    const payload = {
+      folderName: "SD Giveaway Entries",
+      text: text,
+      textFileName: `${clubName} - ${ageGroup} - entry details`,
+      files: [{
+        name: `${clubName} - ${videoEntry.file.name}`,
+        mimeType: videoEntry.file.type || "video/mp4",
+        data: videoEntry.dataUrl.split(",")[1]
+      }]
+    };
+
+    const res = await fetch(APPS_SCRIPT_URL, {
+      method: "POST",
+      headers: { "Content-Type": "text/plain;charset=utf-8" },
+      body: JSON.stringify(payload)
+    });
+    const json = await res.json();
+
+    if (json.success) {
+      setStatus("Entry submitted! Thanks for entering.", "ok");
+      clubNameEl.value = "";
+      ageGroupEl.value = "";
+      managerNameEl.value = "";
+      emailEl.value = "";
+      consentEl.checked = false;
+      videoEntry = null;
+      renderFile();
+    } else {
+      setStatus("Upload failed: " + (json.error || "unknown error"), "err");
+    }
+  } catch (err) {
+    setStatus("Upload failed: " + err.message, "err");
+  } finally {
+    submitBtn.disabled = false;
+  }
+});
+</script>
+
+</body>
+</html>
