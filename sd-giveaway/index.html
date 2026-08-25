@@ -11,7 +11,7 @@
 <style>
   :root {
     --bg:         #070710;
-    --bg2:        #0e0e1c;
+    --bg2:           #0e0e1c;
     --card:       #13132a;
     --card2:      #1a1a36;
     --border:     rgba(255,255,255,0.07);
@@ -345,6 +345,7 @@ submitBtn.addEventListener("click", async () => {
 
     const payload = {
       folderName: "SD Giveaway Entries",
+              clubName: clubName,
       text: text,
       textFileName: `${clubName} - ${ageGroup} - entry details`,
       files: [{
