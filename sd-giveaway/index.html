@@ -164,6 +164,13 @@
     background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
     border-radius: var(--radius-sm); padding: 12px 16px; font-size: 12.5px; color: #fca5a5; line-height: 1.6;
   }
+
+  .closed-notice {
+    background: rgba(239,68,68,0.08); border: 1px solid rgba(239,68,68,0.25);
+    border-radius: var(--radius-sm); padding: 20px; text-align: center;
+  }
+  .closed-notice h2 { font-size: 16px; color: var(--text); margin-bottom: 8px; }
+  .closed-notice p { font-size: 13px; color: var(--muted); line-height: 1.6; }
 </style>
 </head>
 <body>
@@ -182,7 +189,14 @@
 </div>
 
 <div class="wrap">
-  <div class="card">
+  <div class="card" id="card">
+
+    <div class="closed-notice" id="closedNotice" style="display:none">
+      <h2>Entries are now closed</h2>
+      <p>Thanks to every club that submitted a video &mdash; entries closed 7 September 2026, 5:00pm AEST. Winners will be announced soon.</p>
+    </div>
+
+    <div id="formFields">
 
     <label class="field-label">Team / Club Name <span class="req">*</span></label>
     <input type="text" class="field-input" id="clubName" placeholder="e.g. Melbourne City FC" />
@@ -220,6 +234,8 @@
       <button class="btn-submit" id="submitBtn">Submit Entry</button>
     </div>
 
+    </div>
+
   </div>
 
   <footer>
@@ -234,9 +250,20 @@
    ============================================================ */
 const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycby_77R4IYIil_mWO2OZ7gpmZ1x3WD-B6enewWYggEHmQncuCYXIy5viwukmOo8EQlm6/exec";
 
+/* Entries close 7 September 2026, 5:00pm AEST (UTC+10). */
+const ENTRIES_CLOSE_AT = "2026-09-07T17:00:00+10:00";
+
 if (!APPS_SCRIPT_URL || APPS_SCRIPT_URL.indexOf("PASTE_YOUR") === 0) {
   document.getElementById("config-banner").style.display = "block";
 }
+
+function checkEntriesClosed() {
+  if (Date.now() < new Date(ENTRIES_CLOSE_AT).getTime()) return;
+  document.getElementById("closedNotice").style.display = "block";
+  document.getElementById("formFields").style.display = "none";
+}
+checkEntriesClosed();
+setInterval(checkEntriesClosed, 30000);
 
 const clubNameEl = document.getElementById("clubName");
 const ageGroupEl = document.getElementById("ageGroup");
