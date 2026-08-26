@@ -136,6 +136,8 @@
   }
   .consent-row label { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
   .consent-row label .req { color: var(--accent2); }
+  .consent-row label a { color: var(--accent); text-decoration: underline; }
+  .consent-row label a:hover { color: var(--accent2); }
 
   .card-foot {
     display: flex; align-items: center; justify-content: space-between;
@@ -208,6 +210,11 @@
       <label for="consent"><span class="req">*</span> I confirm we have permission from everyone featured in this video (including parents/guardians of any minors) for the content to be used by Junior Champions League and Sports Direct for promotional and marketing purposes.</label>
     </div>
 
+    <div class="consent-row" id="termsRow">
+      <input type="checkbox" id="terms" />
+      <label for="terms"><span class="req">*</span> I agree to the <a href="https://docs.google.com/document/d/1OEAAiKKTyI4gJ7X5s5XCv_jpe-txg2PXfaebe19YupM/edit?usp=sharing" target="_blank" rel="noopener noreferrer">terms and conditions</a>.</label>
+    </div>
+
     <div class="card-foot">
       <span class="status" id="status"></span>
       <button class="btn-submit" id="submitBtn">Submit Entry</button>
@@ -240,6 +247,8 @@ const videoInput = document.getElementById("videoInput");
 const fileList = document.getElementById("fileList");
 const consentRow = document.getElementById("consentRow");
 const consentEl = document.getElementById("consent");
+const termsRow = document.getElementById("termsRow");
+const termsEl = document.getElementById("terms");
 const statusEl = document.getElementById("status");
 const submitBtn = document.getElementById("submitBtn");
 
@@ -305,6 +314,7 @@ function clearInvalid(el) { el.classList.remove("invalid"); }
   el.addEventListener("input", () => clearInvalid(el));
 });
 consentEl.addEventListener("change", () => { if (consentEl.checked) consentRow.classList.remove("invalid"); });
+termsEl.addEventListener("change", () => { if (termsEl.checked) termsRow.classList.remove("invalid"); });
 
 submitBtn.addEventListener("click", async () => {
   const clubName = clubNameEl.value.trim();
@@ -319,9 +329,10 @@ submitBtn.addEventListener("click", async () => {
   if (!email || !emailEl.checkValidity()) { markInvalid(emailEl); missing.push(true); } else { clearInvalid(emailEl); }
   if (!videoEntry) { dropzone.classList.add("invalid"); missing.push(true); } else { dropzone.classList.remove("invalid"); }
   if (!consentEl.checked) { consentRow.classList.add("invalid"); missing.push(true); } else { consentRow.classList.remove("invalid"); }
+  if (!termsEl.checked) { termsRow.classList.add("invalid"); missing.push(true); } else { termsRow.classList.remove("invalid"); }
 
   if (missing.length) {
-    setStatus("Please complete all required fields and tick the permission box.", "err");
+    setStatus("Please complete all required fields, tick the permission box, and agree to the terms and conditions.", "err");
     return;
   }
 
@@ -340,6 +351,7 @@ submitBtn.addEventListener("click", async () => {
       `Manager Name: ${managerName}`,
       `Email: ${email}`,
       `Permission confirmed: Yes`,
+      `Terms and conditions agreed: Yes`,
       `Submitted: ${new Date().toISOString()}`
     ].join("\n");
 
@@ -369,6 +381,7 @@ submitBtn.addEventListener("click", async () => {
       managerNameEl.value = "";
       emailEl.value = "";
       consentEl.checked = false;
+      termsEl.checked = false;
       videoEntry = null;
       renderFile();
     } else {
