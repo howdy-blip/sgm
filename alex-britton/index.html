@@ -1,0 +1,689 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Re-elect Alex Britton — Launceston Council</title>
+<meta name="description" content="Re-elect Alex Britton for Launceston Council. Vote 01 Britton." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --yellow:     #f9a825;
+    --yellow2:    #fdc843;
+    --orange:     #f0801a;
+    --black:      #14120f;
+    --ink:        #1c1a16;
+    --white:      #ffffff;
+    --cream:      #fff8ea;
+    --muted:      #6b6558;
+    --line:       rgba(20,18,15,0.12);
+    --radius:     14px;
+    --shadow:     0 18px 40px rgba(20,18,15,0.16);
+    --container:  1180px;
+  }
+
+  * , *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, sans-serif;
+    background: var(--white);
+    color: var(--ink);
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+
+  img { max-width: 100%; display: block; }
+
+  .display  { font-family: 'Anton', 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.5px; line-height: 0.92; }
+  .label    { font-family: 'Oswald', 'Inter', sans-serif; text-transform: uppercase; letter-spacing: 0.06em; font-weight: 600; }
+
+  .container { max-width: var(--container); margin: 0 auto; padding: 0 24px; }
+
+  a { color: inherit; }
+
+  /* ---------- NAV ---------- */
+  .nav {
+    position: sticky; top: 0; z-index: 200;
+    background: var(--black);
+    border-bottom: 3px solid var(--yellow);
+  }
+  .nav-inner {
+    max-width: var(--container); margin: 0 auto; padding: 0 24px;
+    height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+  }
+  .nav-brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--white); }
+  .nav-brand .mark {
+    width: 38px; height: 38px; border-radius: 8px;
+    background: linear-gradient(135deg, var(--yellow2), var(--orange));
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 15px; color: var(--black); flex-shrink: 0;
+  }
+  .nav-brand strong { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 14.5px; letter-spacing: 0.03em; text-transform: uppercase; }
+  .nav-brand span { display: block; font-size: 10.5px; color: #cfcabf; letter-spacing: 0.04em; }
+
+  .nav-links { display: flex; align-items: center; gap: 28px; }
+  .nav-links a {
+    text-decoration: none; color: #e7e3d8; font-family: 'Oswald', sans-serif;
+    font-size: 13px; font-weight: 500; letter-spacing: 0.04em; text-transform: uppercase;
+    transition: color .15s;
+  }
+  .nav-links a:hover { color: var(--yellow2); }
+
+  .vote-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--white); color: var(--black);
+    font-family: 'Oswald', sans-serif; font-weight: 700; font-size: 13px; letter-spacing: 0.03em;
+    padding: 8px 14px; border-radius: 100px; text-decoration: none;
+    border: 2px solid var(--black);
+  }
+  .vote-badge b { background: var(--black); color: var(--yellow2); padding: 2px 8px; border-radius: 100px; font-size: 12px; }
+
+  .nav-toggle { display: none; }
+
+  /* ---------- HERO ---------- */
+  .hero {
+    position: relative;
+    background: linear-gradient(135deg, var(--yellow2) 0%, var(--yellow) 45%, var(--orange) 100%);
+    overflow: hidden;
+    padding: 56px 0 0;
+  }
+  .hero::before {
+    content: "";
+    position: absolute; inset: 0;
+    background-image: repeating-linear-gradient(135deg, rgba(255,255,255,0.10) 0 2px, transparent 2px 46px);
+    pointer-events: none;
+  }
+  .hero-grid {
+    position: relative; z-index: 2;
+    display: grid; grid-template-columns: 1.15fr 0.85fr; align-items: end; gap: 24px;
+  }
+  .hero-copy { padding-bottom: 54px; }
+
+  .ribbon {
+    display: inline-block;
+    background: var(--black); color: var(--white);
+    font-family: 'Anton', sans-serif; font-size: 20px; letter-spacing: 0.04em;
+    padding: 8px 20px; transform: rotate(-3deg);
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+    margin-bottom: 18px;
+  }
+
+  .hero-name {
+    font-size: clamp(52px, 9vw, 118px);
+    color: var(--white);
+    -webkit-text-stroke: 0;
+  }
+  .hero-name .fname { display: block; color: var(--white); }
+  .hero-name .lname-wrap {
+    display: inline-block;
+    background: var(--white);
+    padding: 4px 18px 10px;
+    box-shadow: 8px 8px 0 rgba(0,0,0,0.12);
+  }
+  .hero-name .lname { color: var(--orange); display: block; }
+
+  .vote-01 {
+    display: inline-flex; align-items: center; gap: 12px;
+    background: var(--black); color: var(--white);
+    font-family: 'Anton', sans-serif; letter-spacing: 0.05em;
+    padding: 12px 20px; margin: 20px 0 22px; transform: rotate(-2deg);
+    box-shadow: 6px 6px 0 rgba(0,0,0,0.15);
+    font-size: 24px;
+  }
+  .vote-01 span { border: 2px solid var(--white); padding: 2px 12px; font-size: 22px; }
+
+  .hero-sub {
+    font-family: 'Oswald', sans-serif; text-transform: uppercase;
+    font-weight: 700; letter-spacing: 0.02em; color: var(--black);
+    font-size: clamp(22px, 3vw, 34px); line-height: 1.15; max-width: 520px;
+  }
+
+  .hero-photo {
+    position: relative; z-index: 2;
+    display: flex; align-items: flex-end; justify-content: center;
+    height: 100%;
+  }
+  .photo-frame {
+    width: 100%; max-width: 460px; aspect-ratio: 4/5;
+    background: linear-gradient(180deg, #efe6d2, #e3d8bf);
+    border-radius: 18px 18px 0 0;
+    display: flex; align-items: center; justify-content: center;
+    position: relative; overflow: hidden;
+    box-shadow: -10px 0 0 rgba(0,0,0,0.06) inset;
+  }
+  .photo-frame svg { width: 62%; opacity: 0.5; }
+  .photo-frame .swap-note {
+    position: absolute; bottom: 12px; left: 12px; right: 12px;
+    background: rgba(20,18,15,0.78); color: #fff;
+    font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.03em;
+    padding: 8px 10px; border-radius: 8px; text-align: center;
+  }
+
+  .authorised {
+    padding: 14px 0; text-align: left;
+    font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.04em;
+    color: rgba(20,18,15,0.7); position: relative; z-index: 2;
+  }
+
+  /* ---------- STAT STRIP ---------- */
+  .stats {
+    background: var(--black); color: var(--white);
+    padding: 26px 0;
+  }
+  .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; text-align: center; }
+  .stats-grid .num { font-family: 'Anton', sans-serif; font-size: clamp(28px, 4vw, 44px); color: var(--yellow2); }
+  .stats-grid .cap { font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: 0.05em; text-transform: uppercase; color: #cfcabf; margin-top: 4px; }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section { padding: 84px 0; }
+  .section.tight { padding: 64px 0; }
+  .kicker {
+    display: inline-block; font-family: 'Oswald', sans-serif; font-weight: 700;
+    font-size: 12.5px; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--orange); background: rgba(240,128,26,0.10);
+    padding: 6px 14px; border-radius: 100px; margin-bottom: 14px;
+  }
+  .section-title { font-size: clamp(32px, 4.6vw, 54px); color: var(--black); }
+  .section-title em { font-style: normal; color: var(--orange); }
+  .section-lede { font-size: 16px; color: var(--muted); max-width: 640px; line-height: 1.7; margin-top: 16px; }
+
+  /* ---------- PILLARS ---------- */
+  .pillars { display: flex; flex-direction: column; gap: 22px; margin-top: 44px; }
+
+  .pillar {
+    border: 2px solid var(--black); border-radius: var(--radius);
+    overflow: hidden; background: var(--white);
+  }
+  .pillar-head {
+    display: flex; align-items: center; gap: 20px;
+    padding: 26px 28px;
+    background: var(--cream);
+  }
+  .pillar-num {
+    width: 52px; height: 52px; flex-shrink: 0;
+    background: var(--black); color: var(--yellow2);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Anton', sans-serif; font-size: 24px; border-radius: 8px;
+  }
+  .pillar-title-wrap { flex: 1; min-width: 0; }
+  .pillar-title { font-family: 'Oswald', sans-serif; font-weight: 700; font-size: clamp(18px, 2.4vw, 24px); text-transform: uppercase; letter-spacing: 0.01em; }
+  .pillar-desc { font-size: 14px; color: var(--muted); margin-top: 4px; line-height: 1.55; max-width: 640px; }
+
+  .pillar-toggles { display: flex; gap: 10px; flex-wrap: wrap; }
+
+  .acc {
+    border-top: 1px solid var(--line);
+  }
+  .acc-item + .acc-item { border-top: 1px solid var(--line); }
+  .acc-btn {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; gap: 16px;
+    background: none; border: none; cursor: pointer;
+    padding: 18px 28px; text-align: left; font-family: 'Oswald', sans-serif;
+    font-size: 15.5px; font-weight: 600; color: var(--ink);
+  }
+  .acc-btn .tag {
+    font-size: 10.5px; letter-spacing: 0.06em; font-weight: 700;
+    padding: 3px 10px; border-radius: 100px; margin-right: 12px; text-transform: uppercase;
+    flex-shrink: 0;
+  }
+  .tag.done { background: rgba(34,140,74,0.12); color: #1c7a44; }
+  .tag.next { background: rgba(240,128,26,0.14); color: var(--orange); }
+
+  .acc-btn .plus {
+    width: 26px; height: 26px; border-radius: 50%; border: 2px solid var(--black);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    font-family: 'Inter', sans-serif; font-size: 16px; font-weight: 700;
+    transition: transform .2s ease;
+  }
+  .acc-item.open .acc-btn .plus { transform: rotate(45deg); background: var(--black); color: var(--yellow2); }
+
+  .acc-panel {
+    max-height: 0; overflow: hidden; transition: max-height .28s ease;
+  }
+  .acc-item.open .acc-panel { max-height: 320px; }
+  .acc-panel-inner { padding: 0 28px 22px 28px; font-size: 14.5px; color: var(--muted); line-height: 1.7; }
+  .acc-panel-inner ul { padding-left: 18px; }
+  .acc-panel-inner li { margin-bottom: 6px; }
+  .acc-panel-inner li::marker { color: var(--orange); }
+
+  /* ---------- BREAKER ---------- */
+  .breaker {
+    position: relative; background: var(--black); color: var(--white);
+    padding: 100px 0; overflow: hidden; text-align: center;
+  }
+  .breaker::before {
+    content: ""; position: absolute; inset: 0;
+    background: linear-gradient(120deg, rgba(249,168,37,0.18), transparent 55%);
+  }
+  .breaker::after {
+    content: ""; position: absolute; right: -8%; top: -30%; width: 60%; aspect-ratio: 1;
+    background: radial-gradient(circle, rgba(249,168,37,0.28), transparent 65%);
+  }
+  .breaker-inner { position: relative; z-index: 2; max-width: 780px; margin: 0 auto; }
+  .breaker .quote-mark { font-family: 'Anton', sans-serif; font-size: 64px; color: var(--yellow2); line-height: 1; }
+  .breaker h2 { font-size: clamp(28px, 4.4vw, 46px); color: var(--white); }
+  .breaker h2 em { font-style: normal; color: var(--yellow2); }
+  .breaker p.by { margin-top: 22px; font-family: 'Oswald', sans-serif; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; color: #cfcabf; }
+
+  /* ---------- INSTAGRAM ---------- */
+  .insta-head { display: flex; align-items: flex-end; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+  .insta-follow {
+    display: inline-flex; align-items: center; gap: 10px;
+    background: var(--black); color: var(--white); text-decoration: none;
+    font-family: 'Oswald', sans-serif; font-weight: 600; letter-spacing: 0.03em; text-transform: uppercase;
+    padding: 12px 20px; border-radius: 100px; font-size: 13px;
+    transition: background .15s;
+  }
+  .insta-follow:hover { background: var(--orange); }
+
+  .insta-grid {
+    display: grid; grid-template-columns: repeat(6, 1fr); gap: 10px; margin-top: 36px;
+  }
+  .insta-tile {
+    aspect-ratio: 1; border-radius: 10px; text-decoration: none;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(150deg, var(--yellow2), var(--orange));
+    position: relative; overflow: hidden;
+  }
+  .insta-tile:nth-child(2n) { background: linear-gradient(150deg, #2c2a25, var(--black)); }
+  .insta-tile:nth-child(3n) { background: linear-gradient(150deg, var(--orange), #c8590f); }
+  .insta-tile svg { width: 26%; opacity: 0.85; color: #fff; }
+  .insta-tile .hover {
+    position: absolute; inset: 0; background: rgba(20,18,15,0.55);
+    opacity: 0; transition: opacity .15s; display: flex; align-items: center; justify-content: center;
+    color: #fff; font-family: 'Oswald', sans-serif; font-size: 11px; letter-spacing: 0.05em; text-transform: uppercase;
+  }
+  .insta-tile:hover .hover { opacity: 1; }
+
+  .insta-note { margin-top: 18px; font-size: 12.5px; color: var(--muted); }
+
+  /* ---------- CONTACT ---------- */
+  .contact {
+    background: linear-gradient(135deg, var(--yellow2) 0%, var(--yellow) 50%, var(--orange) 100%);
+    padding: 80px 0 0; position: relative; overflow: hidden;
+  }
+  .contact-grid { display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: start; }
+  .contact h2 { font-size: clamp(34px, 5vw, 58px); color: var(--black); }
+  .contact .lede { font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px; color: rgba(20,18,15,0.8); margin-top: 10px; max-width: 460px; line-height: 1.6; }
+
+  .contact-list { margin-top: 28px; display: flex; flex-direction: column; gap: 14px; }
+  .contact-list a {
+    display: flex; align-items: center; gap: 14px; text-decoration: none; color: var(--black);
+    font-family: 'Oswald', sans-serif; font-weight: 600; font-size: 16px;
+  }
+  .contact-list .ico {
+    width: 40px; height: 40px; border-radius: 10px; background: var(--black); color: var(--yellow2);
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+  }
+
+  .contact-form {
+    background: var(--white); border-radius: var(--radius); padding: 28px;
+    box-shadow: var(--shadow);
+  }
+  .contact-form h3 { font-family: 'Oswald', sans-serif; text-transform: uppercase; font-size: 15px; letter-spacing: 0.04em; margin-bottom: 16px; }
+  .contact-form label { display: block; font-size: 12px; font-weight: 600; color: var(--muted); margin-top: 14px; margin-bottom: 6px; text-transform: uppercase; letter-spacing: 0.04em; }
+  .contact-form input, .contact-form textarea {
+    width: 100%; border: 1.5px solid var(--line); border-radius: 8px; padding: 11px 12px;
+    font-family: inherit; font-size: 14px; color: var(--ink); background: var(--cream);
+  }
+  .contact-form input:focus, .contact-form textarea:focus { outline: none; border-color: var(--orange); }
+  .contact-form textarea { min-height: 90px; resize: vertical; }
+  .contact-form button {
+    margin-top: 18px; width: 100%; background: var(--black); color: var(--white);
+    border: none; padding: 13px; border-radius: 8px; font-family: 'Oswald', sans-serif;
+    font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase; font-size: 13.5px; cursor: pointer;
+    transition: background .15s;
+  }
+  .contact-form button:hover { background: var(--orange); }
+
+  .footer-strip {
+    margin-top: 60px; border-top: 1px solid rgba(20,18,15,0.15);
+    padding: 22px 0; text-align: center;
+    font-family: 'Oswald', sans-serif; font-size: 11.5px; letter-spacing: 0.04em; color: rgba(20,18,15,0.75);
+  }
+  .footer-strip .built {
+    display: block; margin-top: 6px; font-size: 10.5px; color: rgba(20,18,15,0.55);
+  }
+  .footer-strip .built a { color: rgba(20,18,15,0.7); text-decoration: underline; }
+
+  /* ---------- RESPONSIVE ---------- */
+  @media (max-width: 920px) {
+    .nav-links { display: none; }
+    .hero-grid { grid-template-columns: 1fr; }
+    .hero-photo { order: -1; padding-top: 30px; }
+    .photo-frame { max-width: 320px; margin: 0 auto; border-radius: 18px; }
+    .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 26px; }
+    .contact-grid { grid-template-columns: 1fr; }
+    .insta-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 560px) {
+    .pillar-head { flex-direction: column; align-items: flex-start; }
+    .acc-btn { padding: 16px 18px; font-size: 14px; }
+    .acc-panel-inner { padding: 0 18px 18px; }
+    .section { padding: 56px 0; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-brand" href="#home">
+      <span class="mark">AB</span>
+      <span>
+        <strong>Alex Britton</strong>
+        <span>Launceston Council</span>
+      </span>
+    </a>
+    <div class="nav-links">
+      <a href="#priorities">Priorities</a>
+      <a href="#about">About</a>
+      <a href="#follow">Follow</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a class="vote-badge" href="#contact">Vote <b>01</b> Britton</a>
+  </div>
+</nav>
+
+<!-- ================= HERO ================= -->
+<header class="hero" id="home">
+  <div class="container">
+    <div class="hero-grid">
+      <div class="hero-copy">
+        <span class="ribbon">Re-elect</span>
+        <h1 class="hero-name display">
+          <span class="fname">Alex</span>
+          <span class="lname-wrap"><span class="lname">Britton</span></span>
+        </h1>
+        <div class="vote-01 display">Vote <span>01</span></div>
+        <p class="hero-sub">For Launceston Council</p>
+      </div>
+      <div class="hero-photo">
+        <div class="photo-frame">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.2"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4.4 3.6-8 8-8s8 3.6 8 8"/></svg>
+          <div class="swap-note">Replace with photo — /alex-britton/images/alex-hero.jpg</div>
+        </div>
+      </div>
+    </div>
+    <p class="authorised">Authorised by Alex Britton, 27 Seaport Boulevard, Launceston</p>
+  </div>
+</header>
+
+<!-- ================= STAT STRIP ================= -->
+<section class="stats">
+  <div class="container stats-grid">
+    <div>
+      <div class="num display">[X]</div>
+      <div class="cap">Years on Council</div>
+    </div>
+    <div>
+      <div class="num display">[X]</div>
+      <div class="cap">Motions Delivered</div>
+    </div>
+    <div>
+      <div class="num display">[X]</div>
+      <div class="cap">Community Events</div>
+    </div>
+    <div>
+      <div class="num display">100%</div>
+      <div class="cap">Focused on Launceston</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= PILLARS ================= -->
+<section class="section" id="priorities">
+  <div class="container">
+    <span class="kicker">The Plan</span>
+    <h2 class="section-title display">Three priorities <em>for Launceston</em></h2>
+    <p class="section-lede">What Alex has already delivered for the community, and what he's putting his hand up to take on next term. Tap a priority to see the detail.</p>
+
+    <div class="pillars">
+
+      <!-- PILLAR 1 -->
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num display">1</div>
+          <div class="pillar-title-wrap">
+            <div class="pillar-title">[Pillar 1 name — e.g. Roads &amp; Infrastructure]</div>
+            <p class="pillar-desc">[One or two sentences on why this pillar matters to Launceston ratepayers.]</p>
+          </div>
+        </div>
+        <div class="acc">
+          <div class="acc-item open">
+            <button class="acc-btn">
+              <span><span class="tag done">Actioned</span>[Headline of something Alex has already delivered]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add a specific outcome — date, location or dollar figure if you have it]</li>
+                  <li>[Add a second supporting point]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-btn">
+              <span><span class="tag next">Next Term</span>[Headline of what Alex plans to push for]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add the plan / commitment in one line]</li>
+                  <li>[Add how it will be delivered or funded]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 2 -->
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num display">2</div>
+          <div class="pillar-title-wrap">
+            <div class="pillar-title">[Pillar 2 name — e.g. Community &amp; Liveability]</div>
+            <p class="pillar-desc">[One or two sentences on why this pillar matters to Launceston ratepayers.]</p>
+          </div>
+        </div>
+        <div class="acc">
+          <div class="acc-item">
+            <button class="acc-btn">
+              <span><span class="tag done">Actioned</span>[Headline of something Alex has already delivered]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add a specific outcome — date, location or dollar figure if you have it]</li>
+                  <li>[Add a second supporting point]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-btn">
+              <span><span class="tag next">Next Term</span>[Headline of what Alex plans to push for]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add the plan / commitment in one line]</li>
+                  <li>[Add how it will be delivered or funded]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PILLAR 3 -->
+      <div class="pillar">
+        <div class="pillar-head">
+          <div class="pillar-num display">3</div>
+          <div class="pillar-title-wrap">
+            <div class="pillar-title">[Pillar 3 name — e.g. Local Economy &amp; Jobs]</div>
+            <p class="pillar-desc">[One or two sentences on why this pillar matters to Launceston ratepayers.]</p>
+          </div>
+        </div>
+        <div class="acc">
+          <div class="acc-item">
+            <button class="acc-btn">
+              <span><span class="tag done">Actioned</span>[Headline of something Alex has already delivered]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add a specific outcome — date, location or dollar figure if you have it]</li>
+                  <li>[Add a second supporting point]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="acc-item">
+            <button class="acc-btn">
+              <span><span class="tag next">Next Term</span>[Headline of what Alex plans to push for]</span>
+              <span class="plus">+</span>
+            </button>
+            <div class="acc-panel">
+              <div class="acc-panel-inner">
+                <ul>
+                  <li>[Add the plan / commitment in one line]</li>
+                  <li>[Add how it will be delivered or funded]</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ================= BREAKER ================= -->
+<section class="breaker" id="about">
+  <div class="container breaker-inner">
+    <div class="quote-mark display">&ldquo;</div>
+    <h2 class="display">[Drop a short personal statement from Alex here — <em>why he's asking Launceston to re-elect him.</em>]</h2>
+    <p class="by">— Alex Britton, Launceston City Council</p>
+  </div>
+</section>
+
+<!-- ================= INSTAGRAM ================= -->
+<section class="section tight" id="follow">
+  <div class="container">
+    <div class="insta-head">
+      <div>
+        <span class="kicker">Follow the campaign</span>
+        <h2 class="section-title display">Latest <em>on Instagram</em></h2>
+      </div>
+      <!-- Replace # with the real profile URL -->
+      <a class="insta-follow" href="#" target="_blank" rel="noopener">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg>
+        Follow @alexbritton
+      </a>
+    </div>
+
+    <!--
+      Placeholder grid below. To show real posts, swap this block for an
+      embed widget (e.g. SnapWidget / Elfsight Instagram Feed) pointed at
+      Alex's Instagram profile, or replace each .insta-tile with an <img>
+      of a real post.
+    -->
+    <div class="insta-grid">
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+      <a class="insta-tile" href="#" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/></svg><span class="hover">View post</span></a>
+    </div>
+    <p class="insta-note">Live feed connects once the campaign Instagram handle is confirmed — see the code comment above this grid.</p>
+  </div>
+</section>
+
+<!-- ================= CONTACT ================= -->
+<section class="contact" id="contact">
+  <div class="container">
+    <div class="contact-grid">
+      <div>
+        <span class="kicker" style="background:rgba(20,18,15,0.12); color:var(--black);">Have a question?</span>
+        <h2 class="display">Contact Alex</h2>
+        <p class="lede">Get in touch about anything happening in your neighbourhood, or find out how you can help the campaign before election day.</p>
+
+        <div class="contact-list">
+          <a href="tel:0400000000">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg></span>
+            0400 000 000
+          </a>
+          <a href="mailto:alex@alexbritton.com.au">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z" opacity="0"/><path d="M22 6c0-1.1-.9-2-2-2H4a2 2 0 0 0-2 2v12c0 1.1.9 2 2 2h16a2 2 0 0 0 2-2V6z"/><path d="m22 6-10 7L2 6"/></svg></span>
+            alex@alexbritton.com.au
+          </a>
+          <a href="#" target="_blank" rel="noopener">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></span>
+            Facebook — /alexbrittonlaunceston
+          </a>
+          <a href="#" target="_blank" rel="noopener">
+            <span class="ico"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1"/></svg></span>
+            Instagram — @alexbritton
+          </a>
+        </div>
+      </div>
+
+      <form class="contact-form" onsubmit="return handleContactSubmit(event)">
+        <h3>Send a message</h3>
+        <label for="cf-name">Name</label>
+        <input id="cf-name" type="text" required placeholder="Your name" />
+        <label for="cf-email">Email</label>
+        <input id="cf-email" type="email" required placeholder="you@example.com" />
+        <label for="cf-message">Message</label>
+        <textarea id="cf-message" required placeholder="How can Alex help?"></textarea>
+        <button type="submit">Send message</button>
+      </form>
+    </div>
+
+    <div class="footer-strip">
+      Authorised by Alex Britton, 27 Seaport Boulevard, Launceston
+      <span class="built">Built by <a href="https://broadcollective.com.au" target="_blank" rel="noopener">Broad Collective</a></span>
+    </div>
+  </div>
+</section>
+
+<script>
+  // Accordion
+  document.querySelectorAll('.acc-item').forEach(item => {
+    const btn = item.querySelector('.acc-btn');
+    btn.addEventListener('click', () => {
+      const wasOpen = item.classList.contains('open');
+      item.closest('.acc').querySelectorAll('.acc-item').forEach(i => i.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
+  // Contact form -> mailto fallback (swap for a real form endpoint / Apps Script when ready)
+  function handleContactSubmit(e) {
+    e.preventDefault();
+    const name = document.getElementById('cf-name').value;
+    const email = document.getElementById('cf-email').value;
+    const message = document.getElementById('cf-message').value;
+    const subject = encodeURIComponent('Message from ' + name + ' via campaign website');
+    const body = encodeURIComponent(message + '\n\n' + name + ' (' + email + ')');
+    window.location.href = 'mailto:alex@alexbritton.com.au?subject=' + subject + '&body=' + body;
+    return false;
+  }
+</script>
+
+</body>
+</html>
