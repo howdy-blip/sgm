@@ -299,10 +299,17 @@ videoInput.addEventListener("change", () => {
 function handleFile(file) {
   dropzone.classList.remove("invalid");
   const sizeMb = file.size / (1024 * 1024);
+  videoEntry = null;
+  renderFile();
+  setStatus("Reading video…");
   const reader = new FileReader();
   reader.onload = () => {
     videoEntry = { file, dataUrl: reader.result, oversize: sizeMb > MAX_MB };
     renderFile();
+    setStatus("");
+  };
+  reader.onerror = () => {
+    setStatus("Couldn't read that video file. Try a smaller file or a different format.", "err");
   };
   reader.readAsDataURL(file);
 }
@@ -355,6 +362,10 @@ submitBtn.addEventListener("click", async () => {
   });
   if (!email || !emailEl.checkValidity()) { markInvalid(emailEl); missing.push(true); } else { clearInvalid(emailEl); }
   if (!videoEntry) { dropzone.classList.add("invalid"); missing.push(true); } else { dropzone.classList.remove("invalid"); }
+  if (videoEntry && videoEntry.oversize) {
+    setStatus(`That video is over ${MAX_MB}MB, which is too large to upload here. Please trim or compress it and try again.`, "err");
+    return;
+  }
   if (!consentEl.checked) { consentRow.classList.add("invalid"); missing.push(true); } else { consentRow.classList.remove("invalid"); }
   if (!termsEl.checked) { termsRow.classList.add("invalid"); missing.push(true); } else { termsRow.classList.remove("invalid"); }
 
