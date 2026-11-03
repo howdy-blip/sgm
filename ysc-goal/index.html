@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Skechers Goal of Matchday Entries | Youth Super Cup</title>
-<meta name="description" content="Submit your goal for Skechers Goal of Matchday at Youth Super Cup." />
-<meta property="og:title" content="Skechers Goal of Matchday Entries | Youth Super Cup" />
-<meta property="og:description" content="Scored a screamer at Youth Super Cup? Upload it for your shot at Skechers Goal of Matchday." />
+<title>Skechers Goal of the Week Entries | Youth Super Cup</title>
+<meta name="description" content="Submit your goal for Skechers Goal of the Week at Youth Super Cup." />
+<meta property="og:title" content="Skechers Goal of the Week Entries | Youth Super Cup" />
+<meta property="og:description" content="Scored a screamer at Youth Super Cup? Upload it for your shot at Skechers Goal of the Week." />
 <meta property="og:image" content="https://sgm.broadcollective.com.au/ysc-goal/bg.jpg" />
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -46,10 +46,18 @@
     }
   }
 
+  .brand-band {
+    background: var(--ink);
+    border-bottom: 4px solid var(--gold);
+    padding: 22px 20px;
+    display: flex; justify-content: center;
+  }
+  .brand-band img { width: 100%; max-width: 300px; height: auto; display: block; }
+
   .hero {
     max-width: 720px;
     margin: 0 auto;
-    padding: 64px 20px 28px;
+    padding: 44px 20px 28px;
     text-align: center;
   }
   .eyebrow {
@@ -112,7 +120,6 @@
   .card {
     background: #fff;
     border-radius: var(--radius);
-    border-top: 6px solid var(--gold);
     box-shadow: 0 24px 60px -24px rgba(60,45,15,0.35), 0 2px 6px rgba(60,45,15,0.06);
     padding: 32px 28px;
   }
@@ -261,7 +268,8 @@
   footer a:hover { text-decoration: underline; }
 
   @media (max-width: 560px) {
-    .hero { padding-top: 44px; }
+    .hero { padding-top: 32px; }
+    .brand-band img { max-width: 220px; }
     .grid { grid-template-columns: 1fr; }
     .steps { grid-template-columns: 1fr; }
     .card { padding: 26px 18px; }
@@ -271,16 +279,20 @@
 </head>
 <body>
 
+<div class="brand-band">
+  <img src="header.png" alt="Youth Super Cup and Skechers Football" width="324" height="122" />
+</div>
+
 <header class="hero">
   <span class="eyebrow">Youth Super Cup</span>
-  <h1>Skechers Goal of Matchday <span>Entries</span></h1>
+  <h1>Skechers Goal of the Week <span>Entries</span></h1>
   <div class="hero-rule"></div>
 </header>
 
 <section class="blurb">
   <div class="blurb-inner">
     <p>Youth Super Cup brings together the best young talent on one stage, and every week serves up moments worth replaying. Top-corner finishes, solo runs, cheeky chips and long-range rockets: if you scored it, we want to see it.</p>
-    <p>Submit your goal for <strong>Skechers Goal of Matchday</strong>. Our team will shortlist the best entries from each week and post them on our socials for the public vote. Get your teammates, family and club behind you, because the goal with the most votes takes the title.</p>
+    <p>Submit your goal for <strong>Skechers Goal of the Week</strong>. Our team will shortlist the best entries from each week and post them on our socials for the public vote. Get your teammates, family and club behind you, because the goal with the most votes takes the title.</p>
     <ol class="steps">
       <li><b>01</b><strong>Upload</strong>Send us the clip of your goal (MP4 or MOV).</li>
       <li><b>02</b><strong>Shortlist</strong>The best goals from each week are selected.</li>
@@ -384,7 +396,7 @@
         <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
       </div>
       <h2>Entry received</h2>
-      <p>Thank you for submitting your entry for Skechers Goal of Matchday for Youth Super Cup. Stay tuned on socials to see if your goal's been chosen, and get voting if it does!</p>
+      <p>Thank you for submitting your entry for Skechers Goal of the Week for Youth Super Cup. Stay tuned on socials to see if your goal's been chosen, and get voting if it does!</p>
       <button type="button" class="again" id="againBtn">Submit another goal</button>
     </div>
 
