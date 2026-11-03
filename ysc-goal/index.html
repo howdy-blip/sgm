@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Skechers Goal of Matchday Entries | Youth Super Cup</title>
+<meta name="description" content="Submit your goal for Skechers Goal of Matchday at Youth Super Cup." />
+<meta property="og:title" content="Skechers Goal of Matchday Entries | Youth Super Cup" />
+<meta property="og:description" content="Scored a screamer at Youth Super Cup? Upload it for your shot at Skechers Goal of Matchday." />
+<meta property="og:image" content="https://sgm.broadcollective.com.au/ysc-goal/bg.jpg" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Saira:wght@300;400;500;600;700;800;900&family=Saira+Condensed:wght@700;800;900&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --gold:       #c48a2c;
+    --gold-dark:  #a06f1f;
+    --gold-light: #e2b765;
+    --gold-tint:  #fbf5e9;
+    --cream:      #d6cfb5;
+    --ink:        #1d1a14;
+    --muted:      #6d665a;
+    --line:       #e6e0d2;
+    --err:        #c0392b;
+    --ok:         #2e7d4f;
+    --radius:     18px;
+    --radius-sm:  10px;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { background: var(--cream); }
+  body {
+    font-family: 'Saira', system-ui, sans-serif;
+    color: var(--ink);
+    min-height: 100vh;
+    background: var(--cream) url("bg.jpg") center / cover no-repeat fixed;
+    -webkit-font-smoothing: antialiased;
+  }
+  /* iOS ignores background-attachment: fixed, so use a fixed layer instead */
+  @supports (-webkit-touch-callout: none) {
+    body { background: var(--cream); }
+    body::before {
+      content: ""; position: fixed; inset: 0; z-index: -1;
+      background: url("bg.jpg") center / cover no-repeat;
+    }
+  }
+
+  .hero {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 64px 20px 28px;
+    text-align: center;
+  }
+  .eyebrow {
+    display: inline-block;
+    font-size: 12px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase;
+    color: var(--gold-dark);
+    background: rgba(255,255,255,0.7);
+    border: 1px solid rgba(196,138,44,0.35);
+    padding: 6px 14px; border-radius: 999px;
+  }
+  .hero h1 {
+    font-family: 'Saira Condensed', 'Saira', sans-serif;
+    font-weight: 900;
+    font-size: clamp(38px, 8vw, 68px);
+    line-height: 0.95;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    margin-top: 18px;
+    color: var(--ink);
+  }
+  .hero h1 span { color: var(--gold); display: block; }
+  .hero-rule {
+    width: 72px; height: 4px; border-radius: 4px;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    margin: 22px auto 0;
+  }
+
+  .blurb {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+  .blurb-inner {
+    background: rgba(255,255,255,0.78);
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.9);
+    border-radius: var(--radius);
+    padding: 24px 26px;
+    font-size: 15px; line-height: 1.7; color: #3a352b;
+  }
+  .blurb-inner p + p { margin-top: 12px; }
+  .blurb-inner strong { color: var(--ink); }
+  .steps {
+    list-style: none;
+    display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px;
+    margin-top: 18px;
+  }
+  .steps li {
+    background: #fff; border: 1px solid var(--line); border-radius: var(--radius-sm);
+    padding: 12px; font-size: 13px; line-height: 1.45; color: var(--muted);
+  }
+  .steps b {
+    display: block; font-size: 22px; font-weight: 800; color: var(--gold); line-height: 1; margin-bottom: 6px;
+  }
+  .steps strong { color: var(--ink); display: block; font-size: 14px; }
+
+  .wrap { max-width: 640px; margin: 0 auto; padding: 22px 20px 40px; }
+
+  .card {
+    background: #fff;
+    border-radius: var(--radius);
+    border-top: 6px solid var(--gold);
+    box-shadow: 0 24px 60px -24px rgba(60,45,15,0.35), 0 2px 6px rgba(60,45,15,0.06);
+    padding: 32px 28px;
+  }
+  .card h2 {
+    font-size: 20px; font-weight: 800; text-transform: uppercase; letter-spacing: 1px;
+  }
+  .card .card-sub { font-size: 13.5px; color: var(--muted); margin-top: 4px; }
+
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 16px; }
+  .field { margin-top: 18px; min-width: 0; }
+  .field.full { grid-column: 1 / -1; }
+
+  label.field-label {
+    display: block; font-size: 12px; font-weight: 700; color: var(--ink);
+    letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 7px;
+  }
+  .req { color: var(--gold); }
+
+  .field-input {
+    width: 100%;
+    background: #fff;
+    border: 1.5px solid var(--line);
+    border-radius: var(--radius-sm);
+    color: var(--ink);
+    font-family: inherit; font-size: 16px;
+    padding: 11px 13px;
+    transition: border-color .15s, box-shadow .15s;
+    -webkit-appearance: none; appearance: none;
+  }
+  .field-input:focus { outline: none; border-color: var(--gold); box-shadow: 0 0 0 4px rgba(196,138,44,0.15); }
+  .field-input::placeholder { color: #b0a898; }
+  .field-input.invalid { border-color: var(--err); }
+
+  .with-prefix { position: relative; }
+  .with-prefix span {
+    position: absolute; left: 13px; top: 50%; transform: translateY(-50%);
+    color: var(--gold); font-weight: 700; pointer-events: none;
+  }
+  .with-prefix .field-input { padding-left: 30px; }
+
+  select.field-input {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23c48a2c' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 14px center;
+    padding-right: 38px; cursor: pointer;
+  }
+
+  .dropzone {
+    border: 2px dashed #dccfb2;
+    border-radius: var(--radius-sm);
+    padding: 28px 16px;
+    text-align: center;
+    cursor: pointer;
+    background: var(--gold-tint);
+    transition: border-color .15s, background .15s;
+  }
+  .dropzone:hover, .dropzone.drag, .dropzone:focus { outline: none; border-color: var(--gold); background: #f7ecd6; }
+  .dropzone.invalid { border-color: var(--err); }
+  .dropzone svg { color: var(--gold); margin-bottom: 6px; }
+  .dropzone p { font-size: 14px; color: var(--muted); }
+  .dropzone p strong { color: var(--ink); }
+  .dropzone small { display: block; font-size: 12px; color: #9a9282; margin-top: 4px; }
+  .dropzone input { display: none; }
+  .field-note { font-size: 12.5px; color: var(--muted); margin-top: 8px; line-height: 1.5; }
+
+  .file-chip {
+    display: none; align-items: center; gap: 12px;
+    margin-top: 12px; padding: 10px 12px;
+    background: #fff; border: 1.5px solid var(--line); border-radius: var(--radius-sm);
+  }
+  .file-chip.show { display: flex; }
+  .file-chip .ficon {
+    width: 38px; height: 38px; border-radius: 8px; flex-shrink: 0;
+    background: var(--gold); color: #fff; font-size: 11px; font-weight: 800;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .file-chip .fmeta { min-width: 0; flex: 1; }
+  .file-chip .fname { display: block; font-size: 14px; font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .file-chip .fsize { display: block; font-size: 12px; color: var(--muted); }
+  .file-chip button {
+    background: none; border: none; color: #9a9282; font-size: 22px; line-height: 1;
+    cursor: pointer; padding: 0 4px;
+  }
+  .file-chip button:hover { color: var(--err); }
+
+  .consent-row {
+    display: flex; align-items: flex-start; gap: 10px;
+    margin-top: 22px; padding: 14px;
+    background: var(--gold-tint); border: 1.5px solid #efe3c8; border-radius: var(--radius-sm);
+  }
+  .consent-row.invalid { border-color: var(--err); }
+  .consent-row input { margin-top: 4px; width: 17px; height: 17px; flex-shrink: 0; accent-color: var(--gold); }
+  .consent-row label { font-size: 13px; color: #4d473c; line-height: 1.55; }
+
+  .progress { display: none; margin-top: 20px; }
+  .progress.show { display: block; }
+  .progress-track { height: 10px; background: #f0e9d9; border-radius: 999px; overflow: hidden; }
+  .progress-bar {
+    height: 100%; width: 0%;
+    background: linear-gradient(90deg, var(--gold-light), var(--gold));
+    transition: width .2s ease;
+  }
+  .progress-label { display: flex; justify-content: space-between; font-size: 12.5px; color: var(--muted); margin-top: 6px; }
+
+  .status { font-size: 13.5px; margin-top: 16px; min-height: 1px; line-height: 1.5; }
+  .status.err { color: var(--err); }
+
+  .btn-submit {
+    margin-top: 22px; width: 100%;
+    font-family: inherit; font-size: 16px; font-weight: 800; letter-spacing: 1.5px; text-transform: uppercase;
+    color: #fff;
+    background: linear-gradient(180deg, #cf9536, var(--gold-dark));
+    border: none; border-radius: var(--radius-sm);
+    padding: 15px 22px; cursor: pointer;
+    box-shadow: 0 8px 18px -8px rgba(160,111,31,0.7);
+    transition: transform .1s, filter .15s;
+  }
+  .btn-submit:hover { filter: brightness(1.06); }
+  .btn-submit:active { transform: translateY(1px); }
+  .btn-submit:disabled { filter: grayscale(0.6) brightness(1.1); cursor: not-allowed; }
+
+  .thanks { display: none; text-align: center; padding: 12px 4px; }
+  .thanks.show { display: block; }
+  .thanks .tick {
+    width: 64px; height: 64px; border-radius: 50%;
+    background: var(--gold-tint); border: 2px solid var(--gold);
+    color: var(--gold); display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 18px;
+  }
+  .thanks h2 { font-size: 24px; }
+  .thanks p { font-size: 15.5px; line-height: 1.7; color: #4d473c; margin-top: 10px; }
+  .thanks .again {
+    margin-top: 20px; background: none; border: 1.5px solid var(--gold); color: var(--gold-dark);
+    font-family: inherit; font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase;
+    padding: 10px 18px; border-radius: var(--radius-sm); cursor: pointer;
+  }
+  .thanks .again:hover { background: var(--gold-tint); }
+
+  .config-banner {
+    display: none; margin-bottom: 18px;
+    background: #fdecea; border: 1px solid #f3c1bb; border-radius: var(--radius-sm);
+    padding: 12px 14px; font-size: 13px; color: #8a2a1f; line-height: 1.5;
+  }
+
+  footer { text-align: center; padding: 0 20px 48px; font-size: 12.5px; color: #5d5647; }
+  footer a { color: var(--gold-dark); font-weight: 600; text-decoration: none; }
+  footer a:hover { text-decoration: underline; }
+
+  @media (max-width: 560px) {
+    .hero { padding-top: 44px; }
+    .grid { grid-template-columns: 1fr; }
+    .steps { grid-template-columns: 1fr; }
+    .card { padding: 26px 18px; }
+    .blurb-inner { padding: 20px 18px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="eyebrow">Youth Super Cup</span>
+  <h1>Skechers Goal of Matchday <span>Entries</span></h1>
+  <div class="hero-rule"></div>
+</header>
+
+<section class="blurb">
+  <div class="blurb-inner">
+    <p>Youth Super Cup brings together the best young talent on one stage, and every week serves up moments worth replaying. Top-corner finishes, solo runs, cheeky chips and long-range rockets: if you scored it, we want to see it.</p>
+    <p>Submit your goal for <strong>Skechers Goal of Matchday</strong>. Our team will shortlist the best entries from each week and post them on our socials for the public vote. Get your teammates, family and club behind you, because the goal with the most votes takes the title.</p>
+    <ol class="steps">
+      <li><b>01</b><strong>Upload</strong>Send us the clip of your goal (MP4 or MOV).</li>
+      <li><b>02</b><strong>Shortlist</strong>The best goals from each week are selected.</li>
+      <li><b>03</b><strong>Vote</strong>Rally your crew to vote on socials.</li>
+    </ol>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="card">
+
+    <div class="config-banner" id="configBanner">
+      This form isn't connected to Google Drive yet. Paste the deployed Apps Script URL into <code>APPS_SCRIPT_URL</code> near the bottom of this file.
+    </div>
+
+    <form id="entryForm" novalidate>
+      <h2>Submit your goal</h2>
+      <p class="card-sub">All fields are required.</p>
+
+      <div class="grid">
+        <div class="field">
+          <label class="field-label" for="firstName">First name <span class="req">*</span></label>
+          <input class="field-input" id="firstName" type="text" autocomplete="given-name" required />
+        </div>
+        <div class="field">
+          <label class="field-label" for="lastName">Last name <span class="req">*</span></label>
+          <input class="field-input" id="lastName" type="text" autocomplete="family-name" required />
+        </div>
+
+        <div class="field full">
+          <label class="field-label" for="email">Email address <span class="req">*</span></label>
+          <input class="field-input" id="email" type="email" autocomplete="email" placeholder="you@email.com" required />
+        </div>
+
+        <div class="field full">
+          <label class="field-label" for="instagram">Your Instagram handle <span class="req">*</span></label>
+          <div class="with-prefix">
+            <span>@</span>
+            <input class="field-input" id="instagram" type="text" autocapitalize="off" autocorrect="off" spellcheck="false" placeholder="yourhandle" required />
+          </div>
+        </div>
+
+        <div class="field full">
+          <label class="field-label" for="club">Team / club <span class="req">*</span></label>
+          <input class="field-input" id="club" type="text" placeholder="e.g. Melbourne City FC" required />
+        </div>
+
+        <div class="field">
+          <label class="field-label" for="ageGroup">Age group <span class="req">*</span></label>
+          <input class="field-input" id="ageGroup" type="text" placeholder="e.g. U14 Boys" required />
+        </div>
+        <div class="field">
+          <label class="field-label" for="matchday">Week <span class="req">*</span></label>
+          <select class="field-input" id="matchday" required>
+            <option value="" selected disabled>Select week</option>
+            <option>Week 1</option>
+            <option>Week 2</option>
+            <option>Week 3</option>
+            <option>Week 4</option>
+            <option>Week 5</option>
+          </select>
+        </div>
+
+        <div class="field full">
+          <label class="field-label">Upload your goal <span class="req">*</span></label>
+          <div class="dropzone" id="dropzone" tabindex="0" role="button" aria-label="Upload video">
+            <input type="file" id="videoInput" accept="video/mp4,video/quicktime,.mp4,.mov" />
+            <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+            <p><strong>Tap to upload</strong> or drag your video here</p>
+            <small>MP4 or MOV, max 500MB*</small>
+          </div>
+          <div class="file-chip" id="fileChip">
+            <span class="ficon" id="fileExt">MP4</span>
+            <div class="fmeta">
+              <span class="fname" id="fileName"></span>
+              <span class="fsize" id="fileSize"></span>
+            </div>
+            <button type="button" id="removeFile" aria-label="Remove video">&times;</button>
+          </div>
+          <p class="field-note">* Max file size is 500MB. If you have trouble uploading, please trim your clip down to just the goal and try again.</p>
+        </div>
+      </div>
+
+      <div class="consent-row" id="consentRow">
+        <input type="checkbox" id="consent" />
+        <label for="consent"><span class="req">*</span> I confirm I have permission from everyone featured in this video (including a parent or guardian for anyone under 18) for it to be shared by Youth Super Cup and Skechers on social media.</label>
+      </div>
+
+      <div class="progress" id="progress">
+        <div class="progress-track"><div class="progress-bar" id="progressBar"></div></div>
+        <div class="progress-label"><span id="progressText">Uploading...</span><span id="progressPct">0%</span></div>
+      </div>
+
+      <p class="status" id="status" role="status"></p>
+
+      <button class="btn-submit" type="submit" id="submitBtn">Submit entry</button>
+    </form>
+
+    <div class="thanks" id="thanks">
+      <div class="tick">
+        <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <h2>Entry received</h2>
+      <p>Thank you for submitting your entry for Skechers Goal of Matchday for Youth Super Cup. Stay tuned on socials to see if your goal's been chosen, and get voting if it does!</p>
+      <button type="button" class="again" id="againBtn">Submit another goal</button>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  Built by <a href="https://broadcollective.com.au" target="_blank" rel="noopener">Broad Collective</a>
+</footer>
+
+<script>
+/* ============================================================
+   CONFIG: paste the deployed Google Apps Script Web App URL.
+   ============================================================ */
+const APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbxz49XXnjWRhoZxEXYVRo7jvC5Xun8CLsa56oKofnwRkFs8PpjOp6QuxCUFWpElQJjuVg/exec";
+
+/* Upload chunk size: must be a multiple of 256 KB. 8 MB keeps each request quick on mobile data. */
+const CHUNK_SIZE = 32 * 256 * 1024;
+
+const isConfigured = APPS_SCRIPT_URL && APPS_SCRIPT_URL.indexOf("https://script.google.com/") === 0;
+if (!isConfigured) document.getElementById("configBanner").style.display = "block";
+
+const $ = id => document.getElementById(id);
+const form = $("entryForm");
+const fields = ["firstName", "lastName", "email", "instagram", "club", "ageGroup", "matchday"].map($);
+const dropzone = $("dropzone"), videoInput = $("videoInput");
+const fileChip = $("fileChip");
+const statusEl = $("status"), submitBtn = $("submitBtn");
+const progress = $("progress"), progressBar = $("progressBar"), progressPct = $("progressPct"), progressText = $("progressText");
+
+let videoFile = null;
+
+/* ---------- File selection ---------- */
+const OK_EXT = /\.(mp4|mov|m4v)$/i;
+const MAX_MB = 500;
+
+function setFile(file) {
+  dropzone.classList.remove("invalid");
+  if (!file) return;
+  const okType = /^video\//.test(file.type) || OK_EXT.test(file.name);
+  if (!okType) { setStatus("Please upload a video file (MP4 or MOV).", "err"); return; }
+  if (file.size > MAX_MB * 1024 * 1024) {
+    dropzone.classList.add("invalid");
+    setStatus(`That video is ${formatSize(file.size)}, which is over the ${MAX_MB}MB limit. Please trim your clip down to just the goal and try again.`, "err");
+    return;
+  }
+  videoFile = file;
+  const ext = (file.name.split(".").pop() || "VID").toUpperCase().slice(0, 4);
+  $("fileExt").textContent = ext;
+  $("fileName").textContent = file.name;
+  $("fileSize").textContent = formatSize(file.size);
+  fileChip.classList.add("show");
+  setStatus("");
+}
+
+function clearFile() {
+  videoFile = null;
+  fileChip.classList.remove("show");
+}
+
+function formatSize(bytes) {
+  const mb = bytes / (1024 * 1024);
+  return mb >= 1024 ? (mb / 1024).toFixed(2) + " GB" : mb.toFixed(1) + " MB";
+}
+
+dropzone.addEventListener("click", () => videoInput.click());
+dropzone.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); videoInput.click(); } });
+dropzone.addEventListener("dragover", e => { e.preventDefault(); dropzone.classList.add("drag"); });
+dropzone.addEventListener("dragleave", () => dropzone.classList.remove("drag"));
+dropzone.addEventListener("drop", e => {
+  e.preventDefault(); dropzone.classList.remove("drag");
+  if (e.dataTransfer.files.length) setFile(e.dataTransfer.files[0]);
+});
+videoInput.addEventListener("change", () => {
+  if (videoInput.files.length) setFile(videoInput.files[0]);
+  videoInput.value = "";
+});
+$("removeFile").addEventListener("click", clearFile);
+
+/* ---------- Validation ---------- */
+fields.forEach(el => el.addEventListener(el.tagName === "SELECT" ? "change" : "input", () => el.classList.remove("invalid")));
+$("consent").addEventListener("change", () => $("consentRow").classList.remove("invalid"));
+$("instagram").addEventListener("blur", e => { e.target.value = e.target.value.trim().replace(/^@+/, ""); });
+
+function validate() {
+  let ok = true;
+  fields.forEach(el => {
+    const valid = el.value.trim() !== "" && el.checkValidity();
+    el.classList.toggle("invalid", !valid);
+    if (!valid) ok = false;
+  });
+  if (!videoFile) { dropzone.classList.add("invalid"); ok = false; }
+  if (!$("consent").checked) { $("consentRow").classList.add("invalid"); ok = false; }
+  return ok;
+}
+
+function setStatus(msg, type) {
+  statusEl.textContent = msg;
+  statusEl.className = "status" + (type ? " " + type : "");
+}
+
+function setProgress(pct, label) {
+  progress.classList.add("show");
+  progressBar.style.width = pct + "%";
+  progressPct.textContent = Math.round(pct) + "%";
+  if (label) progressText.textContent = label;
+}
+
+/* ---------- Apps Script calls ---------- */
+async function callScript(payload) {
+  const res = await fetch(APPS_SCRIPT_URL, {
+    method: "POST",
+    headers: { "Content-Type": "text/plain;charset=utf-8" },
+    body: JSON.stringify(payload)
+  });
+  const json = await res.json();
+  if (!json.success) throw new Error(json.error || "Something went wrong");
+  return json;
+}
+
+/* Upload one chunk straight to Google Drive's resumable session URL. */
+function putChunk(url, blob, start, total, onProgress) {
+  return new Promise((resolve, reject) => {
+    const xhr = new XMLHttpRequest();
+    xhr.open("PUT", url, true);
+    xhr.setRequestHeader("Content-Range", `bytes ${start}-${start + blob.size - 1}/${total}`);
+    xhr.upload.onprogress = e => { if (e.lengthComputable) onProgress(e.loaded); };
+    xhr.onload = () => {
+      if (xhr.status === 308) return resolve({ done: false });
+      if (xhr.status === 200 || xhr.status === 201) {
+        let body = {};
+        try { body = JSON.parse(xhr.responseText); } catch (e) {}
+        return resolve({ done: true, body });
+      }
+      reject(new Error("Upload error (" + xhr.status + ")"));
+    };
+    xhr.onerror = () => reject(new Error("Network error while uploading. Check your connection and try again."));
+    xhr.send(blob);
+  });
+}
+
+async function uploadWithRetry(url, blob, start, total, onProgress, tries = 4) {
+  for (let i = 0; i < tries; i++) {
+    try { return await putChunk(url, blob, start, total, onProgress); }
+    catch (err) {
+      if (i === tries - 1) throw err;
+      await new Promise(r => setTimeout(r, 1500 * (i + 1)));
+    }
+  }
+}
+
+/* ---------- Submit ---------- */
+form.addEventListener("submit", async e => {
+  e.preventDefault();
+  setStatus("");
+  if (!validate()) { setStatus("Please complete all the fields, add your video and tick the permission box.", "err"); return; }
+  if (!isConfigured) { setStatus("This form isn't connected yet. Please check back soon.", "err"); return; }
+
+  const entry = {
+    firstName: $("firstName").value.trim(),
+    lastName: $("lastName").value.trim(),
+    email: $("email").value.trim(),
+    instagram: "@" + $("instagram").value.trim().replace(/^@+/, ""),
+    club: $("club").value.trim(),
+    ageGroup: $("ageGroup").value.trim(),
+    matchday: $("matchday").value
+  };
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Uploading...";
+  setProgress(0, "Preparing upload...");
+
+  try {
+    // 1. Ask Apps Script for a Drive upload session in the right Matchday folder
+    const init = await callScript({
+      action: "init",
+      entry,
+      fileName: videoFile.name,
+      mimeType: videoFile.type || (/\.mov$/i.test(videoFile.name) ? "video/quicktime" : "video/mp4"),
+      fileSize: videoFile.size
+    });
+
+    // 2. Send the video to Drive in chunks
+    const total = videoFile.size;
+    let offset = 0, result = null;
+    while (offset < total) {
+      const end = Math.min(offset + CHUNK_SIZE, total);
+      const chunk = videoFile.slice(offset, end);
+      const base = offset;
+      result = await uploadWithRetry(init.uploadUrl, chunk, offset, total, loaded => {
+        setProgress(Math.min(99, ((base + loaded) / total) * 100), "Uploading your goal...");
+      });
+      offset = end;
+    }
+    if (!result || !result.done || !result.body.id) throw new Error("The upload didn't complete. Please try again.");
+
+    // 3. Log the entry in the spreadsheet
+    setProgress(100, "Finishing up...");
+    await callScript({ action: "complete", entry, fileId: result.body.id, fileName: videoFile.name, fileSize: total });
+
+    form.style.display = "none";
+    $("thanks").classList.add("show");
+    $("thanks").scrollIntoView({ behavior: "smooth", block: "center" });
+  } catch (err) {
+    setStatus("Sorry, your entry didn't go through: " + err.message + " If it keeps happening, try trimming your clip down to just the goal.", "err");
+  } finally {
+    submitBtn.disabled = false;
+    submitBtn.textContent = "Submit entry";
+    progress.classList.remove("show");
+  }
+});
+
+$("againBtn").addEventListener("click", () => {
+  form.reset();
+  clearFile();
+  $("thanks").classList.remove("show");
+  form.style.display = "";
+  setStatus("");
+  window.scrollTo({ top: 0, behavior: "smooth" });
+});
+</script>
+</body>
+</html>
